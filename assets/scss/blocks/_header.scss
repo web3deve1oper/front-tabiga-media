@@ -1,2 +1,51 @@
 .header {
+  background-color: $white-color;
+  padding: 11px 0;
+
+  &__container {
+    @extend %container;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-right: 53px;
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    margin-right: 34px;
+  }
+
+  &__link {
+    @include text-style(1.8rem, 400, $text-color);
+    font-family: $futura;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 34px;
+    }
+
+    &--red {
+      color: #EB5757;
+    }
+  }
+
+  &__btn {
+    width: 140px;
+  }
+
+  &__active-box {
+    margin-left: auto;
+  }
+
+  &__search {
+    cursor: pointer;
+    margin-right: 34px;
+  }
+
+  &__burger {
+    cursor: pointer;
+  }
 }
