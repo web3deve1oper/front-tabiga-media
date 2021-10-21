@@ -32,3 +32,7 @@ admin-dev/import/
 download/
 /img/*
 upload/
+/.nuxt/
+/.idea/
+/node_modules/
+/package-lock.json
