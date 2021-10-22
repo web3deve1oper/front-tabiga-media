@@ -1,2 +1,8 @@
 .heading-medium {
+  @include text-style(3.6rem, 400, $main-color);
+  font-family: $futura;
+
+  &--red {
+    color: #EB5757;
+  }
 }

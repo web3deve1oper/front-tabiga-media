@@ -1,0 +1,11 @@
+.accent-section {
+  padding: 60px 0;
+  background-color: #E2A190;
+
+  &__container {
+    @extend %container;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+}

@@ -1,0 +1,37 @@
+.staggered-view {
+
+  &__container {
+    @extend %container;
+    border-top: 1px solid $main-color;
+    padding-top: 20px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+
+  &__heading {
+
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      @include text-style(1.8rem, 400, $text-color);
+      font-family: $futura;
+      margin-right: 10px;
+    }
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+}
