@@ -1,0 +1,40 @@
+.status-box {
+  padding: 20px;
+  background-color: #BF927A;
+  border-radius: 4px;
+
+  &--green {
+    background-color: #698456;
+  }
+
+  &__title {
+    @include text-style(2.4rem, 600, $white-color);
+    margin-bottom: 20px;
+  }
+
+  &__list {
+
+    li {
+      @include text-style(1.8rem, 400, #F2F2F2);
+      line-height: 21px;
+      padding-left: 18px;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: $white-color;
+        position: absolute;
+        top: 6px;
+        left: 0;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+}
