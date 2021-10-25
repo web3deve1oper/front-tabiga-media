@@ -29,11 +29,18 @@
 @import "blocks/staggered-view";
 @import "blocks/staggered-card";
 @import "blocks/mailing-section";
+@import "blocks/rubrics";
+@import "blocks/breadcrumb";
+@import "blocks/padding";
+@import "blocks/rubric-page";
+@import "blocks/rubric-details";
+@import "blocks/collaborators-box";
+@import "blocks/recommend-box";
 
 html, body {
   font-size: 62.5%;
   font-family: $base-font;
-  background-color: #E5E5E5;
+  background-color: #f9fafc;
   //scroll-behavior: smooth;
 }
 

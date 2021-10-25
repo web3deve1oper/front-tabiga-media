@@ -1,0 +1,48 @@
+.padding {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__arrow {
+    cursor: pointer;
+
+    &--left {
+      svg {
+        fill: #A1A1A1;
+      }
+    }
+
+    &--right {
+      svg {
+        fill: $main-color;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__numbers {
+    display: flex;
+    align-items: center;
+  }
+
+  &__number {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    @include text-style(1.8rem, 600, $main-color);
+    cursor: pointer;
+
+    &--active {
+      color: $white-color;
+      background-color: $main-color;
+    }
+
+    &:not(:last-child) {
+      margin-right: 14px;
+    }
+  }
+}

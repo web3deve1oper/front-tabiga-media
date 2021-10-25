@@ -1,0 +1,168 @@
+.rubric-page {
+  padding: 20px 0 100px;
+
+  &__container {
+    @extend %container;
+  }
+
+  &__breadcrumb {
+    margin-bottom: 20px;
+  }
+
+  &__img-box {
+    position: relative;
+    height: 400px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(180deg, rgba(29, 29, 29, 0.09) 0%, rgba(29, 29, 29, 0.81) 100%);
+      z-index: 2;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    max-width: unset;
+    height: unset;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__img-info {
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    z-index: 3;
+    max-width: 500px;
+  }
+
+  &__views {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 5px;
+    background-color: $main-color;
+    @include text-style(1.8rem, 600, $white-color);
+
+    svg {
+      fill: $white-color;
+      margin-right: 5px;
+    }
+
+    &--mb10 {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__img-title {
+    @include text-style(2.4rem, 400, $white-color);
+    font-family: $futura;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+
+  &__img-desc {
+    @include text-style(1.8rem, 400, #BDBDBD);
+    line-height: 21px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__column {
+
+    &--w285 {
+      width: 285px;
+    }
+
+    &--w570 {
+      width: 570px;
+    }
+  }
+
+  &__details-box {
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    @include text-style(1.8rem, 400, $title-color);
+    line-height: 21px;
+    margin-bottom: 20px;
+  }
+
+  &__grey-text {
+    @include text-style(1.8rem, 400, #A1A1A1);
+
+    &--mb20 {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  &__tag {
+    padding: 7px 10px;
+    border-radius: 4px;
+    background-color: #BF927A;
+    @include text-style(1.4rem, 400, $white-color);
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &__share {
+    display: flex;
+    align-items: center;
+
+    span {
+      @include text-style(1.8rem, 400, $title-color);
+      margin-right: 14px;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+
+    svg {
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &__interest {
+    margin-bottom: 100px;
+  }
+
+  &__interest-title {
+    @include text-style(3.6rem, 400, $main-color);
+    font-family: $futura;
+    margin-bottom: 30px;
+  }
+
+  &__interest-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+}

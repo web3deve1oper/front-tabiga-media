@@ -6,3 +6,8 @@
     color: #EB5757;
   }
 }
+
+.heading-large {
+  @include text-style(5rem, 600, $main-color);
+  font-family: $futura;
+}
