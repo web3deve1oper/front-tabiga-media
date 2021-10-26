@@ -18,6 +18,16 @@
     }
   }
 
+  &--nostagger {
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(6) {
+      #{$e}__img-box {
+        display: block;
+      }
+    }
+  }
+
   &__img-box {
     width: 230px;
     flex-shrink: 0;
@@ -82,6 +92,10 @@
   &__grey-text {
     @include text-style(1.4rem, 400, #A1A1A1);
     margin-bottom: 10px;
+
+    &--darker {
+      color: $text-color;
+    }
   }
 
   &__title {
@@ -105,5 +119,31 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+  }
+
+  &__details {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+
+    span {
+      @include text-style(1.4rem, 400, #A1A1A1);
+      position: relative;
+
+      &:not(:last-child) {
+        margin-right: 25px;
+
+        &:after {
+          content: '';
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: #A1A1A1;
+          position: absolute;
+          top: 5px;
+          left: calc(100% + 10px);
+        }
+      }
+    }
   }
 }

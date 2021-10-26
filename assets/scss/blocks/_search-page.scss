@@ -1,0 +1,36 @@
+.search-page {
+  padding: 20px 0 100px;
+
+  &__container {
+    @extend %container;
+  }
+
+  &__breadcrumb {
+    margin-bottom: 20px;
+  }
+
+  &__heading {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+
+    span {
+      @include text-style(2.4rem, 600, #BF927A);
+      position: absolute;
+      top: 0;
+      left: calc(100% + 5px);
+    }
+  }
+
+  &__list {}
+
+  &__card {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__empty {
+    @include text-style(2.4rem, 400, #A1A1A1);
+  }
+}
