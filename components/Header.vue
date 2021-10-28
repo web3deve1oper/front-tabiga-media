@@ -1,5 +1,5 @@
 <template>
-  <header class="header" :class="{'header--active' : searchShow}">
+  <header class="header" :class="{'header--active' : searchShow, 'header--fixed' : sidebarShow}">
     <div class="header__container">
       <img src="../assets/img/header-logo.svg" alt="" class="header__logo">
 
@@ -26,16 +26,50 @@
         </div>
       </form>
 
-      <svg class="header__burger" width="30" height="30" v-if="!searchShow">
+      <svg class="header__burger" width="30" height="30"
+           v-show="(!searchShow && !sidebarShow)"
+           @click="openSidebar">
         <use href="../assets/img/icons.svg#burger"></use>
       </svg>
 
       <svg class="header__burger" width="24" height="24"
-           v-else
-           @click="searchShow = false">
+           v-show="sidebarShow || searchShow"
+           @click="closeAll">
         <use href="../assets/img/icons.svg#cross"></use>
       </svg>
 
+    </div>
+
+    <div class="header__sidebar sidebar" :class="{'sidebar--active' : sidebarShow}">
+      <div class="sidebar__container">
+        <div class="sidebar__heading">
+          Меню
+        </div>
+
+        <div class="sidebar__items">
+          <div class="sidebar__item">О проекте</div>
+          <div class="sidebar__item">Обратная связь</div>
+        </div>
+
+        <div class="sidebar__title">
+          Рубрики
+        </div>
+
+        <ul class="sidebar__rubrics">
+          <li>Наука</li>
+          <li>Дикая природа</li>
+          <li>Советы</li>
+          <li>Бёрдвочинг</li>
+          <li>Лица</li>
+          <li>Мнения</li>
+          <li>Красная книга Казахстана</li>
+          <li>Новости</li>
+          <li>Новости</li>
+          <li>Новости</li>
+          <li>Новости</li>
+          <li>Новости</li>
+        </ul>
+      </div>
     </div>
 
     <success-modal v-if="showModal"
@@ -55,6 +89,7 @@ export default {
   },
   data() {
     return {
+      sidebarShow: false,
       searchShow: false,
       searchData: '',
       showModal: false,
@@ -70,6 +105,13 @@ export default {
       } else {
         this.searchShow = true
       }
+    },
+    openSidebar() {
+      this.sidebarShow = true;
+    },
+    closeAll() {
+      this.searchShow = false;
+      this.sidebarShow = false;
     }
   }
 };

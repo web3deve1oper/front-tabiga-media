@@ -1,0 +1,70 @@
+.sidebar {
+  padding: 20px 0 100px;
+  background-color: #f9fafc;
+  position: fixed;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  top: 70px;
+  right: -150%;
+  z-index: 50;
+
+  transition: all .8s;
+
+  &--active {
+    right: 0;
+  }
+
+  &__container {
+    @extend %container;
+  }
+
+  &__heading {
+    @include text-style(5rem, 600, $main-color);
+    font-family: $futura;
+    margin-bottom: 20px;
+  }
+
+  &__items {
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    @include text-style(2.4rem, 400, $text-color);
+    transition: all .3s;
+    cursor: pointer;
+
+    &:hover {
+      color: $main-color;
+      text-decoration: underline;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title {
+    @include text-style(2.4rem, 600, $main-color);
+    text-decoration: underline;
+    margin-bottom: 20px;
+  }
+
+  &__rubrics {
+
+    li {
+      @include text-style(2.4rem, 400, $text-color);
+      transition: all .3s;
+      cursor: pointer;
+
+      &:hover {
+        color: $main-color;
+        text-decoration: underline;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
