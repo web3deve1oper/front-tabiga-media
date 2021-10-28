@@ -116,4 +116,24 @@
     flex-shrink: 0;
     cursor: pointer;
   }
+
+  @include respond(tab-land) {
+    &__links {
+      display: none;
+    }
+
+    &__btn {
+      display: none;
+    }
+  }
+
+  @include respond(phone) {
+    min-height: 60px;
+
+    &--active {
+      #{$e}__logo {
+        display: none;
+      }
+    }
+  }
 }

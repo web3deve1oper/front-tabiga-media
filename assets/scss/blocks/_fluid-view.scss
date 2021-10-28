@@ -2,8 +2,18 @@
 
   &__container {
     @extend %container;
-    border-top: 1px solid $main-color;
     padding-top: 20px;
+    position: relative;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $main-color;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 
   &__row {
@@ -40,5 +50,50 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
+  }
+
+  &__swiper-container {
+    display: none;
+  }
+
+  @include respond(tab-land) {
+    &__top {
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
+    }
+
+    &__bottom {
+      display: none;
+    }
+
+    &__swiper-container {
+      display: block;
+      padding-bottom: 38px;
+    }
+
+    &__pagination {
+
+      .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(0, 83, 68, 0.3);;
+        opacity: 1;
+        margin: 0 8px;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: #005344;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    &__container {
+
+      &:before {
+        width: calc(100% - 30px);
+        left: 15px;
+      }
+    }
   }
 }

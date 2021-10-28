@@ -45,4 +45,24 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
+  @include respond(tab-land) {
+    &__cards {
+      height: unset;
+      display: block;
+    }
+
+    &__card {
+      margin-bottom: 10px;
+
+      &:last-child {
+        display: none;
+      }
+    }
+
+    &__list {
+      margin-left: 0;
+      display: block;
+    }
+  }
 }

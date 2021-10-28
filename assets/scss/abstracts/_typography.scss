@@ -5,6 +5,10 @@
   &--red {
     color: #EB5757;
   }
+
+  @include respond(phone) {
+    font-size: 2.4rem;
+  }
 }
 
 .heading-large {

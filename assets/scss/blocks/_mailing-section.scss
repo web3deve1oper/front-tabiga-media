@@ -60,4 +60,19 @@
     background-color: $main-color;
     border-radius: 4px;
   }
+
+  @include respond(tab-land) {
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+    }
+
+    &__info {
+      max-width: 442px;
+    }
+  }
 }

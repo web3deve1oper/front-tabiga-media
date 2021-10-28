@@ -168,4 +168,115 @@
     grid-column-gap: 20px;
     grid-row-gap: 30px;
   }
+
+  &__swiper-container {
+    display: none;
+  }
+
+  @include respond(tab-land) {
+    &__main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: unset;
+      margin-bottom: 20px;
+    }
+
+    &__box {
+      width: 100%;
+      height: 425px;
+      margin-bottom: 20px;
+    }
+
+    &__scroll-box {
+      width: 100%;
+    }
+
+    &__btn {
+      width: 740px;
+    }
+
+    &__cards {
+      display: none;
+    }
+
+    &__swiper-container {
+      display: block;
+      padding-bottom: 38px;
+    }
+
+    &__pagination {
+
+      .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background-color: rgba(0, 83, 68, 0.3);;
+        opacity: 1;
+        margin: 0 8px;
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: #005344;
+      }
+    }
+  }
+
+  @include respond(phone) {
+    &__box {
+      height: 180px;
+    }
+
+    &__btn {
+      width: 316px;
+    }
+
+    &__box-info {
+      max-width: unset;
+      bottom: 10px;
+      left: 10px;
+    }
+
+    &__heading {
+      @include text-style(1.4rem, 600, #E2A190);
+      margin-bottom: 5px;
+
+      &:before {
+        content: '';
+        width: 2px;
+        height: 16px;
+      }
+    }
+
+    &__title {
+      @include text-style(1.8rem, 400, $white-color);
+      line-height: 23px;
+      margin-bottom: 5px;
+
+      max-height: 46px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    &__subtitle {
+      @include text-style(1.4rem, 400, #BDBDBD);
+      line-height: 16.5px;
+
+      max-height: 32px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    &__item-title {
+      @include text-style(1.6rem, 600, $title-color);
+      line-height: 19px;
+      max-height: 76px;
+    }
+  }
 }

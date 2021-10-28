@@ -10,4 +10,8 @@
     color: $white-color;
     border: 1px solid $white-color;
   }
+
+  @include respond(phone) {
+    font-size: 1.6rem;
+  }
 }

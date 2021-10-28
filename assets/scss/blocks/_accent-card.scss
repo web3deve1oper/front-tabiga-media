@@ -106,4 +106,21 @@
       }
     }
   }
+
+  @include respond(tab-land) {
+    width: 343px;
+  }
+
+  @include respond(phone) {
+    &__title {
+      @include text-style(1.6rem, 600, $white-color);
+      line-height: 19px;
+      margin-bottom: 5px;
+      height: 38px;
+    }
+
+    &__desc {
+      margin-bottom: 10px;
+    }
+  }
 }

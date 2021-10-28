@@ -50,6 +50,7 @@ html, body {
   font-family: $base-font;
   background-color: #f9fafc;
   //scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 img {

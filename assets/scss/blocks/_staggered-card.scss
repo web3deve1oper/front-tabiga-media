@@ -146,4 +146,16 @@
       }
     }
   }
+
+  @include respond(tab-land) {
+    display: none;
+
+    &:first-child {
+      display: flex;
+    }
+
+    &:nth-child(2) {
+      display: flex;
+    }
+  }
 }

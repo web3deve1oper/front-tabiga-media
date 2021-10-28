@@ -67,4 +67,8 @@
       }
     }
   }
+
+  @include respond(phone) {
+    top: 60px;
+  }
 }

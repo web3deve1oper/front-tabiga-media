@@ -86,6 +86,42 @@
 
         </div>
 
+        <div class="swiper-container welcome-section__swiper-container">
+          <div class="swiper-wrapper">
+
+            <div class="welcome-section__card card swiper-slide" v-for="i in 8">
+
+              <div class="card__img-box">
+                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+              </div>
+
+              <div class="card__info">
+
+                <div class="card__row">
+                  <div class="card__heading">Новости</div>
+
+                  <div class="card__date">1 октябрь 2021</div>
+                </div>
+
+                <div class="card__title">
+                  Приятно, граждане, наблюдать, как элементы политического процесса
+                </div>
+
+                <div class="card__more">
+                  <p>Читать подробнее</p>
+                  <svg width="20" height="20">
+                    <use href="../assets/img/icons.svg#arrow-right"></use>
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination welcome-section__pagination"></div>
+        </div>
+
 
       </div>
     </section>
@@ -141,6 +177,48 @@
           </div>
 
         </div>
+
+        <div class="swiper-container default-view__swiper-container default-view__swiper-container--1">
+          <div class="swiper-wrapper">
+
+            <div class="default-view__card card card--w-desc swiper-slide" v-for="i in 4">
+
+              <div class="card__img-box">
+                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+
+                <div class="card__views">
+                  <svg width="20" height="20">
+                    <use href="../assets/img/icons.svg#eye"></use>
+                  </svg>
+                  147k
+                </div>
+
+              </div>
+
+              <div class="card__info">
+
+                <div class="card__row">
+                  <div class="card__heading">Новости</div>
+
+                  <div class="card__date">1 октябрь 2021</div>
+                </div>
+
+                <div class="card__title">
+                  Приятно, граждане, наблюдать, как элементы политического процесса
+                </div>
+
+                <div class="card__desc">
+                  Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно образом
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination default-view__pagination default-view__pagination--1"></div>
+        </div>
+
       </div>
     </section>
 
@@ -148,37 +226,80 @@
 
       <div class="accent-section__container">
 
-        <div class="accent-section__card accent-card" v-for="i in 3">
-          <img src="../assets/img/placeholder-3.jpeg" alt="" class="accent-card__img">
+        <div class="accent-section__list">
+          <div class="accent-section__card accent-card" v-for="i in 3">
+            <img src="../assets/img/placeholder-3.jpeg" alt="" class="accent-card__img">
 
-          <div class="accent-card__info">
+            <div class="accent-card__info">
 
-            <div class="accent-card__heading">
-              Дикая природа
-            </div>
+              <div class="accent-card__heading">
+                Дикая природа
+              </div>
 
-            <div class="accent-card__title">
-              20 мест на планете, где природа
-              не пожалела красок
-            </div>
+              <div class="accent-card__title">
+                20 мест на планете, где природа
+                не пожалела красок
+              </div>
 
-            <div class="accent-card__desc">
-              С учётом сложившейся международной обстановки, сложившаяся структура организации однозначно определяет
-              каждого участника как способного стр...
-            </div>
+              <div class="accent-card__desc">
+                С учётом сложившейся международной обстановки, сложившаяся структура организации однозначно определяет
+                каждого участника как способного стр...
+              </div>
 
-            <div class="accent-card__details">
-              <span>12 сентябрь 2021</span>
-              <span>читать 10 минут</span>
-              <span>
+              <div class="accent-card__details">
+                <span>12 сентябрь 2021</span>
+                <span>читать 10 минут</span>
+                <span>
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
                 147k
               </span>
+              </div>
             </div>
-          </div>
 
+          </div>
+        </div>
+
+        <div class="swiper-container accent-section__swiper-container">
+          <div class="swiper-wrapper">
+
+            <div class="accent-section__card accent-card swiper-slide" v-for="i in 3">
+              <img src="../assets/img/placeholder-3.jpeg" alt="" class="accent-card__img">
+
+              <div class="accent-card__info">
+
+                <div class="accent-card__heading">
+                  Дикая природа
+                </div>
+
+                <div class="accent-card__title">
+                  20 мест на планете, где природа
+                  не пожалела красок
+                </div>
+
+                <div class="accent-card__desc">
+                  С учётом сложившейся международной обстановки, сложившаяся структура организации однозначно определяет
+                  каждого участника как способного стр...
+                </div>
+
+                <div class="accent-card__details">
+                  <span>12 сентябрь 2021</span>
+                  <span>читать 10 минут</span>
+                  <span>
+                <svg width="20" height="20">
+                  <use href="../assets/img/icons.svg#eye"></use>
+                </svg>
+                147k
+              </span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination accent-section__pagination"></div>
         </div>
 
       </div>
@@ -277,6 +398,47 @@
             </div>
           </div>
 
+        </div>
+
+        <div class="swiper-container fluid-view__swiper-container">
+          <div class="swiper-wrapper">
+
+            <div class="fluid-view__card card card--minimized swiper-slide" v-for="i in 4">
+
+              <div class="card__img-box">
+                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+
+                <div class="card__views">
+                  <svg width="20" height="20">
+                    <use href="../assets/img/icons.svg#eye"></use>
+                  </svg>
+                  147k
+                </div>
+
+              </div>
+
+              <div class="card__info">
+
+                <div class="card__row">
+                  <div class="card__heading">Новости</div>
+
+                  <div class="card__date">1 октябрь 2021</div>
+                </div>
+
+                <div class="card__author">
+                  Малика Садваксассова
+                </div>
+
+                <div class="card__title">
+                  Приятно, граждане, наблюдать, как элементы политического процесса
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination fluid-view__pagination"></div>
         </div>
 
       </div>
@@ -452,6 +614,48 @@
           </div>
 
         </div>
+
+        <div class="swiper-container default-view__swiper-container default-view__swiper-container--2">
+          <div class="swiper-wrapper">
+
+            <div class="default-view__card card card--w-desc swiper-slide" v-for="i in 4">
+
+              <div class="card__img-box">
+                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+
+                <div class="card__views">
+                  <svg width="20" height="20">
+                    <use href="../assets/img/icons.svg#eye"></use>
+                  </svg>
+                  147k
+                </div>
+
+              </div>
+
+              <div class="card__info">
+
+                <div class="card__row">
+                  <div class="card__heading">Новости</div>
+
+                  <div class="card__date">1 октябрь 2021</div>
+                </div>
+
+                <div class="card__title">
+                  Приятно, граждане, наблюдать, как элементы политического процесса
+                </div>
+
+                <div class="card__desc">
+                  Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно образом
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Add Pagination -->
+          <div class="swiper-pagination default-view__pagination default-view__pagination--2"></div>
+        </div>
+
       </div>
     </section>
 
@@ -516,11 +720,104 @@
 </template>
 
 <script>
+import Swiper, {Pagination} from 'swiper';
 import MailBox from "../components/MailBox";
 
+Swiper.use([Pagination]);
+
 export default {
+  data() {
+    return {
+      welcomeCardsSwiper: null,
+      defaultViewSwiper1: null,
+      defaultViewSwiper2: null,
+      accentSectionSwiper: null,
+      fluidViewSwiper: null,
+      soloViewSwiper: null
+    };
+  },
   components: {
     MailBox
+  },
+  mounted() {
+    this.welcomeCardsSwiper = new Swiper('.welcome-section__swiper-container', {
+      slidesPerView: "auto",
+      spaceBetween: 8,
+      pagination: {
+        el: '.welcome-section__pagination',
+      },
+
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      }
+    });
+
+    this.defaultViewSwiper1 = new Swiper('.default-view__swiper-container--1', {
+      slidesPerView: "auto",
+      spaceBetween: 8,
+      pagination: {
+        el: '.default-view__pagination--1',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      }
+    });
+
+    this.defaultViewSwiper2 = new Swiper('.default-view__swiper-container--2', {
+      slidesPerView: 1,
+      spaceBetween: 56,
+      pagination: {
+        el: '.default-view__pagination--2',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      }
+    });
+
+    this.accentSectionSwiper = new Swiper('.accent-section__swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: '.accent-section__pagination',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: "auto",
+          spaceBetween: 20,
+        },
+      }
+    });
+
+    this.fluidViewSwiper = new Swiper('.fluid-view__swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 56,
+      pagination: {
+        el: '.fluid-view__pagination',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      }
+    });
+
+    this.soloViewSwiper = new Swiper('.solo-view__swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 56,
+      pagination: {
+        el: '.solo-view__pagination',
+      },
+    });
   }
 }
 </script>

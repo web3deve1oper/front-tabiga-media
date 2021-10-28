@@ -69,4 +69,20 @@
     @include text-style(1.8rem, 400, #BDBDBD);
     text-align: center;
   }
+
+  @include respond(tab-land) {
+    &__quote {
+      max-width: unset;
+      width: 175px;
+      margin-right: 20px;
+    }
+
+    &__link-box {
+      max-width: unset;
+      width: 175px;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+  }
 }
