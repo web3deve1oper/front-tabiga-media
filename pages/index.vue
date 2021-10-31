@@ -681,12 +681,6 @@
 
             <div class="staggered-card__img-box">
               <img src="../assets/img/placeholder-3.jpeg" alt="" class="staggered-card__img">
-              <div class="staggered-card__views">
-                <svg width="20" height="20">
-                  <use href="../assets/img/icons.svg#eye"></use>
-                </svg>
-                147k
-              </div>
             </div>
 
             <div class="staggered-card__info">
@@ -699,7 +693,7 @@
               </div>
 
               <div class="staggered-card__title">
-                Равным образом реализация
+                Равным образом реализация Равным образом реализация Равным образом реализация Равным образом реализация
               </div>
 
               <div class="staggered-card__subtitle">
@@ -770,8 +764,8 @@ export default {
     });
 
     this.defaultViewSwiper2 = new Swiper('.default-view__swiper-container--2', {
-      slidesPerView: 1,
-      spaceBetween: 56,
+      slidesPerView: "auto",
+      spaceBetween: 8,
       pagination: {
         el: '.default-view__pagination--2',
       },
@@ -798,8 +792,8 @@ export default {
     });
 
     this.fluidViewSwiper = new Swiper('.fluid-view__swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 56,
+      slidesPerView: "auto",
+      spaceBetween: 8,
       pagination: {
         el: '.fluid-view__pagination',
       },

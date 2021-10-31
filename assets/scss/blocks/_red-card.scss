@@ -71,4 +71,38 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
+
+  @include respond(phone) {
+    height: 199px;
+
+    &__info {
+      left: 5px;
+      bottom: 8px;
+    }
+
+    &__heading {
+      padding-left: 4px;
+      @include text-style(1.2rem, 400, #F56B6B);
+      margin-bottom: 5px;
+
+      &:before {
+        content: '';
+        width: 2px;
+        height: 13px;
+      }
+    }
+
+    &__title {
+      @include text-style(1.4rem, 600, $white-color);
+      line-height: 16px;
+      height: 34px;
+      margin-bottom: 5px;
+    }
+
+    &__subtitle {
+      @include text-style(1.2rem, 400, #E0E0E0);
+      line-height: 14px;
+      height: 28px;
+    }
+  }
 }

@@ -158,4 +158,114 @@
       display: flex;
     }
   }
+
+  @include respond(phone) {
+    position: relative;
+
+    &:nth-child(2) {
+      #{$e}__heading {
+        margin-bottom: 0;
+        position: absolute;
+        top: 20px;
+        left: 10px;
+      }
+
+      #{$e}__grey-text {
+        margin-bottom: 0;
+        position: absolute;
+        top: 45px;
+        left: 10px;
+      }
+
+      #{$e}__title {
+        top: 70px;
+      }
+    }
+
+    &__img-box {
+      width: 109px;
+      height: 69px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      flex-shrink: 0;
+      border-radius: 4px 0 0 4px;
+      overflow-x: hidden;
+    }
+
+    &__info {
+      padding: 10px 10px 16px;
+    }
+
+    &__heading {
+      margin-bottom: 0;
+      position: absolute;
+      top: 10px;
+      left: 119px;
+    }
+
+    &__grey-text {
+      margin-bottom: 0;
+      position: absolute;
+      top: 37px;
+      left: 123px;
+    }
+
+    &__title {
+      @include text-style(1.6rem, 600, $title-color);
+      line-height: 19px;
+      margin-bottom: 0;
+      max-height: 38px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+
+      position: absolute;
+      left: 10px;
+      top: 80px;
+    }
+
+    &__subtitle {
+      @include text-style(1.4rem, 400, $text-color);
+      line-height: 16.5px;
+      max-height: 32px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+
+      position: absolute;
+      top: 123px;
+      left: 10px;
+    }
+
+    &__details {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+
+      span {
+        @include text-style(1.4rem, 400, #A1A1A1);
+        position: relative;
+
+        &:not(:last-child) {
+          margin-right: 25px;
+
+          &:after {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #A1A1A1;
+            position: absolute;
+            top: 5px;
+            left: calc(100% + 10px);
+          }
+        }
+      }
+    }
+  }
 }

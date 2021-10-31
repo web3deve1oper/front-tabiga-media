@@ -36,7 +36,7 @@
           «Tabigat media» -онлайн журнал об охране природы
         </div>
 
-        <div class="footer__link-box">
+        <div class="footer__link-box footer__link-box--desktop">
           <div class="footer__title">
             Общие ссылки
           </div>
@@ -65,8 +65,17 @@
           </div>
         </div>
 
+        <div class="footer__link-box footer__link-box--mobile">
+          <div class="footer__links">
+            <div class="footer__link">О проекте</div>
+            <div class="footer__link">Политика конфиденциальности</div>
+            <div class="footer__link">Правовая информация</div>
+            <div class="footer__link">Обратная связь</div>
+          </div>
+        </div>
+
         <div class="footer__active-box">
-          <div class="footer__title">
+          <div class="footer__title footer__title--mb20">
             Есть вопросы или предложения?
           </div>
 
@@ -84,9 +93,7 @@
 </template>
 
 <script>
-export default {
-
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
