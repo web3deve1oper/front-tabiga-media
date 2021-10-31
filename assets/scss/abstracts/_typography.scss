@@ -14,4 +14,8 @@
 .heading-large {
   @include text-style(5rem, 600, $main-color);
   font-family: $futura;
+
+  @include respond(phone) {
+    font-size: 3rem;
+  }
 }

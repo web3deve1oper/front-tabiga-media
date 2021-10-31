@@ -24,10 +24,10 @@
         </div>
 
         <div class="rubrics__cards">
-          <div class="rubrics__card card card--nopadding" v-for="i in 8">
+          <div class="rubrics__card card card--w100 card--nopadding" v-for="i in 8">
 
             <div class="card__img-box">
-              <img src="../../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+              <img src="../../assets/img/placeholder-3.jpeg" alt="" class="card__img card__img--bywidth">
 
               <div class="card__views">
                 <svg width="20" height="20">

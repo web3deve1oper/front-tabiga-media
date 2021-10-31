@@ -2,6 +2,10 @@
   padding: 16px 0 20px 14px;
   background-color: $white-color;
 
+  &--phone {
+    display: none;
+  }
+
   &__title {
     @include text-style(1.8rem, 600, $main-color);
     text-transform: uppercase;
@@ -72,5 +76,21 @@
 
   &__item-date {
     @include text-style(1.4rem, 400, #A1A1A1);
+  }
+
+  @include respond(tab-land) {
+    &__list {
+      max-height: 500px;
+    }
+  }
+
+  @include respond(phone) {
+    &--phone {
+      display: block;
+    }
+
+    &__list {
+      max-height: 320px;
+    }
   }
 }

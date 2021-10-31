@@ -57,4 +57,42 @@
     grid-gap: 20px;
     margin-bottom: 60px;
   }
+
+  @include respond(tab-land) {
+    &__cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @include respond(phone) {
+    padding-bottom: 80px;
+
+    &__cards {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__desc {
+      @include text-style(1.6rem, 400, $text-color);
+      line-height: 18px;
+      max-width: unset;
+      margin-bottom: 20px;
+    }
+
+    &__filters {
+      margin-bottom: 16px;
+
+      p {
+        @include text-style(1.2rem, 400, #A1A1A1);
+        margin-right: 10px;
+      }
+    }
+
+    &__filter-item {
+      font-size: 1.2rem;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
 }

@@ -45,4 +45,18 @@
       margin-right: 14px;
     }
   }
+
+  @include respond(phone) {
+
+    &__number {
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
+      font-size: 1.6rem;
+
+      &:not(:last-child) {
+        margin-right: 13px;
+      }
+    }
+  }
 }

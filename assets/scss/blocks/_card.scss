@@ -198,6 +198,11 @@
     height: 100%;
     width: unset;
     max-width: unset;
+
+    &--bywidth {
+      height: unset;
+      width: 100%;
+    }
   }
 
   &__row {
@@ -339,11 +344,37 @@
         height: unset;
       }
     }
+
+    &__details {
+
+      font-size: 1.2rem;
+
+      span {
+        &:not(:last-child) {
+          margin-right: 18px;
+
+          &:after {
+            left: calc(100% + 7px);
+            top: 5px;
+          }
+        }
+      }
+
+      &--sm {
+        span {
+          font-size: 1.4rem;
+        }
+      }
+    }
   }
 
   @include respond(phone) {
     width: 226px;
     padding: 10px 10px 16px;
+
+    &--w327 {
+      width: 327px;
+    }
 
 
     &--w-desc {
@@ -378,15 +409,17 @@
       line-height: 19px;
       height: 57px;
 
-      //&--two-line {
-      //  margin-bottom: 10px;
-      //  height: 42px;
-      //  overflow: hidden;
-      //  text-overflow: ellipsis;
-      //  display: -webkit-box;
-      //  -webkit-box-orient: vertical;
-      //  -webkit-line-clamp: 2;
-      //}
+      &--two-line {
+        font-size: 1.8rem;
+        line-height: 21px;
+        margin-bottom: 10px;
+        height: 42px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
     }
 
 
@@ -512,6 +545,18 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 4;
       }
+    }
+
+    &--nopadding {
+      padding: 0;
+
+      #{$e}__info {
+        padding: 10px 10px 20px;
+      }
+    }
+
+    &--w100 {
+      width: 100%;
     }
   }
 }

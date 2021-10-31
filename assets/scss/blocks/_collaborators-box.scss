@@ -3,6 +3,10 @@
   background-color: $white-color;
   box-shadow: 0 1px 20px rgba(204, 204, 204, 0.2);
 
+  &--tab {
+    display: none;
+  }
+
   &__title {
     @include text-style(1.4rem, 400, $title-color);
     margin-bottom: 10px;
@@ -27,5 +31,11 @@
     @include text-style(1.4rem, 600, $text-color);
     line-height: 16.5px;
     text-align: right;
+  }
+
+  @include respond(tab-land) {
+    &--tab {
+      display: block;
+    }
   }
 }

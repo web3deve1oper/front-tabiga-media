@@ -37,4 +37,24 @@
     }
   }
 
+  @include respond(phone) {
+    padding: 16px;
+
+    &__title {
+      @include text-style(1.8rem, 600, $white-color);
+      margin-bottom: 16px;
+    }
+
+    &__list {
+
+      li {
+        @include text-style(1.6rem, 400, #F2F2F2);
+        line-height: 19px;
+
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
 }
