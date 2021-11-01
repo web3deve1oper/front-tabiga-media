@@ -32,5 +32,32 @@
 
   &__empty {
     @include text-style(2.4rem, 400, #A1A1A1);
+    line-height: 28.25px;
+  }
+
+  @include respond(phone) {
+    padding: 20px 0 80px;
+
+    &__heading {
+      margin-bottom: 20px;
+
+      span {
+        @include text-style(1.8rem, 600, #BF927A);
+        position: absolute;
+        top: 0;
+        left: calc(100% + 2px);
+      }
+    }
+
+    &__card {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+
+    &__empty {
+      @include text-style(1.8rem, 400, #A1A1A1);
+      line-height: 21px;
+    }
   }
 }

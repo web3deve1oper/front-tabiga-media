@@ -42,9 +42,9 @@
 
       <div class="author-page__list">
 
-        <div class="author-page__card card card--w-desc" v-for="i in 7">
+        <div class="author-page__card card card--w100 card--w-desc" v-for="i in 7">
 
-          <div class="card__img-box">
+          <div class="card__img-box card__img-box--h217">
             <img src="../../assets/img/placeholder-3.jpeg" alt="" class="card__img">
 
             <div class="card__views">

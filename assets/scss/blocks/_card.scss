@@ -203,6 +203,11 @@
       height: unset;
       width: 100%;
     }
+
+    &--bywidth-not-tablet {
+      height: unset;
+      width: 100%;
+    }
   }
 
   &__row {
@@ -345,6 +350,13 @@
       }
     }
 
+    &__img {
+      &--bywidth-not-tablet {
+        height: 100%;
+        width: unset;
+      }
+    }
+
     &__details {
 
       font-size: 1.2rem;
@@ -376,7 +388,6 @@
       width: 327px;
     }
 
-
     &--w-desc {
       padding: 0;
       width: 226px;
@@ -402,7 +413,19 @@
 
     &__img-box {
       height: 144px;
+
+      &--h217 {
+        height: 217px !important;
+      }
     }
+
+    &__img {
+      &--bywidth-not-tablet {
+        height: 100%;
+        width: unset;
+      }
+    }
+
 
     &__title {
       @include text-style(1.6rem, 600, $title-color);

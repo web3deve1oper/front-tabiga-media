@@ -69,4 +69,53 @@
   &__box {
     margin: 0 auto;
   }
+
+  @include respond(phone) {
+    padding: 20px 0 80px;
+
+    &__bg {
+      display: none;
+    }
+
+    &__heading {
+      margin-bottom: 10px;
+    }
+
+    &__subtitle {
+      @include text-style(1.6rem, 400, $text-color);
+      line-height: 16.5px;
+    }
+
+    &__row {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    &__item {
+      @include text-style(1.6rem, 400, $text-color);
+      
+      br {
+        display: none;
+      }
+
+      &--start {
+        align-items: flex-start;
+        line-height: 21px;
+      }
+
+      &:first-child {
+        margin-right: 0;
+      }
+
+      &:nth-child(2) {
+        margin-right: 0;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
 }

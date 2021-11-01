@@ -18,12 +18,22 @@
     }
   }
 
+  &--h181 {
+    height: 181px;
+  }
+
   &--nostagger {
     &:nth-child(2),
     &:nth-child(3),
     &:nth-child(6) {
       #{$e}__img-box {
         display: block;
+      }
+    }
+
+    &:nth-child(even) {
+      #{$e}__img-box {
+        display: none;
       }
     }
   }
@@ -162,23 +172,66 @@
   @include respond(phone) {
     position: relative;
 
-    &:nth-child(2) {
+    &--showAll {
+      display: flex;
+    }
+
+    &--search {
+      #{$e}__details {
+        margin-bottom: 10px;
+      }
+    }
+
+    &--phone-nophoto {
       #{$e}__heading {
-        margin-bottom: 0;
-        position: absolute;
-        top: 20px;
-        left: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        top: unset;
+        left: unset;
       }
 
       #{$e}__grey-text {
-        margin-bottom: 0;
-        position: absolute;
-        top: 45px;
-        left: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        top: unset;
+        left: unset;
       }
 
       #{$e}__title {
-        top: 70px;
+        position: relative;
+        top: unset;
+        left: unset;
+        margin-bottom: 7px;
+      }
+
+      #{$e}__subtitle {
+        position: relative;
+        top: unset;
+        left: unset;
+      }
+
+      #{$e}__details {
+        position: relative;
+        top: unset;
+        left: unset;
+      }
+    }
+
+    &--photo-search {
+
+    }
+
+    &__details {
+      margin-top: 10px;
+
+      span {
+        @include text-style(1.2rem, 400, #A1A1A1);
+      }
+
+      &--absolute {
+        position: absolute;
+        left: 120px;
+        top: 42px;
       }
     }
 
@@ -207,8 +260,12 @@
     &__grey-text {
       margin-bottom: 0;
       position: absolute;
-      top: 37px;
-      left: 123px;
+      top: 30px;
+      left: 120px;
+
+      &--darker {
+
+      }
     }
 
     &__title {
@@ -240,32 +297,6 @@
       position: absolute;
       top: 123px;
       left: 10px;
-    }
-
-    &__details {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
-
-      span {
-        @include text-style(1.4rem, 400, #A1A1A1);
-        position: relative;
-
-        &:not(:last-child) {
-          margin-right: 25px;
-
-          &:after {
-            content: '';
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: #A1A1A1;
-            position: absolute;
-            top: 5px;
-            left: calc(100% + 10px);
-          }
-        }
-      }
     }
   }
 }

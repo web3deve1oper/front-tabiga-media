@@ -27,6 +27,12 @@
 
   &__items {
     margin-bottom: 40px;
+
+    &  > * {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
   }
 
   &__item {
@@ -37,10 +43,6 @@
     &:hover {
       color: $main-color;
       text-decoration: underline;
-    }
-
-    &:not(:last-child) {
-      margin-bottom: 10px;
     }
   }
 
@@ -68,7 +70,61 @@
     }
   }
 
+  &__btn {
+    display: none;
+  }
+
+  @include respond(tab-land) {
+    &__items {
+      margin-bottom: 40px;
+
+      &  > * {
+        &:not(:last-child) {
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    &__btn {
+      display: unset;
+      width: 260px;
+    }
+  }
+
   @include respond(phone) {
     top: 60px;
+
+    &__btn {
+      width: 206px;
+    }
+
+    &__heading {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    &__items {
+      margin-bottom: 30px;
+    }
+
+    &__item {
+      font-size: 1.8rem;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    &__rubrics {
+
+      li {
+        font-size: 1.8rem;
+
+        &:not(:last-child) {
+          margin-bottom: 15px;
+        }
+      }
+    }
   }
 }

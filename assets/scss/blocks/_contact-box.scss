@@ -118,4 +118,45 @@
       border-bottom: 1px solid rgba($text-color, .5);
     }
   }
+
+  @include respond(phone) {
+    padding: 20px 16px;
+    width: 100%;
+
+    &__title {
+      margin-bottom: 10px;
+    }
+
+    &__input-box {
+      padding: 10px 12px;
+    }
+
+    &__select {
+      p {
+        font-size: 1.6rem;
+      }
+    }
+
+    &__input {
+      font-size: 1.6rem;
+    }
+
+    &__textarea {
+      height: 164px;
+      padding: 12px;
+      font-size: 1.6rem;
+      line-height: 19px;
+      margin-bottom: 30px;
+    }
+
+    &__btn {
+      font-size: 1.6rem;
+    }
+
+    &__dropdown-item {
+      p {
+        font-size: 1.6rem;
+      }
+    }
+  }
 }

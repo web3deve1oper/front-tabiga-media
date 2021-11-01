@@ -461,6 +461,11 @@
       //margin-left: calc((-100vw + 344px) / 2);
       //margin-right: calc((-100vw + 344px) / 2);
       margin: 0 -15px 14px;
+
+      &--h600 {
+        height: 173px;
+        margin: 0 0 10px;
+      }
     }
 
     &__row {

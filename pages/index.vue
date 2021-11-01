@@ -677,7 +677,9 @@
 
         <div class="staggered-view__cards">
 
-          <div class="staggered-view__card staggered-card" v-for="i in 6">
+          <div class="staggered-view__card staggered-card"
+               v-for="(i, k) in 6"
+               :class="{'staggered-card--phone-nophoto' : k === 1}">
 
             <div class="staggered-card__img-box">
               <img src="../assets/img/placeholder-3.jpeg" alt="" class="staggered-card__img">

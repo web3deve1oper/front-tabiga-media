@@ -430,7 +430,7 @@
           <div class="rubric-page__card card card--nopadding" v-for="i in 3">
 
             <div class="card__img-box">
-              <img src="../../assets/img/placeholder-3.jpeg" alt="" class="card__img card__img--bywidth">
+              <img src="../../assets/img/placeholder-3.jpeg" alt="" class="card__img card__img--bywidth-not-tablet">
 
               <div class="card__views">
                 <svg width="20" height="20">

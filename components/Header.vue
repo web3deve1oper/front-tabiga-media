@@ -49,6 +49,9 @@
         <div class="sidebar__items">
           <div class="sidebar__item">О проекте</div>
           <div class="sidebar__item">Обратная связь</div>
+          <button class="sidebar__btn button" @click="showModal = true">
+            Подписаться на рассылку
+          </button>
         </div>
 
         <div class="sidebar__title">
@@ -95,7 +98,7 @@ export default {
       showModal: false,
       modalTitle: 'Спасибо!',
       modalText: 'Вы успешно подписались на рассылку от Tabigat media',
-      modalType: false
+      modalType: true
     };
   },
   methods: {
