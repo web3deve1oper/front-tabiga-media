@@ -5,6 +5,7 @@
   position: relative;
   border-radius: 4px;
   overflow: hidden;
+  cursor: pointer;
 
   &:after {
     content: '';
@@ -77,6 +78,10 @@
   @include respond(phone) {
     height: 199px;
 
+    &--w170 {
+      width: 170px;
+    }
+
     &--h338 {
       height: 338px;
       width: 285px;
@@ -135,6 +140,10 @@
       line-height: 16px;
       height: 34px;
       margin-bottom: 5px;
+
+      &--w150 {
+        width: 150px;
+      }
     }
 
     &__subtitle {

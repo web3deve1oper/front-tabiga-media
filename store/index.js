@@ -69,13 +69,13 @@ const createStore = () => {
                 const order6Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=6&sort=-posted_at&itemsPerPage=8&include=rubric,author')
                 VuexContext.commit('setOrder6', order6Response.data.data.data)
 
-                const redBookResponse = await context.$axios.get(process.env.API + 'red-book?sort=-created_at&itemsPerPage=4')
+                const redBookResponse = await context.$axios.get(process.env.API + 'red-book?sort=-posted_at&itemsPerPage=4')
                 VuexContext.commit('setRedBook', redBookResponse.data.data.data)
 
                 const rubricsResponse = await context.$axios.get(process.env.API + 'rubrics')
                 VuexContext.commit('setRubrics', rubricsResponse.data.data.data)
 
-                const favouriteResponse = await context.$axios.get(process.env.API + 'articles?filter[favourites]=2&sort=-posted_at&itemsPerPage=3&include=rubric,author')
+                const favouriteResponse = await context.$axios.get(process.env.API + 'articles?filter[favourite]=1&sort=-posted_at&itemsPerPage=3&include=rubric,author')
                 VuexContext.commit('setFavourites', favouriteResponse.data.data.data)
             },
 

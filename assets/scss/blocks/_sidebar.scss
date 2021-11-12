@@ -44,6 +44,15 @@
       color: $main-color;
       text-decoration: underline;
     }
+
+    &--red {
+      color: #EB5757;
+
+      &:hover {
+        color: #EB5757;
+        text-decoration: underline;
+      }
+    }
   }
 
   &__title {

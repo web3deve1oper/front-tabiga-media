@@ -44,9 +44,7 @@
 
   @include respond(tab-land) {
     &__cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 20px;
+      grid-gap: 10px;
     }
   }
 
@@ -62,6 +60,7 @@
 
     &__cards {
       grid-gap: unset;
+      grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 7px;
       grid-row-gap: 10px;
     }

@@ -6,7 +6,11 @@
 
         <div class="welcome-section__main">
 
-          <div class="welcome-section__box" v-if="Object.keys(this.mainRandomArticle).length > 0">
+          <nuxt-link tag="div"
+                     :to="'/' + mainRandomArticle.rubric.slug + ':' + mainRandomArticle.rubric.id +
+                     '/' + mainRandomArticle.slug + ':' + mainRandomArticle.id"
+                     class="welcome-section__box"
+                     v-if="Object.keys(this.mainRandomArticle).length > 0">
             <img :src="mainRandomArticle.preview_image_big_url" alt="" class="welcome-section__img">
 
             <div class="welcome-section__box-info">
@@ -22,12 +26,17 @@
                 {{ mainRandomArticle.description }}
               </div>
             </div>
-          </div>
+
+          </nuxt-link>
 
           <div class="welcome-section__scroll-box" v-if="loadedOrder1.length > 0">
             <div class="welcome-section__items">
 
-              <div class="welcome-section__item" v-for="article in loadedOrder1">
+              <nuxt-link tag="div" :to="'/' + article.rubric.slug + ':' + article.rubric.id +
+                         '/' + article.slug + ':' + article.id"
+                         class="welcome-section__item"
+                         v-for="article in loadedOrder1"
+                         :key="article.id">
                 <div class="welcome-section__item-row">
                   <div class="welcome-section__item-heading">
                     {{ article.rubric.title }}
@@ -40,22 +49,28 @@
                 <div class="welcome-section__item-title">
                   {{ article.title }}
                 </div>
-              </div>
+              </nuxt-link>
 
             </div>
 
-            <button class="welcome-section__btn button">
+            <nuxt-link tag="button"
+                       :to="'/' + loadedOrder1[0].rubric.slug + ':' + loadedOrder1[0].rubric.id"
+                       class="welcome-section__btn button">
               Смотреть все Новости
-            </button>
+            </nuxt-link>
           </div>
 
         </div>
 
         <div class="welcome-section__cards" v-if="randomArticles.length > 0">
 
-          <div class="welcome-section__card card"
-               v-for="(article, i) in randomArticles"
-               v-if="i >= 1">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id +
+                     '/' + article.slug + ':' + article.id"
+                     class="welcome-section__card card"
+                     v-for="(article, i) in randomArticles"
+                     :key="article.id"
+                     v-if="i >= 1">
 
             <div class="card__img-box">
               <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -80,16 +95,19 @@
                 </svg>
               </div>
             </div>
-          </div>
+          </nuxt-link>
 
         </div>
 
         <div class="swiper-container welcome-section__swiper-container" v-if="randomArticles.length > 0">
           <div class="swiper-wrapper">
 
-            <div class="welcome-section__card card swiper-slide"
-                 v-for="(article, i) in randomArticles"
-                 v-if="i >= 1">
+            <nuxt-link tag="div" :to="'/' + article.rubric.slug + ':' + article.rubric.id +
+                       '/' + article.slug + ':' + article.id"
+                       class="welcome-section__card card swiper-slide"
+                       v-for="(article, i) in randomArticles"
+                       :key="article.id"
+                       v-if="i >= 1">
 
               <div class="card__img-box">
                 <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -115,7 +133,7 @@
                 </div>
               </div>
 
-            </div>
+            </nuxt-link>
 
           </div>
           <!-- Add Pagination -->
@@ -132,17 +150,25 @@
             {{ loadedOrder2[0].rubric.title }}
           </h4>
 
-          <div class="default-view__more">
+          <nuxt-link tag="div"
+                     :to="'/' + loadedOrder2[0].rubric.slug + ':' + loadedOrder2[0].rubric.id"
+                     class="default-view__more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#arrow-right"></use>
             </svg>
-          </div>
+          </nuxt-link>
+
         </div>
 
         <div class="default-view__cards">
 
-          <div class="default-view__card card card--w-desc" v-for="(article, i) in loadedOrder2">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                     article.slug + ':' + article.id"
+                     class="default-view__card card card--w-desc"
+                     v-for="(article, i) in loadedOrder2"
+                     :key="article.id">
 
             <div class="card__img-box">
               <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -173,15 +199,19 @@
               </div>
             </div>
 
-          </div>
+          </nuxt-link>
 
         </div>
 
         <div class="swiper-container default-view__swiper-container default-view__swiper-container--1">
           <div class="swiper-wrapper">
 
-            <div class="default-view__card card card--w-desc swiper-slide"
-                 v-for="article in loadedOrder2">
+            <nuxt-link tag="div"
+                       :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                       article.slug + ':' + article.id"
+                       class="default-view__card card card--w-desc swiper-slide"
+                       v-for="article in loadedOrder2"
+                       :key="article.id">
 
               <div class="card__img-box">
                 <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -212,7 +242,7 @@
                 </div>
               </div>
 
-            </div>
+            </nuxt-link>
 
           </div>
           <!-- Add Pagination -->
@@ -227,7 +257,12 @@
       <div class="accent-section__container">
 
         <div class="accent-section__list">
-          <div class="accent-section__card accent-card" v-for="article in loadedFavourites">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                     article.slug + ':' + article.id"
+                     class="accent-section__card accent-card"
+                     v-for="article in loadedFavourites"
+                     :key="article.id">
             <img :src="article.preview_image_small_url" alt="" class="accent-card__img">
 
             <div class="accent-card__info">
@@ -256,13 +291,18 @@
               </div>
             </div>
 
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="swiper-container accent-section__swiper-container">
           <div class="swiper-wrapper">
 
-            <div class="accent-section__card accent-card swiper-slide" v-for="article in loadedFavourites">
+            <nuxt-link tag="div"
+                       :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                       article.slug + ':' + article.id"
+                       class="accent-section__card accent-card swiper-slide"
+                       v-for="article in loadedFavourites"
+                       :key="article.id">
               <img src="../assets/img/placeholder-3.jpeg" alt="" class="accent-card__img">
 
               <div class="accent-card__info">
@@ -291,7 +331,7 @@
                 </div>
               </div>
 
-            </div>
+            </nuxt-link>
 
           </div>
           <!-- Add Pagination -->
@@ -310,18 +350,24 @@
             {{ loadedOrder3[0].rubric.title }}
           </h4>
 
-          <div class="fluid-view__more">
+          <nuxt-link tag="div"
+                     :to="'/' + loadedOrder3[0].rubric.slug + ':' + loadedOrder3[0].rubric.id"
+                     class="fluid-view__more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#arrow-right"></use>
             </svg>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="fluid-view__top">
-          <div class="fluid-view__card card card--big"
-               v-for="(article, i) in loadedOrder3"
-               v-if="i < 2">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                     article.slug + ':' + article.id"
+                     class="fluid-view__card card card--big"
+                     v-for="(article, i) in loadedOrder3"
+                     :key="article.id"
+                     v-if="i < 2">
             <div class="card__img-box">
               <img :src="article.preview_image_small_url" alt="" class="card__img">
 
@@ -358,13 +404,18 @@
                 <span>читать {{ article.read_time }}</span>
               </div>
             </div>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="fluid-view__bottom">
 
-          <div class="fluid-view__card card card--minimized"
-               v-for="(article, i) in loadedOrder3">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                     article.slug + ':' + article.id"
+                     class="fluid-view__card card card--minimized"
+                     v-for="(article, i) in loadedOrder3"
+                     :key="article.id"
+                     v-if="i > 1">
 
             <div class="card__img-box">
               <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -395,15 +446,19 @@
               </div>
 
             </div>
-          </div>
+          </nuxt-link>
 
         </div>
 
         <div class="swiper-container fluid-view__swiper-container">
           <div class="swiper-wrapper">
 
-            <div class="fluid-view__card card card--minimized swiper-slide"
-                 v-for="article in loadedOrder3">
+            <nuxt-link tag="div"
+                       :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                       article.slug + ':' + article.id"
+                       class="fluid-view__card card card--minimized swiper-slide"
+                       v-for="article in loadedOrder3"
+                       :key="article.id">
 
               <div class="card__img-box">
                 <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -434,7 +489,7 @@
                 </div>
 
               </div>
-            </div>
+            </nuxt-link>
 
           </div>
           <!-- Add Pagination -->
@@ -470,9 +525,9 @@
               </div>
 
               <div class="red-card__title">
-                {{ article.name }}
+                -{{ article.name }}
                 <br>
-                {{ article.name_latin }}
+                -{{ article.name_latin }}
               </div>
 
               <div class="red-card__subtitle">

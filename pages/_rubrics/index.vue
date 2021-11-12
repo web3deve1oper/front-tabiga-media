@@ -25,7 +25,11 @@
         </div>
 
         <div class="rubrics__cards">
-          <div class="rubrics__card card card--w100 card--nopadding" v-for="article in rubric">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
+                     class="rubrics__card card card--w100 card--nopadding"
+                     v-for="article in rubric"
+                     :key="article.id">
 
             <div class="card__img-box">
               <img :src="article.preview_image_small_url" alt="" class="card__img card__img--bywidth">
@@ -59,7 +63,7 @@
               </div>
             </div>
 
-          </div>
+          </nuxt-link>
         </div>
 
 <!--        <div class="rubrics__paddings padding">-->

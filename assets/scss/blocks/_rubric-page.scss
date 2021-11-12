@@ -55,7 +55,6 @@
     &--redbook {
       left: 56px;
       bottom: 35px;
-      width: 272px;
       border-radius: 4px;
       background-color: $main-color;
       padding: 20px;
@@ -172,8 +171,10 @@
   }
 
   &__text {
-    @include text-style(1.8rem, 400, $title-color);
-    line-height: 21px;
+    font-size: 1.8rem !important;
+    font-weight: 400 !important;
+    color: $title-color !important;
+    line-height: 21px !important;
     margin-bottom: 20px;
   }
 
@@ -525,12 +526,27 @@
     }
 
     &__interest-list {
-      display: none;
-    }
+      display: flex;
+      overflow-x: auto;
+      padding-bottom: 10px;
 
-    &__swiper-container {
-      display: block;
-      padding-bottom: 38px;
+      & > * {
+        flex-shrink: 0;
+
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+      }
+
+      &--grid4 {
+        grid-template-columns: unset;
+        grid-gap: unset;
+        & > * {
+          &:last-child {
+            display: block;
+          }
+        }
+      }
     }
 
     &__pagination {

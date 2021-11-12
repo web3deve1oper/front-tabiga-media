@@ -1,58 +1,63 @@
 <template>
   <div class="rubric-page">
-    <div class="rubric-page__container">
+    <loader-block v-if="loader"></loader-block>
+    <div class="rubric-page__container" v-else>
       <div class="rubric-page__breadcrumb breadcrumb">
-        Главная / Новости / <span>Статья</span>
+        <nuxt-link to="/">Главная</nuxt-link>
+        /
+        <nuxt-link to="/red-book">Красная книга Казахстана</nuxt-link>
+        /
+        <span>{{ card.name }}</span>
       </div>
 
       <div class="rubric-page__main">
 
         <div class="rubric-page__img-box rubric-page__img-box--h600">
 
-          <img src="../../assets/img/placeholder-3.jpeg" alt="" class="rubric-page__img">
+          <img :src="card.preview_image_big_url" alt="" class="rubric-page__img">
 
           <div class="rubric-page__img-info rubric-page__img-info--redbook rubric-page__img-info--tab-none">
 
-            <h4>Снежный барс</h4>
+            <h4>{{ card.name }}</h4>
 
-            <div>
-              <span>Домен:</span>
-              <span>Эукариоты</span>
-            </div>
-
-            <div>
+            <div v-if="card.kingdom !== null">
               <span>Царство:</span>
-              <span>Эукариоты</span>
+              <span>{{ card.kingdom }}</span>
             </div>
 
-            <div>
+            <div v-if="card.type !== null">
               <span>Тип:</span>
-              <span>Хордовые</span>
+              <span>{{ card.type }}</span>
             </div>
 
-            <div>
+            <div v-if="card.class !== null">
               <span>Класс:</span>
-              <span>Млекопитающие</span>
+              <span>{{ card.class }}</span>
             </div>
 
-            <div>
+            <div v-if="card.squad !== null">
               <span>Отряд:</span>
-              <span>Хищные</span>
+              <span>{{ card.squad }}</span>
             </div>
 
-            <div>
+            <div v-if="card.family !== null">
               <span>Семейство:</span>
-              <span>Кошачьи</span>
+              <span>{{ card.family }}</span>
             </div>
 
-            <div>
+            <div v-if="card.genus !== null">
               <span>Род:</span>
-              <span>Пантеры</span>
+              <span>{{ card.genus }}</span>
             </div>
 
-            <div>
+            <div v-if="card.kind !== null">
               <span>Вид:</span>
-              <span>Ирбис</span>
+              <span>{{ card.kind }}</span>
+            </div>
+
+            <div v-if="card.subkind !== null">
+              <span>Подвид:</span>
+              <span>{{ card.subkind }}</span>
             </div>
 
           </div>
@@ -61,46 +66,46 @@
 
         <div class="rubric-page__img-info rubric-page__img-info--redbook rubric-page__img-info--desktop-none">
 
-          <h4>Снежный барс</h4>
+          <h4>{{ card.name }}</h4>
 
-          <div>
-            <span>Домен:</span>
-            <span>Эукариоты</span>
-          </div>
-
-          <div>
+          <div v-if="card.kingdom !== null">
             <span>Царство:</span>
-            <span>Эукариоты</span>
+            <span>{{ card.kingdom }}</span>
           </div>
 
-          <div>
+          <div v-if="card.type !== null">
             <span>Тип:</span>
-            <span>Хордовые</span>
+            <span>{{ card.type }}</span>
           </div>
 
-          <div>
+          <div v-if="card.class !== null">
             <span>Класс:</span>
-            <span>Млекопитающие</span>
+            <span>{{ card.class }}</span>
           </div>
 
-          <div>
+          <div v-if="card.squad !== null">
             <span>Отряд:</span>
-            <span>Хищные</span>
+            <span>{{ card.squad }}</span>
           </div>
 
-          <div>
+          <div v-if="card.family !== null">
             <span>Семейство:</span>
-            <span>Кошачьи</span>
+            <span>{{ card.family }}</span>
           </div>
 
-          <div>
+          <div v-if="card.genus !== null">
             <span>Род:</span>
-            <span>Пантеры</span>
+            <span>{{ card.genus }}</span>
           </div>
 
-          <div>
+          <div v-if="card.kind !== null">
             <span>Вид:</span>
-            <span>Ирбис</span>
+            <span>{{ card.kind }}</span>
+          </div>
+
+          <div v-if="card.subkind !== null">
+            <span>Подвид:</span>
+            <span>{{ card.subkind }}</span>
           </div>
 
         </div>
@@ -109,48 +114,33 @@
 
           <div class="rubric-page__column rubric-page__column--mb20 rubric-page__column--w690">
 
-            <div class="rubric-page__text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum earum esse id labore, laborum obcaecati,
-              omnis pariatur, perspiciatis placeat quis quisquam quo sunt velit. Dolores nulla porro quam saepe velit!
+            <div class="ql-snow">
+              <div class="rubric-page__text ql-editor" v-html="card.content"></div>
             </div>
 
           </div>
 
           <div class="rubric-page__column rubric-page__column--w470">
 
-            <div class="rubric-page__status-box status-box">
+            <div class="rubric-page__status-box status-box" v-if="card.status !== null">
 
               <div class="status-box__title">
                 Статус
               </div>
 
               <ul class="status-box__list">
-                <li>На территории Казахстана насчитывается около 3000</li>
-                <li>По всему миру насчитывается менее 7 000</li>
-                <li>Ясность нашей позиции очевидна: высокое качество позиционных исследований</li>
-                <li>Есть над чем задуматься: активно развивающиеся страны</li>
+                <li v-for="s in card.status">{{ s }}</li>
               </ul>
 
             </div>
 
-            <div class="rubric-page__facts status-box status-box--green">
+            <div class="rubric-page__facts status-box status-box--green" v-if="card.facts !== null">
               <div class="status-box__title">
                 Интересные факты:
               </div>
 
               <ul class="status-box__list">
-                <li>Предварительные выводы неутешительны: современная методология разработки выявляет срочную
-                  потребность дальнейших направлений развития
-                </li>
-                <li>Для современного мира понимание сути ресурсосберегающих технологий предоставляет широкие возможности
-                  для приоритизации разума над эмоциями
-                </li>
-                <li>Ясность нашей позиции очевидна: высокое качество позиционных исследований напрямую зависит от
-                  поэтапного и последовательного развития общества
-                </li>
-                <li>Есть над чем задуматься: активно развивающиеся страны третьего мира неоднозначны и будут объединены
-                  в целые кластеры себе подобных.
-                </li>
+                <li v-for="f in card.facts">{{ f }}</li>
               </ul>
             </div>
 
@@ -177,54 +167,25 @@
 
         <div class="rubric-page__interest-list rubric-page__interest-list--grid4">
 
-
-          <div class="rubric-page__card red-card" v-for="i in 4">
-            <img src="../../assets/img/placeholder-3.jpeg" alt="" class="red-card__img">
+          <div class="rubric-page__card red-card red-card--w170" v-for="card in otherCards">
+            <img :src="card.preview_image_small_url" alt="" class="red-card__img">
 
             <div class="red-card__info">
               <div class="red-card__heading">
                 Красная книга Казахстана
               </div>
 
-              <div class="red-card__title">
-                -Снежный барс <br>
-                -Panthera uncia
+              <div class="red-card__title red-card__title--w150">
+                -{{ card.name }} <br>
+                -{{ card.name_latin }}
               </div>
 
               <div class="red-card__subtitle">
-                Крупное хищное млекопитающее семейства кошачьих
+                {{ card.description }}
               </div>
             </div>
           </div>
 
-        </div>
-
-
-        <div class="swiper-container rubric-page__swiper-container rubric-page__swiper-container--2">
-          <div class="swiper-wrapper">
-
-            <div class="rubric-page__card red-card red-card--h338 swiper-slide" v-for="i in 4">
-              <img src="../../assets/img/placeholder-3.jpeg" alt="" class="red-card__img">
-
-              <div class="red-card__info">
-                <div class="red-card__heading">
-                  Красная книга Казахстана
-                </div>
-
-                <div class="red-card__title">
-                  -Снежный барс <br>
-                  -Panthera uncia
-                </div>
-
-                <div class="red-card__subtitle">
-                  Крупное хищное млекопитающее семейства кошачьих
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!-- Add Pagination -->
-          <div class="swiper-pagination rubric-page__pagination rubric-page__pagination--2"></div>
         </div>
 
       </div>
@@ -238,26 +199,54 @@
 <script>
 import Swiper, {Pagination} from 'swiper';
 import MailBox from "../../components/MailBox";
+import LoaderBlock from "../../components/LoaderBlock"
 
 Swiper.use([Pagination]);
 
 export default {
   components: {
-    MailBox
+    MailBox,
+    LoaderBlock
   },
   data() {
     return {
       rubricSwiper2: null,
+      card: {},
+      loader: true,
+      otherCards: []
+    }
+  },
+  computed: {
+    curId() {
+      return this.$route.params.id.split(':')[1]
     }
   },
   mounted() {
-    this.rubricSwiper2 = new Swiper('.rubric-page__swiper-container--2', {
-      slidesPerView: "auto",
-      spaceBetween: 8,
-      pagination: {
-        el: '.rubric-page__pagination--2',
-      },
-    });
+    this.$axios.get(process.env.API + 'red-book/' + this.curId)
+        .then(response => {
+          this.card = response.data.data
+
+          this.$axios.get(process.env.API + 'red-book')
+              .then(response => {
+                response.data.data.data.forEach(elem => {
+                  if (elem.id !== parseInt(this.curId)) {
+                    this.otherCards.push(elem)
+                  }
+                })
+                this.loader = false
+              })
+              .catch(e => console.log(e))
+        })
+        .catch(e => console.log(e))
   }
 }
 </script>
+
+<style lang="css">
+@import "../../node_modules/vue2-editor/dist/vue2-editor.css";
+
+/* Import the Quill styles you want */
+@import '../../node_modules/quill/dist/quill.core.css';
+@import '../../node_modules/quill/dist/quill.bubble.css';
+@import '../../node_modules/quill/dist/quill.snow.css';
+</style>
