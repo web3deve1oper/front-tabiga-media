@@ -6,8 +6,8 @@
 
         <div class="welcome-section__main">
 
-          <div class="welcome-section__box">
-            <img src="../assets/img/placholder.jpeg" alt="" class="welcome-section__img">
+          <div class="welcome-section__box" v-if="Object.keys(this.mainRandomArticle).length > 0">
+            <img :src="mainRandomArticle.preview_image_big_url" alt="" class="welcome-section__img">
 
             <div class="welcome-section__box-info">
               <div class="welcome-section__heading">
@@ -15,34 +15,30 @@
               </div>
 
               <div class="welcome-section__title">
-                Как природа показала человеку, что пора остановиться
+                {{ mainRandomArticle.title }}
               </div>
 
               <div class="welcome-section__subtitle">
-                Ученые эпидемиологи и инфекционисты рассказывают о том, что чем больше человек будет нападать на
-                природу,
-                тем сильнее она будет отбиваться.
+                {{ mainRandomArticle.description }}
               </div>
             </div>
           </div>
 
-          <div class="welcome-section__scroll-box">
+          <div class="welcome-section__scroll-box" v-if="loadedOrder1.length > 0">
             <div class="welcome-section__items">
 
-              <div class="welcome-section__item" v-for="i in 6">
+              <div class="welcome-section__item" v-for="article in loadedOrder1">
                 <div class="welcome-section__item-row">
                   <div class="welcome-section__item-heading">
-                    Новости
+                    {{ article.rubric.title }}
                   </div>
                   <div class="welcome-section__item-date">
-                    12 сентябрь 2021
+                    {{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}
                   </div>
                 </div>
 
                 <div class="welcome-section__item-title">
-                  Противоположная точка зрения, что диаграммы связей, инициированные исключительно синтетически
-                  asdf asdf asdf asdf adf инициированные исключительно синтетически инициированные исключительно
-                  синтетически
+                  {{ article.title }}
                 </div>
               </div>
 
@@ -55,24 +51,26 @@
 
         </div>
 
-        <div class="welcome-section__cards">
+        <div class="welcome-section__cards" v-if="randomArticles.length > 0">
 
-          <div class="welcome-section__card card" v-for="i in 8">
+          <div class="welcome-section__card card"
+               v-for="(article, i) in randomArticles"
+               v-if="i >= 1">
 
             <div class="card__img-box">
-              <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+              <img :src="article.preview_image_small_url" alt="" class="card__img">
             </div>
 
             <div class="card__info">
 
               <div class="card__row">
-                <div class="card__heading">Новости</div>
+                <div class="card__heading">{{ article.rubric.title }}</div>
 
-                <div class="card__date">1 октябрь 2021</div>
+                <div class="card__date">{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</div>
               </div>
 
               <div class="card__title">
-                Приятно, граждане, наблюдать, как элементы политического процесса
+                {{ article.title }}
               </div>
 
               <div class="card__more">
@@ -86,25 +84,27 @@
 
         </div>
 
-        <div class="swiper-container welcome-section__swiper-container">
+        <div class="swiper-container welcome-section__swiper-container" v-if="randomArticles.length > 0">
           <div class="swiper-wrapper">
 
-            <div class="welcome-section__card card swiper-slide" v-for="i in 8">
+            <div class="welcome-section__card card swiper-slide"
+                 v-for="(article, i) in randomArticles"
+                 v-if="i >= 1">
 
               <div class="card__img-box">
-                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+                <img :src="article.preview_image_small_url" alt="" class="card__img">
               </div>
 
               <div class="card__info">
 
                 <div class="card__row">
-                  <div class="card__heading">Новости</div>
+                  <div class="card__heading">{{ article.rubric.title }}</div>
 
-                  <div class="card__date">1 октябрь 2021</div>
+                  <div class="card__date">{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</div>
                 </div>
 
                 <div class="card__title">
-                  Приятно, граждане, наблюдать, как элементы политического процесса
+                  {{ article.title }}
                 </div>
 
                 <div class="card__more">
@@ -122,15 +122,14 @@
           <div class="swiper-pagination welcome-section__pagination"></div>
         </div>
 
-
       </div>
     </section>
 
-    <section class="main__section default-view">
+    <section class="main__section default-view" v-if="loadedOrder2.length > 0">
       <div class="default-view__container">
         <div class="default-view__row">
           <h4 class="default-view__heading heading-medium">
-            Наука
+            {{ loadedOrder2[0].rubric.title }}
           </h4>
 
           <div class="default-view__more">
@@ -143,10 +142,10 @@
 
         <div class="default-view__cards">
 
-          <div class="default-view__card card card--w-desc" v-for="i in 4">
+          <div class="default-view__card card card--w-desc" v-for="(article, i) in loadedOrder2">
 
             <div class="card__img-box">
-              <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+              <img :src="article.preview_image_small_url" alt="" class="card__img">
 
               <div class="card__views">
                 <svg width="20" height="20">
@@ -160,17 +159,17 @@
             <div class="card__info">
 
               <div class="card__row">
-                <div class="card__heading">Новости</div>
+                <div class="card__heading"> {{ article.rubric.title }}</div>
 
-                <div class="card__date">1 октябрь 2021</div>
+                <div class="card__date">{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</div>
               </div>
 
               <div class="card__title">
-                Приятно, граждане, наблюдать, как элементы политического процесса
+                {{ article.title }}
               </div>
 
               <div class="card__desc">
-                Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно образом
+                {{ article.description }}
               </div>
             </div>
 
@@ -181,10 +180,11 @@
         <div class="swiper-container default-view__swiper-container default-view__swiper-container--1">
           <div class="swiper-wrapper">
 
-            <div class="default-view__card card card--w-desc swiper-slide" v-for="i in 4">
+            <div class="default-view__card card card--w-desc swiper-slide"
+                 v-for="article in loadedOrder2">
 
               <div class="card__img-box">
-                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+                <img :src="article.preview_image_small_url" alt="" class="card__img">
 
                 <div class="card__views">
                   <svg width="20" height="20">
@@ -198,17 +198,17 @@
               <div class="card__info">
 
                 <div class="card__row">
-                  <div class="card__heading">Новости</div>
+                  <div class="card__heading">{{ article.rubric.title }}</div>
 
-                  <div class="card__date">1 октябрь 2021</div>
+                  <div class="card__date">{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</div>
                 </div>
 
                 <div class="card__title">
-                  Приятно, граждане, наблюдать, как элементы политического процесса
+                  {{ article.title }}
                 </div>
 
                 <div class="card__desc">
-                  Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно образом
+                  {{ article.description }}
                 </div>
               </div>
 
@@ -222,33 +222,31 @@
       </div>
     </section>
 
-    <section class="main__section accent-section">
+    <section class="main__section accent-section" v-if="loadedFavourites.length > 0">
 
       <div class="accent-section__container">
 
         <div class="accent-section__list">
-          <div class="accent-section__card accent-card" v-for="i in 3">
-            <img src="../assets/img/placeholder-3.jpeg" alt="" class="accent-card__img">
+          <div class="accent-section__card accent-card" v-for="article in loadedFavourites">
+            <img :src="article.preview_image_small_url" alt="" class="accent-card__img">
 
             <div class="accent-card__info">
 
               <div class="accent-card__heading">
-                Дикая природа
+                {{ article.rubric.title }}
               </div>
 
               <div class="accent-card__title">
-                20 мест на планете, где природа
-                не пожалела красок
+                {{ article.title }}
               </div>
 
               <div class="accent-card__desc">
-                С учётом сложившейся международной обстановки, сложившаяся структура организации однозначно определяет
-                каждого участника как способного стр...
+                {{ article.description }}
               </div>
 
               <div class="accent-card__details">
-                <span>12 сентябрь 2021</span>
-                <span>читать 10 минут</span>
+                <span>{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</span>
+                <span>читать {{ article.read_time }}</span>
                 <span>
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
@@ -264,28 +262,26 @@
         <div class="swiper-container accent-section__swiper-container">
           <div class="swiper-wrapper">
 
-            <div class="accent-section__card accent-card swiper-slide" v-for="i in 3">
+            <div class="accent-section__card accent-card swiper-slide" v-for="article in loadedFavourites">
               <img src="../assets/img/placeholder-3.jpeg" alt="" class="accent-card__img">
 
               <div class="accent-card__info">
 
                 <div class="accent-card__heading">
-                  Дикая природа
+                  {{ article.rubric.title }}
                 </div>
 
                 <div class="accent-card__title">
-                  20 мест на планете, где природа
-                  не пожалела красок
+                  {{ article.title }}
                 </div>
 
                 <div class="accent-card__desc">
-                  С учётом сложившейся международной обстановки, сложившаяся структура организации однозначно определяет
-                  каждого участника как способного стр...
+                  {{ article.description }}
                 </div>
 
                 <div class="accent-card__details">
-                  <span>12 сентябрь 2021</span>
-                  <span>читать 10 минут</span>
+                  <span>{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</span>
+                  <span>читать {{ article.read_time }}</span>
                   <span>
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
@@ -306,12 +302,12 @@
 
     </section>
 
-    <section class="main__section fluid-view">
+    <section class="main__section fluid-view" v-if="loadedOrder3.length > 0">
       <div class="fluid-view__container">
 
         <div class="fluid-view__row">
           <h4 class="fluid-view__heading heading-medium">
-            Дикая природа
+            {{ loadedOrder3[0].rubric.title }}
           </h4>
 
           <div class="fluid-view__more">
@@ -323,9 +319,11 @@
         </div>
 
         <div class="fluid-view__top">
-          <div class="fluid-view__card card card--big" v-for="i in 2">
+          <div class="fluid-view__card card card--big"
+               v-for="(article, i) in loadedOrder3"
+               v-if="i < 2">
             <div class="card__img-box">
-              <img src="../assets/img/placeholder-4.png" alt="" class="card__img">
+              <img :src="article.preview_image_small_url" alt="" class="card__img">
 
               <div class="card__views">
                 <svg width="20" height="20">
@@ -339,25 +337,25 @@
             <div class="card__info">
 
               <div class="card__row">
-                <div class="card__heading">Новости</div>
+                <div class="card__heading">{{ article.rubric.title }}</div>
                 <!--                <div class="card__date">1 октябрь 2021</div>-->
               </div>
 
               <div class="card__author">
-                Малика Садваксассова
+                {{ article.author.full_name }}
               </div>
 
               <div class="card__title">
-                Что такое профессиональное выгорание?
+                {{ article.title }}
               </div>
 
               <div class="card__desc">
-                Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно образом
+                {{ article.description }}
               </div>
 
               <div class="card__details">
-                <span>12 сентябрь 2021</span>
-                <span>читать 10 минут</span>
+                <span>{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</span>
+                <span>читать {{ article.read_time }}</span>
               </div>
             </div>
           </div>
@@ -365,10 +363,11 @@
 
         <div class="fluid-view__bottom">
 
-          <div class="fluid-view__card card card--minimized" v-for="i in 4">
+          <div class="fluid-view__card card card--minimized"
+               v-for="(article, i) in loadedOrder3">
 
             <div class="card__img-box">
-              <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+              <img :src="article.preview_image_small_url" alt="" class="card__img">
 
               <div class="card__views">
                 <svg width="20" height="20">
@@ -382,17 +381,17 @@
             <div class="card__info">
 
               <div class="card__row">
-                <div class="card__heading">Новости</div>
+                <div class="card__heading">{{ article.rubric.title }}</div>
 
-                <div class="card__date">1 октябрь 2021</div>
+                <div class="card__date">{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</div>
               </div>
 
               <div class="card__author">
-                Малика Садваксассова
+                {{ article.author.full_name }}
               </div>
 
               <div class="card__title">
-                Приятно, граждане, наблюдать, как элементы политического процесса
+                {{ article.title }}
               </div>
 
             </div>
@@ -403,10 +402,11 @@
         <div class="swiper-container fluid-view__swiper-container">
           <div class="swiper-wrapper">
 
-            <div class="fluid-view__card card card--minimized swiper-slide" v-for="i in 4">
+            <div class="fluid-view__card card card--minimized swiper-slide"
+                 v-for="article in loadedOrder3">
 
               <div class="card__img-box">
-                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+                <img :src="article.preview_image_small_url" alt="" class="card__img">
 
                 <div class="card__views">
                   <svg width="20" height="20">
@@ -420,17 +420,17 @@
               <div class="card__info">
 
                 <div class="card__row">
-                  <div class="card__heading">Новости</div>
+                  <div class="card__heading">{{ article.rubric.title }}</div>
 
-                  <div class="card__date">1 октябрь 2021</div>
+                  <div class="card__date">{{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}</div>
                 </div>
 
                 <div class="card__author">
-                  Малика Садваксассова
+                  {{ article.author.full_name }}
                 </div>
 
                 <div class="card__title">
-                  Приятно, граждане, наблюдать, как элементы политического процесса
+                  {{ article.title }}
                 </div>
 
               </div>
@@ -444,7 +444,7 @@
       </div>
     </section>
 
-    <section class="main__section red-book">
+    <section class="main__section red-book" v-if="loadedRedBook.length > 0">
       <div class="red-book__container">
         <div class="red-book__row">
           <h4 class="red-book__heading heading-medium heading-medium--red">
@@ -460,8 +460,9 @@
         </div>
 
         <div class="red-book__cards">
-          <div class="red-book__card red-card" v-for="i in 4">
-            <img src="../assets/img/placeholder-3.jpeg" alt="" class="red-card__img">
+          <div class="red-book__card red-card"
+               v-for="article in loadedRedBook">
+            <img :src="article.preview_image_small_url" alt="" class="red-card__img">
 
             <div class="red-card__info">
               <div class="red-card__heading">
@@ -469,12 +470,13 @@
               </div>
 
               <div class="red-card__title">
-                -Снежный барс <br>
-                -Panthera uncia
+                {{ article.name }}
+                <br>
+                {{ article.name_latin }}
               </div>
 
               <div class="red-card__subtitle">
-                Крупное хищное млекопитающее семейства кошачьих
+                {{ article.description }}
               </div>
             </div>
           </div>
@@ -482,12 +484,12 @@
       </div>
     </section>
 
-    <section class="main__section solo-view">
+    <section class="main__section solo-view" v-if="loadedOrder4.length > 0">
       <div class="solo-view__container">
 
         <div class="solo-view__row">
           <h4 class="solo-view__heading heading-medium">
-            Дикая природа
+            {{ loadedOrder4[0].rubric.title }}
           </h4>
 
           <div class="solo-view__more">
@@ -502,7 +504,7 @@
 
           <div class="solo-view__card card card--big">
             <div class="card__img-box">
-              <img src="../assets/img/placeholder-4.png" alt="" class="card__img">
+              <img :src="loadedOrder4[0].preview_image_small_url" alt="" class="card__img">
 
               <div class="card__views">
                 <svg width="20" height="20">
@@ -517,42 +519,43 @@
 
               <div class="card__row">
                 <div class="card__author card__author--mb0">
-                  Малика Садваксассова
+                  {{ loadedOrder4[0].author.full_name }}
                 </div>
 
-                <div class="card__date">1 октябрь 2021</div>
+                <div class="card__date">{{ $dateFns.format(loadedOrder4[0].posted_at, 'dd MMMM yyyy') }}</div>
               </div>
 
               <div class="card__title card__title--multiline">
-                Противоположная точка зрения, что диаграммы связей, инициированные исключительно
+                {{ loadedOrder4[0].title }}
               </div>
 
               <div class="card__desc card__desc--mb0">
-                С учётом сложившейся международной обстановки, сложившаяся структура организации однозначно определяет
-                каждого участника как способного стрasfd
+                {{ loadedOrder4[0].description }}
               </div>
             </div>
           </div>
 
           <div class="solo-view__list">
 
-            <div class="solo-view__card solo-view__card--mb10 card card--nophoto" v-for="i in 3">
+            <div class="solo-view__card solo-view__card--mb10 card card--nophoto"
+                 v-for="(article, i) in loadedOrder4" v-if="i > 0 && i !== 3">
 
               <div class="card__heading">
-                Советы
+                {{ article.rubric.title }}
               </div>
 
               <div class="card__grey-text">
-                12 сентябрь 2021 - Сабина Юрченко
+                {{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}
+                -
+                {{ article.author.full_name }}
               </div>
 
               <div class="card__title">
-                Что такое профессиональное выгорание?
+                {{ article.title }}
               </div>
 
               <div class="card__desc">
-                С учётом сложившейся международной обстановки, сложившаяся структура организации однозначно определяет
-                каждого участника как способного.
+                {{ article.description }}
               </div>
             </div>
 
@@ -563,11 +566,11 @@
       </div>
     </section>
 
-    <section class="main__section default-view">
+    <section class="main__section default-view" v-if="loadedOrder5.length > 0">
       <div class="default-view__container">
         <div class="default-view__row">
           <h4 class="default-view__heading heading-medium">
-            Наука
+            {{ loadedOrder5[0].rubric.title }}
           </h4>
 
           <div class="default-view__more">
@@ -580,10 +583,10 @@
 
         <div class="default-view__cards">
 
-          <div class="default-view__card card card--w-desc" v-for="i in 4">
+          <div class="default-view__card card card--w-desc" v-for="article in loadedOrder5">
 
             <div class="card__img-box">
-              <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+              <img :src="article.preview_image_small_url" alt="" class="card__img">
 
               <div class="card__views">
                 <svg width="20" height="20">
@@ -597,17 +600,21 @@
             <div class="card__info">
 
               <div class="card__row">
-                <div class="card__heading">Новости</div>
+                <div class="card__heading">
+                  {{ article.rubric.title }}
+                </div>
 
-                <div class="card__date">1 октябрь 2021</div>
+                <div class="card__date">
+                  {{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}
+                </div>
               </div>
 
               <div class="card__title">
-                Приятно, граждане, наблюдать, как элементы политического процесса
+                {{ article.title }}
               </div>
 
               <div class="card__desc">
-                Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно образом
+                {{ article.description }}
               </div>
             </div>
 
@@ -618,10 +625,10 @@
         <div class="swiper-container default-view__swiper-container default-view__swiper-container--2">
           <div class="swiper-wrapper">
 
-            <div class="default-view__card card card--w-desc swiper-slide" v-for="i in 4">
+            <div class="default-view__card card card--w-desc swiper-slide" v-for="article in loadedOrder5">
 
               <div class="card__img-box">
-                <img src="../assets/img/placeholder-3.jpeg" alt="" class="card__img">
+                <img :src="article.preview_image_small_url" alt="" class="card__img">
 
                 <div class="card__views">
                   <svg width="20" height="20">
@@ -635,17 +642,21 @@
               <div class="card__info">
 
                 <div class="card__row">
-                  <div class="card__heading">Новости</div>
+                  <div class="card__heading">
+                    {{ article.rubric.title }}
+                  </div>
 
-                  <div class="card__date">1 октябрь 2021</div>
+                  <div class="card__date">
+                    {{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}
+                  </div>
                 </div>
 
                 <div class="card__title">
-                  Приятно, граждане, наблюдать, как элементы политического процесса
+                  {{ article.title }}
                 </div>
 
                 <div class="card__desc">
-                  Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно образом
+                  {{ article.description }}
                 </div>
               </div>
 
@@ -659,12 +670,12 @@
       </div>
     </section>
 
-    <section class="main__section staggered-view">
+    <section class="main__section staggered-view" v-if="loadedOrder6.length > 0">
       <div class="staggered-view__container">
 
         <div class="staggered-view__row">
           <h4 class="staggered-view__heading heading-medium">
-            Наука
+            {{ loadedOrder6[0].rubric.title }}
           </h4>
 
           <div class="staggered-view__more">
@@ -678,28 +689,30 @@
         <div class="staggered-view__cards">
 
           <div class="staggered-view__card staggered-card"
-               v-for="(i, k) in 6"
+               v-for="(article, k) in loadedOrder6"
                :class="{'staggered-card--phone-nophoto' : k === 1}">
 
             <div class="staggered-card__img-box">
-              <img src="../assets/img/placeholder-3.jpeg" alt="" class="staggered-card__img">
+              <img :src="article.preview_image_small_url" alt="" class="staggered-card__img">
             </div>
 
             <div class="staggered-card__info">
               <div class="staggered-card__heading">
-                Мнения
+                {{ article.rubric.title }}
               </div>
 
               <div class="staggered-card__grey-text">
-                12 сентябрь 2021 - Асхат Максатов
+                {{ $dateFns.format(article.posted_at, 'dd MMMM yyyy') }}
+                -
+                {{ article.author.full_name }}
               </div>
 
               <div class="staggered-card__title">
-                Равным образом реализация Равным образом реализация Равным образом реализация Равным образом реализация
+                {{ article.title }}
               </div>
 
               <div class="staggered-card__subtitle">
-                Приятно, граждане, наблюдать, как элементы политического процесса ограничены исключительно красиво
+                {{ article.description }}
               </div>
             </div>
 
@@ -722,6 +735,11 @@ import MailBox from "../components/MailBox";
 Swiper.use([Pagination]);
 
 export default {
+  // asyncData( {$dateFns} ) {
+  //   return {
+  //     dateFormatted: $dateFns.format(new Date())
+  //   }
+  // },
   data() {
     return {
       welcomeCardsSwiper: null,
@@ -729,13 +747,48 @@ export default {
       defaultViewSwiper2: null,
       accentSectionSwiper: null,
       fluidViewSwiper: null,
-      soloViewSwiper: null
+      soloViewSwiper: null,
     };
   },
   components: {
     MailBox
   },
+  computed: {
+    loadedOrder1() {
+      if (this.$store.getters.loadedOrder1) {
+        return this.$store.getters.loadedOrder1
+      }
+    },
+    mainRandomArticle() {
+      return this.$store.getters.loadedRandomArticles[0]
+    },
+    randomArticles() {
+      return this.$store.getters.loadedRandomArticles
+    },
+    loadedOrder2() {
+      return this.$store.getters.loadedOrder2
+    },
+    loadedOrder3() {
+      return this.$store.getters.loadedOrder3
+    },
+    loadedOrder4() {
+      return this.$store.getters.loadedOrder4
+    },
+    loadedOrder5() {
+      return this.$store.getters.loadedOrder5
+    },
+    loadedOrder6() {
+      return this.$store.getters.loadedOrder6
+    },
+    loadedRedBook() {
+      return this.$store.getters.loadedRedBook
+    },
+    loadedFavourites() {
+      return this.$store.getters.loadedFavourites
+    }
+  },
   mounted() {
+
     this.welcomeCardsSwiper = new Swiper('.welcome-section__swiper-container', {
       slidesPerView: "auto",
       spaceBetween: 8,

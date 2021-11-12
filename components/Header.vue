@@ -3,13 +3,16 @@
     <div class="header__container">
       <img src="../assets/img/header-logo.svg" alt="" class="header__logo">
 
+      <ul class="header__links header__links--w510">
+        <nuxt-link tag="li" :to="'/' + rubric.slug + ':' + rubric.id"
+                   class="header__link"
+                   v-for="(rubric, i) in loadedRubrics" :key="rubric.id"
+                   v-if="i < 5">{{ rubric.title }}</nuxt-link>
+<!--        <li class="header__link header__link&#45;&#45;red">Красная книга</li>-->
+      </ul>
       <ul class="header__links">
-        <li class="header__link">Наука</li>
-        <li class="header__link">Дикая природа</li>
-        <li class="header__link">Советы</li>
-        <li class="header__link">Бёрдвочинг</li>
-        <li class="header__link">Мнения</li>
-        <li class="header__link header__link--red">Красная книга</li>
+<!--        <li class="header__link" v-for="rubric in loadedRubrics">{{ rubric.title }}</li>-->
+        <nuxt-link tag="li" to="/red-book" class="header__link header__link--red">Красная книга</nuxt-link>
       </ul>
 
       <button class="header__btn button" @click="showModal = true">
@@ -17,7 +20,7 @@
       </button>
 
       <form class="header__search-box">
-        <input type="text" class="header__search-input" v-model="searchData">
+        <input type="text" class="header__search-input" placeholder="Введите ваш запрос..." v-model="searchData">
 
         <div class="header__icon-box" @click="search">
           <svg class="header__search" width="24" height="24">
@@ -59,18 +62,9 @@
         </div>
 
         <ul class="sidebar__rubrics">
-          <li>Наука</li>
-          <li>Дикая природа</li>
-          <li>Советы</li>
-          <li>Бёрдвочинг</li>
-          <li>Лица</li>
-          <li>Мнения</li>
-          <li>Красная книга Казахстана</li>
-          <li>Новости</li>
-          <li>Новости</li>
-          <li>Новости</li>
-          <li>Новости</li>
-          <li>Новости</li>
+          <nuxt-link tag="li" :to="'/nauka:' + rubric.id"
+                     v-for="rubric in loadedRubrics"
+                     :key="rubric.id">{{ rubric.title }}</nuxt-link>
         </ul>
       </div>
     </div>
@@ -100,6 +94,14 @@ export default {
       modalText: 'Вы успешно подписались на рассылку от Tabigat media',
       modalType: true
     };
+  },
+  computed: {
+    loadedRubrics() {
+      return this.$store.getters.loadedRubrics
+    }
+  },
+  mounted() {
+    console.log(this.loadedRubrics)
   },
   methods: {
     search() {

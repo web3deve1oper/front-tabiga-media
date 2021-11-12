@@ -73,11 +73,25 @@
     line-height: 30px;
     font-family: $futura;
     margin-bottom: 10px;
+
+    max-height: 62px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   &__subtitle {
     @include text-style(1.8rem, 400, #BDBDBD);
     line-height: 21px;
+
+    max-height: 63px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 
   &__scroll-box {

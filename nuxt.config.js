@@ -26,6 +26,9 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    ['@nuxtjs/date-fns', {
+      defaultLocale: 'ru'
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -37,7 +40,6 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
   ],
-
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -50,6 +52,10 @@ export default {
   transition: {
     name: 'fade',
     mode: 'out-in'
+  },
+
+  env: {
+    API: 'http://sabadoryo.com/api/',
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
