@@ -90,12 +90,15 @@
 export default {
   data() {
     return {
-      curUrl: window.location.href,
+      // curUrl: window.location.href,
     };
   },
   computed: {
     loadedRubrics() {
       return this.$store.getters.loadedRubrics
+    },
+    curUrl() {
+      return window.location.href
     }
   },
   mounted() {

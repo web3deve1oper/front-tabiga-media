@@ -20,11 +20,12 @@ export default {
   props: ['title'],
   data() {
     return {
-      curUrl: window.location.href,
     };
   },
   computed: {
-
+    curUrl() {
+      return window.location.href
+    }
   },
   methods: {
     shareTwitter() {
