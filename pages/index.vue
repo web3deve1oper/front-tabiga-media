@@ -10,7 +10,7 @@
                      :to="'/' + mainRandomArticle.rubric.slug + ':' + mainRandomArticle.rubric.id +
                      '/' + mainRandomArticle.slug + ':' + mainRandomArticle.id"
                      class="welcome-section__box"
-                     v-if="Object.keys(this.mainRandomArticle).length > 0">
+                     v-if="Object.keys(mainRandomArticle).length > 0">
             <img :src="mainRandomArticle.preview_image_big_url" alt="" class="welcome-section__img">
 
             <div class="welcome-section__box-info">
@@ -506,17 +506,19 @@
             Красная книга Казахстана
           </h4>
 
-          <div class="red-book__more">
+          <nuxt-link tag="div" to="/red-book" class="red-book__more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#arrow-right"></use>
             </svg>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="red-book__cards">
-          <div class="red-book__card red-card"
-               v-for="article in loadedRedBook">
+          <nuxt-link tag="div"
+                     :to="'/red-book/' + article.slug + ':' + article.id" class="red-book__card red-card"
+                     v-for="article in loadedRedBook"
+                     :key="article.id">
             <img :src="article.preview_image_small_url" alt="" class="red-card__img">
 
             <div class="red-card__info">
@@ -534,7 +536,7 @@
                 {{ article.description }}
               </div>
             </div>
-          </div>
+          </nuxt-link>
         </div>
       </div>
     </section>
@@ -547,17 +549,22 @@
             {{ loadedOrder4[0].rubric.title }}
           </h4>
 
-          <div class="solo-view__more">
+          <nuxt-link tag="div"
+                     :to="'/' + loadedOrder4[0].rubric.slug + ':' + loadedOrder4[0].rubric.id"
+                     class="solo-view__more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#arrow-right"></use>
             </svg>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="solo-view__cards">
 
-          <div class="solo-view__card card card--big">
+          <nuxt-link tag="div"
+                     :to="'/' + loadedOrder4[0].rubric.slug + ':' + loadedOrder4[0].rubric.id + '/' +
+                     loadedOrder4[0].slug + ':' + loadedOrder4[0].id"
+                     class="solo-view__card card card--big">
             <div class="card__img-box">
               <img :src="loadedOrder4[0].preview_image_small_url" alt="" class="card__img">
 
@@ -588,12 +595,17 @@
                 {{ loadedOrder4[0].description }}
               </div>
             </div>
-          </div>
+          </nuxt-link>
 
           <div class="solo-view__list">
 
-            <div class="solo-view__card solo-view__card--mb10 card card--nophoto"
-                 v-for="(article, i) in loadedOrder4" v-if="i > 0 && i !== 3">
+            <nuxt-link tag="div"
+                       :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
+                       article.slug + ':' + article.id"
+                       class="solo-view__card solo-view__card--mb10 card card--nophoto"
+                       v-for="(article, i) in loadedOrder4"
+                       :key="article.id"
+                       v-if="i > 0 && i !== 3">
 
               <div class="card__heading">
                 {{ article.rubric.title }}
@@ -612,7 +624,7 @@
               <div class="card__desc">
                 {{ article.description }}
               </div>
-            </div>
+            </nuxt-link>
 
           </div>
 
@@ -628,17 +640,22 @@
             {{ loadedOrder5[0].rubric.title }}
           </h4>
 
-          <div class="default-view__more">
+          <nuxt-link tag="div"
+                     :to="'/' + loadedOrder5.rubric.slug + ':' + loadedOrder5.rubric.id"
+                     class="default-view__more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#arrow-right"></use>
             </svg>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="default-view__cards">
 
-          <div class="default-view__card card card--w-desc" v-for="article in loadedOrder5">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
+                     class="default-view__card card card--w-desc"
+                     v-for="article in loadedOrder5" :key="article.id">
 
             <div class="card__img-box">
               <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -673,14 +690,18 @@
               </div>
             </div>
 
-          </div>
+          </nuxt-link>
 
         </div>
 
         <div class="swiper-container default-view__swiper-container default-view__swiper-container--2">
           <div class="swiper-wrapper">
 
-            <div class="default-view__card card card--w-desc swiper-slide" v-for="article in loadedOrder5">
+            <nuxt-link tag="div"
+                       :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
+                       class="default-view__card card card--w-desc swiper-slide"
+                       v-for="article in loadedOrder5"
+                       :key="article.id">
 
               <div class="card__img-box">
                 <img :src="article.preview_image_small_url" alt="" class="card__img">
@@ -715,7 +736,7 @@
                 </div>
               </div>
 
-            </div>
+            </nuxt-link>
 
           </div>
           <!-- Add Pagination -->
@@ -733,19 +754,24 @@
             {{ loadedOrder6[0].rubric.title }}
           </h4>
 
-          <div class="staggered-view__more">
+          <nuxt-link tag="div"
+                     :to="'/' + loadedOrder6[0].rubric.slug + ':' + loadedOrder6[0].rubric.id"
+                     class="staggered-view__more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#arrow-right"></use>
             </svg>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="staggered-view__cards">
 
-          <div class="staggered-view__card staggered-card"
-               v-for="(article, k) in loadedOrder6"
-               :class="{'staggered-card--phone-nophoto' : k === 1}">
+          <nuxt-link tag="div"
+                     :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
+                     class="staggered-view__card staggered-card"
+                     v-for="(article, k) in loadedOrder6"
+                     :key="article.id"
+                     :class="{'staggered-card--phone-nophoto' : k === 1}">
 
             <div class="staggered-card__img-box">
               <img :src="article.preview_image_small_url" alt="" class="staggered-card__img">
@@ -771,7 +797,7 @@
               </div>
             </div>
 
-          </div>
+          </nuxt-link>
 
         </div>
 

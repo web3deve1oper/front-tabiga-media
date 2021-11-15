@@ -4,11 +4,11 @@
 
     <div class="rubrics__container" v-else-if="rubric.length > 0">
 
-      <div class="rubrics__breadcrumb breadcrumb">
+      <div class="rubrics__breadcrumb breadcrumb breadcrumb--red">
         <nuxt-link to="/">Главная</nuxt-link> / <span>Красная книга Казахстана</span>
       </div>
 
-      <h2 class="rubrics__heading heading-large">
+      <h2 class="rubrics__heading heading-large heading-large--red">
         Красная книга Казахстана
       </h2>
 
@@ -18,10 +18,10 @@
 
       <div class="rubrics__main">
 
-        <div class="rubrics__filters">
+        <div class="rubrics__filters rubrics__filters--red">
           <p>Сортировать:</p>
           <span class="rubrics__filter-item">Сначала новые</span>
-          <span class="rubrics__filter-item rubrics__filter-item--active">По популярности</span>
+          <span class="rubrics__filter-item rubrics__filter-item--red">По популярности</span>
         </div>
 
         <div class="rubrics__cards rubrics__cards--red-book">

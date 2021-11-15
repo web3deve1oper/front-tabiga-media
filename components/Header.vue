@@ -8,7 +8,8 @@
       <ul class="header__links header__links--w510">
         <nuxt-link tag="li" :to="'/' + rubric.slug + ':' + rubric.id"
                    class="header__link"
-                   v-for="(rubric, i) in loadedRubrics" :key="rubric.id"
+                   v-for="(rubric, i) in loadedRubrics"
+                   :key="rubric.id"
                    v-if="i < 5">{{ rubric.title }}
         </nuxt-link>
         <!--        <li class="header__link header__link&#45;&#45;red">Красная книга</li>-->
@@ -18,11 +19,12 @@
         <nuxt-link tag="li" to="/red-book" class="header__link header__link--red">Красная книга</nuxt-link>
       </ul>
 
-      <button class="header__btn button" @click="showModal = true">
+      <button class="header__btn button"
+              v-scroll-to="{el:'#mail-box', duration: 700, offset: -300, onDone: onDone}">
         Подписаться
       </button>
 
-      <form class="header__search-box">
+      <div class="header__search-box">
         <input type="text" class="header__search-input" placeholder="Введите ваш запрос..." v-model="searchData">
 
         <div class="header__icon-box" @click="search">
@@ -30,7 +32,7 @@
             <use href="../assets/img/icons.svg#search"></use>
           </svg>
         </div>
-      </form>
+      </div>
 
       <svg class="header__burger" width="30" height="30"
            v-show="(!searchShow && !sidebarShow)"
@@ -65,19 +67,17 @@
                      to="/red-book"
                      @click.native="sidebarShow = false"
                      class="sidebar__item sidebar__item--red">Красная книга</nuxt-link>
-          <button class="sidebar__btn button" @click="showModal = true">
+          <button class="sidebar__btn button"
+                  v-scroll-to="{el:'#mail-box', duration: 700, offset: -300,}"
+                  @click.passive="sidebarShow = false">
             Подписаться на рассылку
           </button>
         </div>
 
-<!--        <div class="sidebar__title">-->
-<!--          Рубрики-->
-<!--        </div>-->
-
         <ul class="sidebar__rubrics">
           <nuxt-link tag="li"
                      :to="'/nauka:' + rubric.id"
-                     @click.native="sidebarShow = false"
+                     @click.passive="sidebarShow = false"
                      v-for="rubric in loadedRubrics"
                      :key="rubric.id">{{ rubric.title }}
           </nuxt-link>
@@ -132,6 +132,9 @@ export default {
     },
     closeAll() {
       this.searchShow = false;
+      this.sidebarShow = false;
+    },
+    onDone() {
       this.sidebarShow = false;
     }
   }

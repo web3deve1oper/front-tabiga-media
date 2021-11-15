@@ -5,29 +5,23 @@
         <img src="../assets/img/footer-logo.svg" alt="" class="footer__logo">
 
         <div class="footer__socials">
-          <a href="#" class="footer__social">
-            <svg width="35" height="35">
-              <use href="../assets/img/icons.svg#tg"></use>
-            </svg>
-          </a>
 
-          <a href="#" class="footer__social">
-            <svg width="35" height="35">
-              <use href="../assets/img/icons.svg#fb"></use>
-            </svg>
-          </a>
+          <svg width="35" height="35" class="footer__social" @click="shareTwitter">
+            <use href="../assets/img/icons.svg#twitter"></use>
+          </svg>
 
-          <a href="#" class="footer__social">
-            <svg width="35" height="35">
-              <use href="../assets/img/icons.svg#inst"></use>
-            </svg>
-          </a>
+          <svg width="35" height="35" class="footer__social" @click="shareFacebook">
+            <use href="../assets/img/icons.svg#fb"></use>
+          </svg>
 
-          <a href="#" class="footer__social">
-            <svg width="35" height="35">
-              <use href="../assets/img/icons.svg#youtube"></use>
-            </svg>
-          </a>
+          <svg width="35" height="35" class="footer__social" @click="shareVk">
+            <use href="../assets/img/icons.svg#vk"></use>
+          </svg>
+
+          <svg width="35" height="35" class="footer__social" @click="shareTg">
+            <use href="../assets/img/icons.svg#tg"></use>
+          </svg>
+
         </div>
       </div>
 
@@ -42,10 +36,10 @@
           </div>
 
           <div class="footer__links">
-            <div class="footer__link">О проекте</div>
+            <nuxt-link tag="div" to="/about" class="footer__link">О проекте</nuxt-link>
             <div class="footer__link">Политика конфиденциальности</div>
             <div class="footer__link">Правовая информация</div>
-            <div class="footer__link">Обратная связь</div>
+            <nuxt-link tag="div" to="/contact" class="footer__link">Обратная связь</nuxt-link>
           </div>
         </div>
 
@@ -55,22 +49,22 @@
           </div>
 
           <div class="footer__links">
-            <div class="footer__link">Красная книга Казахстана</div>
-            <div class="footer__link">Наука</div>
-            <div class="footer__link">Советы</div>
-            <div class="footer__link">Бёрдвочинг</div>
-            <div class="footer__link">Мнения</div>
-            <div class="footer__link">Новости</div>
-            <div class="footer__link">Лица</div>
+            <nuxt-link tag="div"
+                       :to="'/' + r.slag + ':' + r.id"
+                       class="footer__link"
+                       v-for="r in loadedRubrics"
+                       :key="r.id">
+              {{ r.title }}
+            </nuxt-link>
           </div>
         </div>
 
         <div class="footer__link-box footer__link-box--mobile">
           <div class="footer__links">
-            <div class="footer__link">О проекте</div>
+            <nuxt-link tag="div" to="/about" class="footer__link">О проекте</nuxt-link>
             <div class="footer__link">Политика конфиденциальности</div>
             <div class="footer__link">Правовая информация</div>
-            <div class="footer__link">Обратная связь</div>
+            <nuxt-link tag="div" to="/contact" class="footer__link">Обратная связь</nuxt-link>
           </div>
         </div>
 
@@ -79,9 +73,9 @@
             Есть вопросы или предложения?
           </div>
 
-          <button class="footer__btn button button--white">
+          <nuxt-link tag="button" to="/contact" class="footer__btn button button--white">
             Написать нам
-          </button>
+          </nuxt-link>
         </div>
       </div>
 
@@ -93,7 +87,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      curUrl: window.location.href,
+    };
+  },
+  computed: {
+    loadedRubrics() {
+      return this.$store.getters.loadedRubrics
+    }
+  },
+  mounted() {
+  },
+  methods: {
+    shareTwitter() {
+      window.open('https://twitter.com/share?url=' + this.curUrl, '_blank');
+    },
+    shareFacebook() {
+      window.open('https://www.facebook.com/sharer.php?u=' + this.curUrl, '_blank');
+    },
+    shareVk() {
+      window.open('https://vk.com/share.php?url=' + this.curUrl, '_blank');
+    },
+    shareTg() {
+      window.open('https://t.me/share/url?url=' + this.curUrl, '_blank');
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

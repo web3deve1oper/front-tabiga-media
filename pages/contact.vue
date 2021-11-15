@@ -46,20 +46,20 @@
           Обратная связь
         </div>
 
-        <form class="contact-box__form">
+        <form class="contact-box__form" @submit.prevent="sendRequest">
 
           <div class="contact-box__input-box">
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#user"></use>
             </svg>
-            <input type="text" class="contact-box__input" placeholder="Имя" required>
+            <input type="text" class="contact-box__input" placeholder="Имя" v-model="fullName">
           </div>
 
           <div class="contact-box__input-box">
             <svg width="24" height="24">
               <use href="../assets/img/icons.svg#mail-2"></use>
             </svg>
-            <input type="email" class="contact-box__input" placeholder="E-mail" required>
+            <input type="email" class="contact-box__input" placeholder="E-mail" required v-model="email">
           </div>
 
           <div class="contact-box__input-box contact-box__input-box--select">
@@ -98,24 +98,44 @@
 
           </div>
 
-          <textarea class="contact-box__textarea" placeholder="Ваше сообщение"></textarea>
+          <textarea class="contact-box__textarea" placeholder="Ваше сообщение" v-model="message"></textarea>
 
-          <button class="contact-box__btn">Отправить</button>
+          <button class="contact-box__btn" type="submit">Отправить</button>
 
         </form>
 
       </div>
     </div>
+
+    <success-modal v-if="showModal"
+                   @close="showModal = false"
+                   :title="modalTitle"
+                   :subtitle="modalSubtitle"
+                   :type="modalType"></success-modal>
+
   </div>
 </template>
 
 <script>
+import SuccessModal from "../components/SuccessModal";
+
 export default {
+  components: {
+    SuccessModal
+  },
   data() {
     return {
       contactType: 'Выберите тип обратной связи',
       dropdownShow: false,
-      textState: false
+      textState: false,
+      fullName: '',
+      email: '',
+      type: '',
+      message: '',
+      modalType: false,
+      showModal: false,
+      modalTitle: '',
+      modalSubtitle: ''
     };
   },
   methods: {
@@ -126,6 +146,40 @@ export default {
       this.contactType = type;
       this.dropdownShow = false;
       this.textState = true;
+    },
+    sendRequest() {
+      this.$axios.post(process.env.API + 'feedbacks/create', {
+        full_name: this.fullName,
+        email: this.email,
+        type: this.contactType,
+        message: this.message
+      })
+          .then(response => {
+            if (response.data.message === "OK") {
+              this.modalType = true
+              this.showModal = true
+              this.modalTitle = 'Спасибо!'
+              this.modalSubtitle = 'С вами свяжутся в ближайшее время'
+            } else {
+              this.modalType = false
+              this.showModal = true
+              this.modalTitle = 'Упс!'
+              this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
+            }
+          })
+          .catch(e => {
+            if (e.response.data.errors.full_name[0] === "The full name field is required." || e.response.data.errors.full_name[0] === "The full name must be a string.") {
+              this.modalType = false
+              this.showModal = true
+              this.modalTitle = 'Упс!'
+              this.modalSubtitle = 'Произошла ошибка, введите пожалуйста ваше имя'
+            } else {
+              this.modalType = false
+              this.showModal = true
+              this.modalTitle = 'Упс!'
+              this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
+            }
+          })
     }
   }
 }

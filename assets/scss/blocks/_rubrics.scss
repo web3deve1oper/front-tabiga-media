@@ -36,14 +36,24 @@
       @include text-style(1.4rem, 400, #A1A1A1);
       margin-right: 20px;
     }
+
+    &--red {
+      border-bottom: 1px solid #EB5757;
+    }
   }
 
   &__filter-item {
     @include text-style(1.4rem, 400, $text-color);
+    cursor: pointer;
 
     &--active {
       color: $main-color;
       font-weight: 700;
+    }
+
+    &--red {
+      font-weight: 700;
+      color: #EB5757;
     }
 
     &:not(:last-child) {

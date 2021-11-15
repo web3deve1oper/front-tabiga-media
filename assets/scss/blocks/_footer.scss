@@ -21,6 +21,7 @@
   }
 
   &__social {
+    cursor: pointer;
     &:not(:last-child) {
       margin-right: 15px;
     }
@@ -63,6 +64,7 @@
 
   &__link {
     @include text-style(1.4rem, 400, #f2f2f2);
+    cursor: pointer;
 
     &:not(:last-child) {
       margin-bottom: 14px;

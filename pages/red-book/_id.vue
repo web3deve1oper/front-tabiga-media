@@ -157,17 +157,21 @@
             Другие виды из Красной книги
           </div>
 
-          <div class="rubric-page__title-more">
+          <nuxt-link tag="div" to="/red-book" class="rubric-page__title-more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
               <use href="../../assets/img/icons.svg#arrow-right"></use>
             </svg>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="rubric-page__interest-list rubric-page__interest-list--grid4">
 
-          <div class="rubric-page__card red-card red-card--w170" v-for="card in otherCards">
+          <nuxt-link tag="div"
+                     :to="'/red-book/' + card.slug + ':' + card.id"
+                     class="rubric-page__card red-card red-card--w170"
+                     v-for="card in otherCards"
+                     :key="card.id">
             <img :src="card.preview_image_small_url" alt="" class="red-card__img">
 
             <div class="red-card__info">
@@ -184,7 +188,7 @@
                 {{ card.description }}
               </div>
             </div>
-          </div>
+          </nuxt-link>
 
         </div>
 

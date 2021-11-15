@@ -40,6 +40,10 @@
     @include text-style(1.8rem, 600, $main-color);
     text-align: right;
     line-height: 21px;
+
+    &--pointer {
+      cursor: pointer;
+    }
   }
 
   &__socials {

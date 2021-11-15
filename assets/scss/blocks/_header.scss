@@ -64,7 +64,7 @@
   &__links {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-right: 34px;
 
     &--w510 {
@@ -77,10 +77,10 @@
     font-family: $futura;
     cursor: pointer;
     white-space: nowrap;
-    //
-    //&:not(:last-child) {
-    //  margin-right: 34px;
-    //}
+
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
 
     &--red {
       color: #EB5757;

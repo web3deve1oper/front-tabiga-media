@@ -33,6 +33,7 @@
   &__empty {
     @include text-style(2.4rem, 400, #A1A1A1);
     line-height: 28.25px;
+    height: 40vh;
   }
 
   @include respond(phone) {

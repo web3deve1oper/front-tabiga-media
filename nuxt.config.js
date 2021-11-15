@@ -5,7 +5,8 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'csrf-token', content: '{{ csrf_token() }}' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -42,7 +43,10 @@ export default {
     "vue2-editor/nuxt"
   ],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    credentials: true,
+    baseURL: "http://localhost:3000"
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

@@ -11,7 +11,7 @@
 
   &__row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 40px;
   }
 
@@ -58,6 +58,7 @@
   &__desc {
     @include text-style(1.8rem, 400, $text-color);
     line-height: 21px;
+    padding-left: 0 !important;
   }
 
   &__heading {
@@ -76,6 +77,7 @@
     border-radius: 6px;
     background-color: #F2F2F2;
     @include text-style(1.8rem, 400, #A1A1A1);
+    cursor: pointer;
 
     &:not(:last-child) {
       margin-right: 20px;

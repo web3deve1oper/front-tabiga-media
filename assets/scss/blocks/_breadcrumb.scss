@@ -1,4 +1,5 @@
 .breadcrumb {
+
   @include text-style(1.4rem, 400, #646D70);
   a {
     @include text-style(1.4rem, 400, #646D70);
@@ -7,5 +8,11 @@
   span {
     font-weight: 600;
     color: $main-color;
+  }
+
+  &--red {
+    span {
+      color: #EB5757;
+    }
   }
 }

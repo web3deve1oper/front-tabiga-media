@@ -9,7 +9,7 @@
           /
           <nuxt-link :to="'/' + a.rubric.slug + ':' + a.rubric.id">Новости</nuxt-link>
           /
-          <span>Статья</span>
+          <span>{{ a.title }}</span>
         </div>
 
         <div class="rubric-page__main" v-if="!a.is_long_read">
@@ -81,7 +81,11 @@
               <div class="rubric-page__details-box rubric-details">
                 <div class="rubric-details__row">
                   <span class="rubric-details__grey">Автор:</span>
-                  <span class="rubric-details__green">{{ a.author.full_name }}</span>
+                  <nuxt-link tag="span"
+                             :to="'/author/' + a.author.slug + ':' + a.author.id"
+                             class="rubric-details__green rubric-details__green--pointer">
+                    {{ a.author.full_name }}
+                  </nuxt-link>
                 </div>
                 <div class="rubric-details__row">
                   <span class="rubric-details__grey">Дата:</span>
@@ -93,27 +97,14 @@
                 </div>
                 <div class="rubric-details__row rubric-details__row--center">
                   <span class="rubric-details__grey">Поделиться:</span>
-                  <span class="rubric-details__socials">
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#twitter-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#fb-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#vk-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#inst-brown"></use>
-                  </svg>
-                </span>
+                  <share-social class="rubric-details__socials" :title="a.title"></share-social>
                 </div>
-                <div class="rubric-details__row">
-                  <span class="rubric-details__grey rubric-details__grey--italic">Фотография: Pexels</span>
+                <div class="rubric-details__row" v-if="a.photography !== null">
+                  <span class="rubric-details__grey rubric-details__grey--italic">Фотография: {{ a.photography }}</span>
                 </div>
               </div>
 
-              <div class="rubric-page__collaborators collaborators-box">
+              <div class="rubric-page__collaborators collaborators-box" v-if="a.staff.length > 0">
                 <div class="collaborators-box__title">
                   В создании статьи также участвовали:
                 </div>
@@ -132,15 +123,17 @@
                 <div class="rubric-page__text ql-editor" v-html="a.content"></div>
               </div>
 
-              <div class="rubric-page__grey-text rubric-page__grey-text--mb20">
+              <nuxt-link tag="div"
+                         :to="'/author/' + a.author.slug + ':' + a.author.id"
+                         class="rubric-page__grey-text rubric-page__grey-text--mb20 rubric-page__grey-text--pointer">
                 Автор: {{ a.author.full_name }}
-              </div>
+              </nuxt-link>
               <div class="rubric-page__grey-text rubric-page__grey-text--mb20 rubric-page__grey-text--phone">
                 {{ $dateFns.format(a.posted_at, 'dd MMMM yyyy') }}
               </div>
 
               <div class="rubric-page__tags">
-                <div class="rubric-page__tag" v-for="tag in a.tags">
+                <div class="rubric-page__tag" v-for="tag in a.tags" @click="search(tag.name)">
                   #{{ tag.name }}
                 </div>
               </div>
@@ -148,20 +141,7 @@
               <div class="rubric-page__share">
                 <span>Поделиться:</span>
 
-                <div class="rubric-page__socials">
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#twitter-green"></use>
-                  </svg>
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#fb-green"></use>
-                  </svg>
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#vk-green"></use>
-                  </svg>
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#inst-green"></use>
-                  </svg>
-                </div>
+                <share-social class="rubric-page__socials"></share-social>
               </div>
             </div>
 
@@ -192,7 +172,11 @@
           <div class="rubric-page__details-box rubric-details rubric-details--tab">
             <div class="rubric-details__row">
               <span class="rubric-details__grey">Автор:</span>
-              <span class="rubric-details__green">{{ a.author.full_name }}</span>
+              <nuxt-link tag="span"
+                         :to="'/author/' + a.author.slug + ':' + a.author.id"
+                         class="rubric-details__green rubric-details__green--pointer">
+                {{ a.author.full_name }}
+              </nuxt-link>
             </div>
             <div class="rubric-details__row">
               <span class="rubric-details__grey">Дата:</span>
@@ -204,27 +188,14 @@
             </div>
             <div class="rubric-details__row rubric-details__row--center">
               <span class="rubric-details__grey">Поделиться:</span>
-              <span class="rubric-details__socials">
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#twitter-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#fb-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#vk-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#inst-brown"></use>
-                  </svg>
-                </span>
+              <share-social class="rubric-details__socials"></share-social>
             </div>
-            <div class="rubric-details__row">
-              <span class="rubric-details__grey rubric-details__grey--italic">Фотография: Pexels</span>
+            <div class="rubric-details__row" v-if="a.photography !== null">
+              <span class="rubric-details__grey rubric-details__grey--italic">Фотография: {{ a.photography }}</span>
             </div>
           </div>
 
-          <div class="rubric-page__collaborators collaborators-box collaborators-box--tab">
+          <div class="rubric-page__collaborators collaborators-box collaborators-box--tab" v-if="a.staff.length > 0">
             <div class="collaborators-box__title">
               В создании статьи также участвовали:
             </div>
@@ -290,16 +261,18 @@
                 <div class="rubric-page__text ql-editor" v-html="a.content"></div>
               </div>
 
-              <div class="rubric-page__grey-text rubric-page__grey-text--mb20">
+              <nuxt-link tag="div"
+                         :to="'/author/' + a.author.slug + ':' + a.author.id"
+                         class="rubric-page__grey-text rubric-page__grey-text--mb20 rubric-page__grey-text--pointer">
                 Автор: {{ a.author.full_name }}
-              </div>
+              </nuxt-link>
 
               <div class="rubric-page__grey-text rubric-page__grey-text--mb20 rubric-page__grey-text--phone">
                 {{ $dateFns.format(a.posted_at, 'dd MMMM yyyy') }}
               </div>
 
               <div class="rubric-page__tags">
-                <div class="rubric-page__tag" v-for="tag in a.tags">
+                <div class="rubric-page__tag" v-for="tag in a.tags" @click="search(tag.name)">
                   #{{ tag.name }}
                 </div>
               </div>
@@ -307,20 +280,7 @@
               <div class="rubric-page__share">
                 <span>Поделиться:</span>
 
-                <div class="rubric-page__socials">
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#twitter-green"></use>
-                  </svg>
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#fb-green"></use>
-                  </svg>
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#vk-green"></use>
-                  </svg>
-                  <svg width="30" height="30">
-                    <use href="../../assets/img/icons.svg#inst-green"></use>
-                  </svg>
-                </div>
+                <share-social class="rubric-page__socials"></share-social>
               </div>
             </div>
 
@@ -329,7 +289,11 @@
               <div class="rubric-page__details-box rubric-details rubric-details--only-desktop">
                 <div class="rubric-details__row">
                   <span class="rubric-details__grey">Автор:</span>
-                  <span class="rubric-details__green">{{ a.author.full_name }}</span>
+                  <nuxt-link tag="span"
+                             :to="'/author/' + a.author.slug + ':' + a.author.id"
+                             class="rubric-details__green rubric-details__green--pointer">
+                    {{ a.author.full_name }}
+                  </nuxt-link>
                 </div>
                 <div class="rubric-details__row">
                   <span class="rubric-details__grey">Дата:</span>
@@ -341,23 +305,10 @@
                 </div>
                 <div class="rubric-details__row rubric-details__row--center">
                   <span class="rubric-details__grey">Поделиться:</span>
-                  <span class="rubric-details__socials">
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#twitter-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#fb-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#vk-brown"></use>
-                  </svg>
-                  <svg width="24" height="24">
-                    <use href="../../assets/img/icons.svg#inst-brown"></use>
-                  </svg>
-                </span>
+                  <share-social class="rubric-details__socials"></share-social>
                 </div>
-                <div class="rubric-details__row">
-                  <span class="rubric-details__grey rubric-details__grey--italic">Фотография: Pexels</span>
+                <div class="rubric-details__row" v-if="a.photography !== null">
+                  <span class="rubric-details__grey rubric-details__grey--italic">Фотография: {{ a.photography }}</span>
                 </div>
               </div>
 
@@ -428,7 +379,6 @@
 
         <mail-box class="rubric-page__mail-box"></mail-box>
 
-
       </div>
     </div>
   </div>
@@ -438,13 +388,15 @@
 import Swiper, {Pagination} from 'swiper';
 import MailBox from "../../components/MailBox";
 import LoaderBlock from "../../components/LoaderBlock"
+import ShareSocial from "../../components/ShareSocial"
 
 Swiper.use([Pagination]);
 
 export default {
   components: {
     MailBox,
-    LoaderBlock
+    LoaderBlock,
+    ShareSocial
   },
   data() {
     return {
@@ -461,6 +413,11 @@ export default {
     rubricId() {
       return this.$route.params.rubrics.split(':')[1]
     }
+  },
+  methods: {
+    search(tag) {
+      this.$router.push('/search/' + tag)
+    },
   },
   mounted() {
     this.$axios.get(process.env.API + 'articles?filter[id]=' + this.articleId + '&include=rubric,author')
