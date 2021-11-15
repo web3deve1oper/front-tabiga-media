@@ -59,6 +59,10 @@ export default {
     mode: 'out-in'
   },
 
+  server: {
+    port: 3001
+  },
+
   env: {
     API: 'http://sabadoryo.com/api/',
   },
