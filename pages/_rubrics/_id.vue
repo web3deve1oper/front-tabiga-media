@@ -152,7 +152,11 @@
                 </div>
 
                 <div class="recommend-box__list">
-                  <div class="recommend-box__item" v-for="rec in recs">
+                  <nuxt-link tag="div"
+                             :to="'/' + rec.rubric.slag + ':' + rec.rubric.id + '/' + rec.slag + ':' + rec.id"
+                             class="recommend-box__item"
+                             v-for="rec in recs"
+                             :key="rec.id">
                     <div class="recommend-box__item-heading">
                       {{ rec.rubric.title }}
                     </div>
@@ -162,7 +166,7 @@
                     <div class="recommend-box__item-date">
                       {{ $dateFns.format(rec.posted_at, 'dd MMMM yyyy') }}
                     </div>
-                  </div>
+                  </nuxt-link>
                 </div>
               </div>
             </div>
@@ -212,7 +216,10 @@
             </div>
 
             <div class="recommend-box__list">
-              <div class="recommend-box__item" v-for="rec in recs">
+              <nuxt-link tag="div"
+                         :to="'/' + rec.rubric.slag + ':' + rec.rubric.id + '/' + rec.slag + ':' + rec.id"
+                         class="recommend-box__item"
+                         v-for="rec in recs" :key="rec.id">
                 <div class="recommend-box__item-heading">
                   {{ rec.rubric.title }}
                 </div>
@@ -222,7 +229,7 @@
                 <div class="recommend-box__item-date">
                   {{ $dateFns.format(rec.posted_at, 'dd MMMM yyyy') }}
                 </div>
-              </div>
+              </nuxt-link>
             </div>
           </div>
 
@@ -337,7 +344,11 @@
 
           <div class="rubric-page__interest-list">
 
-            <div class="rubric-page__card card card--w327 card--nopadding" v-for="article in interests">
+            <nuxt-link tag="div"
+                       class="rubric-page__card card card--w327 card--nopadding"
+                       :to="'/' + article.rubric.slag + ':' + article.rubric.id + '/' + article.slag + ':' + article.id"
+                       v-for="article in interests"
+                       :key="article.id">
 
               <div class="card__img-box">
                 <img :src="article.preview_image_small_url" alt="" class="card__img card__img--bywidth">
@@ -371,7 +382,7 @@
                 </div>
               </div>
 
-            </div>
+            </nuxt-link>
 
           </div>
 
