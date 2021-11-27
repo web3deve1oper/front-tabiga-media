@@ -104,7 +104,7 @@
                 </div>
               </div>
 
-              <div class="rubric-page__collaborators collaborators-box" v-if="a.staff.length > 0">
+              <div class="rubric-page__collaborators collaborators-box" v-if="a.staff !== null">
                 <div class="collaborators-box__title">
                   В создании статьи также участвовали:
                 </div>
@@ -199,7 +199,7 @@
             </div>
           </div>
 
-          <div class="rubric-page__collaborators collaborators-box collaborators-box--tab" v-if="a.staff.length > 0">
+          <div class="rubric-page__collaborators collaborators-box collaborators-box--tab" v-if="a.staff !== null">
             <div class="collaborators-box__title">
               В создании статьи также участвовали:
             </div>
@@ -319,7 +319,7 @@
                 </div>
               </div>
 
-              <div class="rubric-page__collaborators collaborators-box" v-if="a.staff.length > 0">
+              <div class="rubric-page__collaborators collaborators-box" v-if="a.staff !== null">
                 <div class="collaborators-box__title">
                   В создании статьи также участвовали:
                 </div>
@@ -431,10 +431,12 @@ export default {
     },
   },
   mounted() {
+
+
     this.$axios.get(process.env.API + 'articles?filter[id]=' + this.articleId + '&include=rubric,author')
         .then(response => {
           this.article = response.data.data.data
-
+          console.log(response.data.data.data)
           this.$axios.get(process.env.API + 'articles/' + this.articleId + '/recommended-articles?' +
               'filter[rubric.id]=' + this.rubricId + '&include=rubric,author&itemsPerPage=3')
               .then(response => {

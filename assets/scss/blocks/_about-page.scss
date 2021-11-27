@@ -58,6 +58,7 @@
     ul {
       li {
         @include text-style(1.4rem, 400, $text-color);
+        cursor: pointer;
 
         &:not(:last-child) {
           margin-bottom: 14px;

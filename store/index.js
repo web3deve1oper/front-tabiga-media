@@ -12,7 +12,8 @@ const createStore = () => {
             loadedOrder6: [],
             loadedRedBook: [],
             loadedRubrics: [],
-            loadedFavourites: []
+            loadedFavourites: [],
+            loadedDailyArticle: {}
         },
         mutations: {
             setOrder1(state, info) {
@@ -44,6 +45,9 @@ const createStore = () => {
             },
             setFavourites(state, info) {
                 state.loadedFavourites = info
+            },
+            setDailyArticle(state, info) {
+                state.loadedDailyArticle = info
             }
         },
         actions: {
@@ -51,7 +55,7 @@ const createStore = () => {
                 const order1Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=10&include=rubric')
                 VuexContext.commit('setOrder1', order1Response.data.data.data)
 
-                const randomArticlesResponse = await context.$axios.get(process.env.API + 'random-articles?filter[posted]=1&itemsPerPage=9&include=rubric')
+                const randomArticlesResponse = await context.$axios.get(process.env.API + 'random-articles?filter[posted]=1&sort=-posted_at&itemsPerPage=8&include=rubric')
                 VuexContext.commit('setRandomArticles', randomArticlesResponse.data.data)
 
                 const order2Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=2&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric')
@@ -77,6 +81,9 @@ const createStore = () => {
 
                 const favouriteResponse = await context.$axios.get(process.env.API + 'articles?filter[favourite]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=3&include=rubric,author')
                 VuexContext.commit('setFavourites', favouriteResponse.data.data.data)
+
+                const dailyArticleResponse = await context.$axios.get(process.env.API + 'daily-article?include=rubric')
+                VuexContext.commit('setDailyArticle', dailyArticleResponse.data.data)
             },
 
             setOrder1(vuexContext, order1Info) {
@@ -108,6 +115,9 @@ const createStore = () => {
             },
             setFavourites(vuexContext, favouriteInfo) {
                 vuexContext.commit('setFavourites', favouriteInfo)
+            },
+            setDailyArticle(vuexContext, dailyArticleInfo) {
+                vuexContext.commit('setDailyArticle', dailyArticleInfo)
             }
         },
         getters: {
@@ -140,6 +150,9 @@ const createStore = () => {
             },
             loadedFavourites(state) {
                 return state.loadedFavourites
+            },
+            loadedDailyArticle(state) {
+                return state.loadedDailyArticle
             }
         }
     })

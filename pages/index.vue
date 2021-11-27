@@ -7,11 +7,11 @@
         <div class="welcome-section__main">
 
           <nuxt-link tag="div"
-                     :to="'/' + mainRandomArticle.rubric.slug + ':' + mainRandomArticle.rubric.id +
-                     '/' + mainRandomArticle.slug + ':' + mainRandomArticle.id"
+                     :to="'/' + loadedDailyArticle.rubric.slug + ':' + loadedDailyArticle.rubric.id +
+                     '/' + loadedDailyArticle.slug + ':' + loadedDailyArticle.id"
                      class="welcome-section__box"
-                     v-if="Object.keys(mainRandomArticle).length > 0">
-            <img :src="mainRandomArticle.preview_image_big_url" alt="" class="welcome-section__img">
+                     v-if="Object.keys(loadedDailyArticle).length > 0">
+            <img :src="loadedDailyArticle.preview_image_big_url" alt="" class="welcome-section__img">
 
             <div class="welcome-section__box-info">
               <div class="welcome-section__heading">
@@ -19,11 +19,11 @@
               </div>
 
               <div class="welcome-section__title">
-                {{ mainRandomArticle.title }}
+                {{ loadedDailyArticle.title }}
               </div>
 
               <div class="welcome-section__subtitle">
-                {{ mainRandomArticle.description }}
+                {{ loadedDailyArticle.description }}
               </div>
             </div>
 
@@ -840,9 +840,6 @@ export default {
         return this.$store.getters.loadedOrder1
       }
     },
-    mainRandomArticle() {
-      return this.$store.getters.loadedRandomArticles[0]
-    },
     randomArticles() {
       return this.$store.getters.loadedRandomArticles
     },
@@ -866,9 +863,14 @@ export default {
     },
     loadedFavourites() {
       return this.$store.getters.loadedFavourites
+    },
+    loadedDailyArticle() {
+      return this.$store.getters.loadedDailyArticle
     }
   },
   mounted() {
+
+    console.log(this.loadedDailyArticle)
 
     this.welcomeCardsSwiper = new Swiper('.welcome-section__swiper-container', {
       slidesPerView: "auto",

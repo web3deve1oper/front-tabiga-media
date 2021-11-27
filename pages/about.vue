@@ -53,14 +53,12 @@
         <div class="about-page__rubrics">
           <h6>Рубрики</h6>
           <ul>
-            <li>Красная книга Казахстана</li>
-            <li>Наука</li>
-            <li>Дикая природа</li>
-            <li>Советы</li>
-            <li>Бёрдвочинг</li>
-            <li>Мнения</li>
-            <li>Новости</li>
-            <li>Лица</li>
+            <nuxt-link tag="li"
+                       :to="'/' + rubric.slug + ':' + rubric.id"
+                       v-for="rubric in loadedRubrics"
+                       :key="rubric.id">
+              {{ rubric.title }}
+            </nuxt-link>
           </ul>
         </div>
 
@@ -78,6 +76,11 @@ import MailBox from "../components/MailBox";
 export default {
   components: {
     MailBox
+  },
+  computed: {
+    loadedRubrics() {
+      return this.$store.getters.loadedRubrics
+    }
   }
 }
 </script>
