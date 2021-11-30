@@ -2,6 +2,7 @@
   <main class="main">
 
     <section class="main__section welcome-section">
+
       <div class="welcome-section__container">
 
         <div class="welcome-section__main">
@@ -641,7 +642,7 @@
           </h4>
 
           <nuxt-link tag="div"
-                     :to="'/' + loadedOrder5.rubric.slug + ':' + loadedOrder5.rubric.id"
+                     :to="'/' + loadedOrder5[0].rubric.slug + ':' + loadedOrder5[0].rubric.id"
                      class="default-view__more">
             <p>Смотреть все</p>
             <svg width="24" height="24">
@@ -870,7 +871,7 @@ export default {
   },
   mounted() {
 
-    console.log(this.loadedDailyArticle)
+    console.log(this.loadedOrder5)
 
     this.welcomeCardsSwiper = new Swiper('.welcome-section__swiper-container', {
       slidesPerView: "auto",
