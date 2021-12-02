@@ -8,7 +8,7 @@
   }
 
   &__title {
-    @include text-style(1.4rem, 400, $title-color);
+    @include text-style(1.6rem, 400, $title-color);
     margin-bottom: 10px;
   }
 
@@ -23,12 +23,12 @@
   }
 
   &__name {
-    @include text-style(1.4rem, 400, #A1A1A1);
+    @include text-style(1.6rem, 400, #A1A1A1);
     line-height: 16.5px;
   }
 
   &__value {
-    @include text-style(1.4rem, 600, $text-color);
+    @include text-style(1.6rem, 600, $text-color);
     line-height: 16.5px;
     text-align: right;
   }

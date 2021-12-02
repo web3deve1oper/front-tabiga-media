@@ -1,5 +1,5 @@
 <template>
-  <header class="header" :class="{'header--active' : searchShow, 'header--fixed' : sidebarShow}">
+  <header class="header" :class="{'header--active' : searchShow, 'header--fixed' : sidebarShow, 'header--fixed' : scrollPosition > 0}">
     <div class="header__container">
       <nuxt-link to="/">
         <img src="../assets/img/header-logo.svg" alt="" class="header__logo">
@@ -54,6 +54,19 @@
           Меню
         </div>
 
+        <ul class="sidebar__rubrics">
+          <nuxt-link tag="div"
+                     to="/red-book"
+                     @click.native="sidebarShow = false"
+                     class="sidebar__item sidebar__item--red">Красная книга</nuxt-link>
+          <nuxt-link tag="li"
+                     :to="'/nauka:' + rubric.id"
+                     @click.native="sidebarShow = false"
+                     v-for="rubric in loadedRubrics"
+                     :key="rubric.id">{{ rubric.title }}
+          </nuxt-link>
+        </ul>
+
         <div class="sidebar__items">
           <nuxt-link tag="div"
                      to="/about"
@@ -63,25 +76,7 @@
                      to="/contact"
                      @click.native="sidebarShow = false"
                      class="sidebar__item">Обратная связь</nuxt-link>
-          <nuxt-link tag="div"
-                     to="/red-book"
-                     @click.native="sidebarShow = false"
-                     class="sidebar__item sidebar__item--red">Красная книга</nuxt-link>
-          <button class="sidebar__btn button"
-                  v-scroll-to="{el:'#mail-box', duration: 700, offset: -300,}"
-                  @click.passive="sidebarShow = false">
-            Подписаться на рассылку
-          </button>
         </div>
-
-        <ul class="sidebar__rubrics">
-          <nuxt-link tag="li"
-                     :to="'/nauka:' + rubric.id"
-                     @click.passive="sidebarShow = false"
-                     v-for="rubric in loadedRubrics"
-                     :key="rubric.id">{{ rubric.title }}
-          </nuxt-link>
-        </ul>
       </div>
     </div>
 
@@ -108,7 +103,8 @@ export default {
       showModal: false,
       modalTitle: 'Спасибо!',
       modalText: 'Вы успешно подписались на рассылку от Tabigat media',
-      modalType: true
+      modalType: true,
+      scrollPosition: null
     };
   },
   computed: {
@@ -120,6 +116,10 @@ export default {
     console.log(this.loadedRubrics)
   },
   methods: {
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+    },
+
     search() {
       if (this.searchShow) {
         this.$router.push('/search/' + this.searchData)
@@ -136,6 +136,11 @@ export default {
     },
     onDone() {
       this.sidebarShow = false;
+    }
+  },
+  created() {
+    if(!this.$isServer) {
+      window.addEventListener('scroll', this.updateScroll);
     }
   }
 };

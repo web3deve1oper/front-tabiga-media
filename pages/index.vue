@@ -304,7 +304,7 @@
                        class="accent-section__card accent-card swiper-slide"
                        v-for="article in loadedFavourites"
                        :key="article.id">
-              <img src="../assets/img/placeholder-3.jpeg" alt="" class="accent-card__img">
+              <img :src="article.preview_image_small_url" alt="" class="accent-card__img">
 
               <div class="accent-card__info">
 
@@ -817,6 +817,7 @@ import MailBox from "../components/MailBox";
 Swiper.use([Pagination]);
 
 export default {
+  scrollToTop: true,
   // asyncData( {$dateFns} ) {
   //   return {
   //     dateFormatted: $dateFns.format(new Date())
@@ -868,6 +869,9 @@ export default {
     loadedDailyArticle() {
       return this.$store.getters.loadedDailyArticle
     }
+  },
+  methods: {
+
   },
   mounted() {
 

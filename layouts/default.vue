@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div id="top-dot" class="top-dot"></div>
     <Header />
     <Nuxt />
     <Footer />
@@ -44,5 +45,13 @@
   url('../assets/fonts/FuturaPT-Heavy.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
+}
+
+.top-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
 }
 </style>

@@ -45,7 +45,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     credentials: true,
-    baseURL: "http://localhost:3000"
+    baseURL: "http://localhost:3001"
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -58,7 +58,6 @@ export default {
     name: 'fade',
     mode: 'out-in'
   },
-
   server: {
     port: 3001
   },

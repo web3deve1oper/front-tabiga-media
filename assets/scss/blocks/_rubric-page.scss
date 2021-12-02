@@ -3,6 +3,7 @@
 
   &__container {
     @extend %container;
+    position: relative;
   }
 
   &__breadcrumb {
@@ -127,10 +128,19 @@
     margin-bottom: 80px;
   }
 
+  &__heading {
+    display: none;
+  }
+
+  &__phone-name {
+    display: none;
+  }
+
   &__row {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    position: relative;
   }
 
   &__column {
@@ -176,6 +186,7 @@
     color: $title-color !important;
     line-height: 21px !important;
     margin-bottom: 20px;
+    padding: 0 !important;
   }
 
   &__grey-text {
@@ -237,6 +248,7 @@
 
   &__interest {
     margin-bottom: 100px;
+    position: relative;
   }
 
   &__interest-title {
@@ -318,6 +330,22 @@
     display: none;
   }
 
+  &__ql-snow {
+    position: relative;
+  }
+
+  &__longread-title {
+    @include text-style(2.4rem, 400, $title-color);
+    font-family: $futura;
+    margin-bottom: 10px;
+  }
+
+  &__details-w-icon {
+    &--pointer {
+      cursor: pointer;
+    }
+  }
+
   @include respond(tab-land) {
 
     &__row {
@@ -331,15 +359,11 @@
     &__img-box {
 
       &--h600 {
-        height: 400px;
+        height: 380px;
       }
     }
 
     &__img-info {
-
-      &--desktop-none {
-        display: none;
-      }
 
       &--redbook {
         position: relative;
@@ -399,6 +423,25 @@
   }
 
   @include respond(phone) {
+
+    &__heading {
+      display: block;
+      margin-bottom: 10px;
+      @include text-style(2.4rem, 600, #EB5757);
+      font-family: $futura;
+    }
+
+    &__phone-name {
+      @include text-style(2rem, 400, $title-color);
+      font-family: $futura;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    &__longread-title {
+      display: none;
+    }
+
     &__phone-top {
       display: block;
       margin-bottom: 14px;
@@ -442,7 +485,26 @@
     }
 
     &__img-info {
-      display: none;
+      &--redbook {
+        padding: 14px;
+
+        h4 {
+          @include text-style(2.4rem, 400, $white-color);
+          line-height: 30px;
+        }
+
+        span {
+          &:first-child {
+            @include text-style(1.4rem, 400, #E0E0E0);
+            line-height: 16.5px;
+          }
+
+          &:last-child {
+            @include text-style(1.4rem, 600, $white-color);
+            line-height: 16.5px;
+          }
+        }
+      }
     }
 
     &__views {
@@ -600,8 +662,8 @@
     }
 
     &__text {
-      @include text-style(1.6rem, 400, $title-color);
-      line-height: 18px;
+      font-size: 1.6rem !important;
+      line-height: 18px !important;
       margin-bottom: 20px;
     }
 

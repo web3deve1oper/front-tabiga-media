@@ -25,12 +25,14 @@
             </div>
 
             <div class="rubric-page__phone-details">
-              <div class="rubric-page__details-w-icon rubric-page__details-w-icon--active">
+              <nuxt-link tag="div"
+                         :to="'/author/' + a.author.slug + ':' + a.author.id"
+                         class="rubric-page__details-w-icon rubric-page__details-w-icon--pointer rubric-page__details-w-icon--active">
                 <svg width="18" height="18">
                   <use href="../../assets/img/icons.svg#pen"></use>
                 </svg>
                 {{ a.author.full_name }}
-              </div>
+              </nuxt-link>
               <div class="rubric-page__details-w-icon">
                 <svg width="18" height="18">
                   <use href="../../assets/img/icons.svg#clock"></use>
@@ -44,7 +46,6 @@
           <div class="rubric-page__img-box">
 
             <img :src="a.preview_image_big_url" alt="" class="rubric-page__img">
-
 
             <div class="rubric-page__views rubric-page__views--phone">
               <svg width="24" height="24">
@@ -119,14 +120,15 @@
 
             <div class="rubric-page__column rubric-page__column--w570">
 
-              <div class="ql-snow">
+              <div class="ql-snow rubric-page__ql-snow">
                 <div class="rubric-page__text ql-editor" v-html="a.content"></div>
+                <scroll-up></scroll-up>
               </div>
 
               <nuxt-link tag="div"
                          :to="'/author/' + a.author.slug + ':' + a.author.id"
                          class="rubric-page__grey-text rubric-page__grey-text--mb20 rubric-page__grey-text--pointer">
-                Автор: {{ a.author.full_name }}
+                {{ a.author.full_name }}
               </nuxt-link>
               <div class="rubric-page__grey-text rubric-page__grey-text--mb20 rubric-page__grey-text--phone">
                 {{ $dateFns.format(a.posted_at, 'dd MMMM yyyy') }}
@@ -141,7 +143,7 @@
               <div class="rubric-page__share">
                 <span>Поделиться:</span>
 
-                <share-social class="rubric-page__socials"></share-social>
+                <share-social class="rubric-page__socials" :title="a.title"></share-social>
               </div>
             </div>
 
@@ -192,7 +194,7 @@
             </div>
             <div class="rubric-details__row rubric-details__row--center">
               <span class="rubric-details__grey">Поделиться:</span>
-              <share-social class="rubric-details__socials"></share-social>
+              <share-social class="rubric-details__socials" :title="a.title"></share-social>
             </div>
             <div class="rubric-details__row" v-if="a.photography !== null">
               <span class="rubric-details__grey rubric-details__grey--italic">Фотография: {{ a.photography }}</span>
@@ -244,12 +246,14 @@
             </div>
 
             <div class="rubric-page__phone-details">
-              <div class="rubric-page__details-w-icon rubric-page__details-w-icon--active">
+              <nuxt-link tag="div"
+                         :to="'/author/' + a.author.slug + ':' + a.author.id"
+                         class="rubric-page__details-w-icon rubric-page__details-w-icon--pointer rubric-page__details-w-icon--active">
                 <svg width="18" height="18">
                   <use href="../../assets/img/icons.svg#pen"></use>
                 </svg>
                 {{ a.author.full_name }}
-              </div>
+              </nuxt-link>
               <div class="rubric-page__details-w-icon">
                 <svg width="18" height="18">
                   <use href="../../assets/img/icons.svg#clock"></use>
@@ -264,8 +268,13 @@
 
             <div class="rubric-page__column rubric-page__column--mb20 rubric-page__column--w793">
 
-              <div class="ql-snow">
+              <div class="rubric-page__longread-title">
+                {{ a.title }}
+              </div>
+
+              <div class="ql-snow rubric-page__ql-snow">
                 <div class="rubric-page__text ql-editor" v-html="a.content"></div>
+                <scroll-up></scroll-up>
               </div>
 
               <nuxt-link tag="div"
@@ -287,7 +296,7 @@
               <div class="rubric-page__share">
                 <span>Поделиться:</span>
 
-                <share-social class="rubric-page__socials"></share-social>
+                <share-social class="rubric-page__socials" :title="a.title"></share-social>
               </div>
             </div>
 
@@ -312,7 +321,7 @@
                 </div>
                 <div class="rubric-details__row rubric-details__row--center">
                   <span class="rubric-details__grey">Поделиться:</span>
-                  <share-social class="rubric-details__socials"></share-social>
+                  <share-social class="rubric-details__socials" :title="a.title"></share-social>
                 </div>
                 <div class="rubric-details__row" v-if="a.photography !== null">
                   <span class="rubric-details__grey rubric-details__grey--italic">Фотография: {{ a.photography }}</span>
@@ -400,6 +409,7 @@ import Swiper, {Pagination} from 'swiper';
 import MailBox from "../../components/MailBox";
 import LoaderBlock from "../../components/LoaderBlock"
 import ShareSocial from "../../components/ShareSocial"
+import ScrollUp from "../../components/ScrollUp";
 
 Swiper.use([Pagination]);
 
@@ -407,14 +417,15 @@ export default {
   components: {
     MailBox,
     LoaderBlock,
-    ShareSocial
+    ShareSocial,
+    ScrollUp
   },
   data() {
     return {
       article: [],
       loader: true,
       interests: [],
-      recs: []
+      recs: [],
     }
   },
   computed: {
@@ -429,10 +440,11 @@ export default {
     search(tag) {
       this.$router.push('/search/' + tag)
     },
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+    }
   },
   mounted() {
-
-
     this.$axios.get(process.env.API + 'articles?filter[id]=' + this.articleId + '&include=rubric,author')
         .then(response => {
           this.article = response.data.data.data
@@ -454,7 +466,7 @@ export default {
               .catch(e => console.log(e))
         })
         .catch(e => console.log(e))
-  }
+  },
 }
 </script>
 

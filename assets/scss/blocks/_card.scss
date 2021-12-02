@@ -356,6 +356,11 @@
     }
 
     &__img {
+      &--bywidth {
+        height: 100%;
+        width: unset;
+      }
+
       &--bywidth-not-tablet {
         height: 100%;
         width: unset;
@@ -425,6 +430,11 @@
     }
 
     &__img {
+      &--bywidth {
+        height: unset;
+        width: 100%;
+      }
+
       &--bywidth-not-tablet {
         height: 100%;
         width: unset;

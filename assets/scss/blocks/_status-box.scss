@@ -3,6 +3,14 @@
   background-color: #BF927A;
   border-radius: 4px;
 
+  &--desktop-none {
+    display: none;
+  }
+
+  &--desktop-show {
+    display: block;
+  }
+
   &--green {
     background-color: #698456;
   }
@@ -39,6 +47,14 @@
 
   @include respond(phone) {
     padding: 16px;
+
+    &--desktop-none {
+      display: block;
+    }
+
+    &--desktop-show {
+      display: none;
+    }
 
     &__title {
       @include text-style(1.8rem, 600, $white-color);

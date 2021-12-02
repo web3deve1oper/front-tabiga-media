@@ -12,6 +12,10 @@
 
       <div class="rubric-page__main">
 
+        <h4 class="rubric-page__heading">Красная книга Казахстана</h4>
+
+        <p class="rubric-page__phone-name">{{ card.name }}</p>
+
         <div class="rubric-page__img-box rubric-page__img-box--h600">
 
           <img :src="card.preview_image_big_url" alt="" class="rubric-page__img">
@@ -110,6 +114,18 @@
 
         </div>
 
+        <div class="rubric-page__status-box status-box status-box--desktop-none" v-if="card.status !== null">
+
+          <div class="status-box__title">
+            Статус
+          </div>
+
+          <ul class="status-box__list">
+            <li v-for="s in card.status">{{ s }}</li>
+          </ul>
+
+        </div>
+
         <div class="rubric-page__row rubric-page__row--phone-column">
 
           <div class="rubric-page__column rubric-page__column--mb20 rubric-page__column--w690">
@@ -122,7 +138,7 @@
 
           <div class="rubric-page__column rubric-page__column--w470">
 
-            <div class="rubric-page__status-box status-box" v-if="card.status !== null">
+            <div class="rubric-page__status-box status-box status-box--desktop-show" v-if="card.status !== null">
 
               <div class="status-box__title">
                 Статус

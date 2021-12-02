@@ -51,7 +51,8 @@ html, body {
   font-family: $base-font;
   background-color: #f9fafc;
   //scroll-behavior: smooth;
-  overflow-x: hidden;
+  //overflow-x: hidden;
+  //overflow-y: scroll;
 }
 
 img {
