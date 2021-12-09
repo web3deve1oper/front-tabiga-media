@@ -61,19 +61,25 @@ export default {
         email: this.mail
       })
           .then(response => {
-            if (response.data.message === "OK") {
-              this.modalType = true
-              this.showModal = true
-              this.modalTitle = 'Спасибо!'
-              this.modalSubtitle = 'Вы успешно подписались на рассылку от Tabigat media'
-              this.mail = ''
-            } else {
-              this.modalType = false
-              this.showModal = true
-              this.modalTitle = 'Упс!'
-              this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
-              this.mail = ''
-            }
+            this.$axios.post('https://api.sendpulse.com/addressbooks/' + localStorage.bookId + '/emails', {
+              emails: this.mail
+            })
+                .then(response => {
+                  console.log(response)
+                })
+            // if (response.data.message === "OK") {
+            //   this.modalType = true
+            //   this.showModal = true
+            //   this.modalTitle = 'Спасибо!'
+            //   this.modalSubtitle = 'Вы успешно подписались на рассылку от Tabigat media'
+            //   this.mail = ''
+            // } else {
+            //   this.modalType = false
+            //   this.showModal = true
+            //   this.modalTitle = 'Упс!'
+            //   this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
+            //   this.mail = ''
+            // }
           })
           .catch(e => {
             if (e.response.data.errors.email[0] === "The email has already been taken.") {
@@ -102,6 +108,28 @@ export default {
       //     })
       //     .catch(e => console.log(e))
     }
+  },
+  mounted() {
+    this.$axios.post('https://api.sendpulse.com/oauth/access_token', {
+      "grant_type": "client_credentials",
+      "client_id": process.env.clientId,
+      "client_secret": process.env.clientSecret
+    })
+        .then(response => {
+          localStorage.access_token = response.data.access_token
+
+          this.$axios.get('https://api.sendpulse.com/addressbooks?limit=10', {
+            headers: {
+              'Authorization': 'Bearer ' + response.data.access_token
+            }
+          })
+              .then(response => {
+                console.log(response.data)
+                localStorage.bookId = response.data[0].id
+              })
+              .catch(e => console.log(e))
+        })
+        .catch(e => console.log(e))
   }
 }
 </script>

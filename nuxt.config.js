@@ -64,6 +64,8 @@ export default {
 
   env: {
     API: 'http://sabadoryo.com/api/',
+    clientId: '739b4be15d54f0f6459509b88710252c',
+    clientSecret: '338d4703f1c607f4cfbc969288df0d58'
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

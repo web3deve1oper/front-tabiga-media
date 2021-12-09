@@ -52,38 +52,38 @@ const createStore = () => {
         },
         actions: {
             async nuxtServerInit(VuexContext, context) {
-                const order1Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=10&include=rubric')
-                VuexContext.commit('setOrder1', order1Response.data.data.data)
-
-                const randomArticlesResponse = await context.$axios.get(process.env.API + 'random-articles?filter[posted]=1&sort=-posted_at&itemsPerPage=8&include=rubric')
-                VuexContext.commit('setRandomArticles', randomArticlesResponse.data.data)
-
-                const order2Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=2&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric')
-                VuexContext.commit('setOrder2', order2Response.data.data.data)
-
-                const order3Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=3&filter[posted]=1&sort=-posted_at&itemsPerPage=6&include=rubric,author')
-                VuexContext.commit('setOrder3', order3Response.data.data.data)
-
-                const order4Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=4&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric,author')
-                VuexContext.commit('setOrder4', order4Response.data.data.data)
-
-                const order5Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=5&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric')
-                VuexContext.commit('setOrder5', order5Response.data.data.data)
-
-                const order6Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=6&filter[posted]=1&sort=-posted_at&itemsPerPage=8&include=rubric,author')
-                VuexContext.commit('setOrder6', order6Response.data.data.data)
-
-                const redBookResponse = await context.$axios.get(process.env.API + 'red-book?sort=-posted_at&itemsPerPage=4')
-                VuexContext.commit('setRedBook', redBookResponse.data.data.data)
-
-                const rubricsResponse = await context.$axios.get(process.env.API + 'rubrics')
-                VuexContext.commit('setRubrics', rubricsResponse.data.data.data)
-
-                const favouriteResponse = await context.$axios.get(process.env.API + 'articles?filter[favourite]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=3&include=rubric,author')
-                VuexContext.commit('setFavourites', favouriteResponse.data.data.data)
-
-                const dailyArticleResponse = await context.$axios.get(process.env.API + 'daily-article?include=rubric')
-                VuexContext.commit('setDailyArticle', dailyArticleResponse.data.data)
+                // const order1Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=10&include=rubric')
+                // VuexContext.commit('setOrder1', order1Response.data.data.data)
+                //
+                // const randomArticlesResponse = await context.$axios.get(process.env.API + 'random-articles?filter[posted]=1&sort=-posted_at&itemsPerPage=8&include=rubric')
+                // VuexContext.commit('setRandomArticles', randomArticlesResponse.data.data)
+                //
+                // const order2Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=2&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric')
+                // VuexContext.commit('setOrder2', order2Response.data.data.data)
+                //
+                // const order3Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=3&filter[posted]=1&sort=-posted_at&itemsPerPage=6&include=rubric,author')
+                // VuexContext.commit('setOrder3', order3Response.data.data.data)
+                //
+                // const order4Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=4&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric,author')
+                // VuexContext.commit('setOrder4', order4Response.data.data.data)
+                //
+                // const order5Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=5&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric')
+                // VuexContext.commit('setOrder5', order5Response.data.data.data)
+                //
+                // const order6Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=6&filter[posted]=1&sort=-posted_at&itemsPerPage=8&include=rubric,author')
+                // VuexContext.commit('setOrder6', order6Response.data.data.data)
+                //
+                // const redBookResponse = await context.$axios.get(process.env.API + 'red-book?sort=-posted_at&itemsPerPage=4')
+                // VuexContext.commit('setRedBook', redBookResponse.data.data.data)
+                //
+                // const rubricsResponse = await context.$axios.get(process.env.API + 'rubrics')
+                // VuexContext.commit('setRubrics', rubricsResponse.data.data.data)
+                //
+                // const favouriteResponse = await context.$axios.get(process.env.API + 'articles?filter[favourite]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=3&include=rubric,author')
+                // VuexContext.commit('setFavourites', favouriteResponse.data.data.data)
+                //
+                // const dailyArticleResponse = await context.$axios.get(process.env.API + 'daily-article?include=rubric')
+                // VuexContext.commit('setDailyArticle', dailyArticleResponse.data.data)
             },
 
             setOrder1(vuexContext, order1Info) {

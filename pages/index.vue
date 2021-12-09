@@ -870,12 +870,8 @@ export default {
       return this.$store.getters.loadedDailyArticle
     }
   },
-  methods: {
-
-  },
+  methods: {},
   mounted() {
-
-    console.log(this.loadedOrder5)
 
     this.welcomeCardsSwiper = new Swiper('.welcome-section__swiper-container', {
       slidesPerView: "auto",
