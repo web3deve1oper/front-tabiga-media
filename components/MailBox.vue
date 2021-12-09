@@ -62,24 +62,30 @@ export default {
       })
           .then(response => {
             this.$axios.post('https://api.sendpulse.com/addressbooks/' + localStorage.bookId + '/emails', {
-              emails: this.mail
+              emails: [this.mail]
+            }, {
+              headers: {
+                'Authorization': 'Bearer ' + localStorage.access_token
+              }
             })
                 .then(response => {
                   console.log(response)
+                  if (response.data.result === true) {
+                    this.modalType = true
+                    this.showModal = true
+                    this.modalTitle = 'Спасибо!'
+                    this.modalSubtitle = 'Вы успешно подписались на рассылку от Tabigat media'
+                    this.mail = ''
+                  } else {
+                    this.modalType = false
+                    this.showModal = true
+                    this.modalTitle = 'Упс!'
+                    this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
+                    this.mail = ''
+                  }
                 })
-            // if (response.data.message === "OK") {
-            //   this.modalType = true
-            //   this.showModal = true
-            //   this.modalTitle = 'Спасибо!'
-            //   this.modalSubtitle = 'Вы успешно подписались на рассылку от Tabigat media'
-            //   this.mail = ''
-            // } else {
-            //   this.modalType = false
-            //   this.showModal = true
-            //   this.modalTitle = 'Упс!'
-            //   this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
-            //   this.mail = ''
-            // }
+                .catch(e => console.log(e))
+
           })
           .catch(e => {
             if (e.response.data.errors.email[0] === "The email has already been taken.") {
@@ -96,17 +102,6 @@ export default {
               this.mail = ''
             }
           })
-
-      // this.$axios.post(process.env.API + 'feedbacks/create', {
-      //   full_name: 'Asle',
-      //   email: 'asd@asd.et',
-      //   type: 'kekek',
-      //   message: 'asdasd'
-      // })
-      //     .then(response => {
-      //       console.log(response)
-      //     })
-      //     .catch(e => console.log(e))
     }
   },
   mounted() {
