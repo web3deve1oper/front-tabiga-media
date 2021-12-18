@@ -12,6 +12,10 @@
         <span>{{ results.length }}</span>
       </div>
 
+      <div class="search-page__search-var">
+        {{ $route.params.result }}
+      </div>
+
       <div class="search-page__list">
 
         <nuxt-link tag="div"

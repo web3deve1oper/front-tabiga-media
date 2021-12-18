@@ -9,10 +9,16 @@
     margin-bottom: 20px;
   }
 
+  &__search-var {
+    @include text-style(1.6rem, 400, #00332a);
+    font-style: italic;
+    margin-bottom: 30px;
+  }
+
   &__heading {
     position: relative;
     display: inline-block;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 
     span {
       @include text-style(2.4rem, 600, #BF927A);
@@ -40,14 +46,16 @@
     padding: 20px 0 80px;
 
     &__heading {
-      margin-bottom: 20px;
-
       span {
         @include text-style(1.8rem, 600, #BF927A);
         position: absolute;
         top: 0;
         left: calc(100% + 2px);
       }
+    }
+
+    &__search-var {
+      margin-bottom: 20px;
     }
 
     &__card {
