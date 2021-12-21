@@ -4,8 +4,19 @@
     <Header />
     <Nuxt />
     <Footer />
+    <scroll-up></scroll-up>
   </div>
 </template>
+
+<script>
+import ScrollUp from "../components/ScrollUp";
+
+export default {
+  components: {
+    ScrollUp
+  }
+}
+</script>
 
 <style lang="scss">
 @import '../node_modules/swiper/swiper-bundle.css';

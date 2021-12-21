@@ -54,7 +54,7 @@
               147k
             </div>
 
-            <div class="rubric-page__img-info">
+            <div class="rubric-page__img-info rubric-page__img-info--phone-none">
 
               <div class="rubric-page__views rubric-page__views--mb10">
                 <svg width="24" height="24">
@@ -120,10 +120,7 @@
 
             <div class="rubric-page__column rubric-page__column--w570">
 
-              <div class="ql-snow rubric-page__ql-snow">
-                <div class="rubric-page__text ql-editor" v-html="a.content"></div>
-                <scroll-up></scroll-up>
-              </div>
+              <div class="rubric-page__text" v-html="a.content"></div>
 
               <nuxt-link tag="div"
                          :to="'/author/' + a.author.slug + ':' + a.author.id"
@@ -272,10 +269,7 @@
                 {{ a.title }}
               </div>
 
-              <div class="ql-snow rubric-page__ql-snow">
-                <div class="rubric-page__text ql-editor" v-html="a.content"></div>
-                <scroll-up></scroll-up>
-              </div>
+              <div class="rubric-page__text" v-html="a.content"></div>
 
               <nuxt-link tag="div"
                          :to="'/author/' + a.author.slug + ':' + a.author.id"
@@ -290,6 +284,17 @@
               <div class="rubric-page__tags">
                 <div class="rubric-page__tag" v-for="tag in a.tags" @click="search(tag.name)">
                   #{{ tag.name }}
+                </div>
+              </div>
+
+              <div class="rubric-page__collaborators collaborators-box collaborators-box--phone-only" v-if="a.staff !== null">
+                <div class="collaborators-box__title">
+                  В создании статьи также участвовали:
+                </div>
+
+                <div class="collaborators-box__row" v-for="s in a.staff">
+                  <span class="collaborators-box__name">{{ s.title }}:</span>
+                  <span class="collaborators-box__value">{{ s.full_name }}</span>
                 </div>
               </div>
 
@@ -328,7 +333,7 @@
                 </div>
               </div>
 
-              <div class="rubric-page__collaborators collaborators-box" v-if="a.staff !== null">
+              <div class="rubric-page__collaborators collaborators-box collaborators-box--phone-hidden" v-if="a.staff !== null">
                 <div class="collaborators-box__title">
                   В создании статьи также участвовали:
                 </div>
@@ -409,7 +414,6 @@ import Swiper, {Pagination} from 'swiper';
 import MailBox from "../../components/MailBox";
 import LoaderBlock from "../../components/LoaderBlock"
 import ShareSocial from "../../components/ShareSocial"
-import ScrollUp from "../../components/ScrollUp";
 
 Swiper.use([Pagination]);
 
@@ -417,8 +421,7 @@ export default {
   components: {
     MailBox,
     LoaderBlock,
-    ShareSocial,
-    ScrollUp
+    ShareSocial
   },
   data() {
     return {
@@ -448,17 +451,14 @@ export default {
     this.$axios.get(process.env.API + 'articles?filter[id]=' + this.articleId + '&include=rubric,author')
         .then(response => {
           this.article = response.data.data.data
-          console.log(response.data.data.data)
           this.$axios.get(process.env.API + 'articles/' + this.articleId + '/recommended-articles?' +
-              'filter[rubric.id]=' + this.rubricId + '&include=rubric,author&itemsPerPage=3')
+              'filter[rubric.id]=' + this.rubricId + 'filter[posted]=1&&include=rubric,author&itemsPerPage=3')
               .then(response => {
                 this.interests = response.data.data
-
                 this.$axios.get(process.env.API + 'articles/' + this.articleId + '/recommended-articles?' +
-                    'include=rubric,author&itemsPerPage=10')
+                    'filter[posted]=1&include=rubric,author&itemsPerPage=10')
                     .then(response => {
                       this.recs = response.data.data
-
                       this.loader = false
                     })
                     .catch(e => console.log(e))
@@ -469,12 +469,3 @@ export default {
   },
 }
 </script>
-
-<style lang="css">
-@import "../../node_modules/vue2-editor/dist/vue2-editor.css";
-
-/* Import the Quill styles you want */
-@import '../../node_modules/quill/dist/quill.core.css';
-@import '../../node_modules/quill/dist/quill.bubble.css';
-@import '../../node_modules/quill/dist/quill.snow.css';
-</style>

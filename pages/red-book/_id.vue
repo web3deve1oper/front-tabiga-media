@@ -130,9 +130,7 @@
 
           <div class="rubric-page__column rubric-page__column--mb20 rubric-page__column--w690">
 
-            <div class="ql-snow">
-              <div class="rubric-page__text ql-editor" v-html="card.content"></div>
-            </div>
+            <div class="rubric-page__text" v-html="card.content"></div>
 
           </div>
 
@@ -261,12 +259,3 @@ export default {
   }
 }
 </script>
-
-<style lang="css">
-@import "../../node_modules/vue2-editor/dist/vue2-editor.css";
-
-/* Import the Quill styles you want */
-@import '../../node_modules/quill/dist/quill.core.css';
-@import '../../node_modules/quill/dist/quill.bubble.css';
-@import '../../node_modules/quill/dist/quill.snow.css';
-</style>

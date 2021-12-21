@@ -91,7 +91,7 @@ export default {
   },
   computed: {},
   mounted() {
-    this.$axios.get(process.env.API + 'articles?filter[search]=' + this.$route.params.result + '&sort=-posted_at&include=rubric,author')
+    this.$axios.get(process.env.API + 'articles?filter[search]=' + this.$route.params.result + '&filter[posted]=1&sort=-posted_at&include=rubric,author')
         .then(response => {
           this.results = response.data.data.data
           this.loader = false

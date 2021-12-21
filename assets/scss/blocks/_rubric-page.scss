@@ -188,6 +188,11 @@
     margin-bottom: 20px;
     padding: 0 !important;
     font-family: $base-font !important;
+
+    img {
+      width: 100% !important;
+      height: unset !important;
+    }
   }
 
   &__grey-text {
@@ -358,6 +363,7 @@
     }
 
     &__img-box {
+      height: 255px;
 
       &--h600 {
         height: 380px;
@@ -486,6 +492,11 @@
     }
 
     &__img-info {
+
+      &--phone-none {
+        display: none;
+      }
+
       &--redbook {
         padding: 14px;
 

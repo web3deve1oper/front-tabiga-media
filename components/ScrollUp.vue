@@ -1,7 +1,7 @@
 <template>
   <svg width="48"
        height="48"
-       v-scroll-to="{el:'#top-dot', duration: 700, offset: 0,}">
+       v-scroll-to="{el:'#top-dot', duration: 700, offset: 0,}" v-if="scrollPosition > 250">
     <use href="../assets/img/icons.svg#arrow-up"></use>
   </svg>
 </template>
@@ -10,28 +10,25 @@
 export default {
   data() {
     return {
-      // scrollPosition: null
+      scrollPosition: null
     };
   },
   methods: {
-    // updateScroll() {
-    //   this.scrollPosition = window.scrollY
-    // }
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+    }
   },
   computed: {
-    // endPoint() {
-      // return document.getElementsByClassName('rubric-page__scroll-container').offsetTop - window.innerHeight + 110
-    // }
   },
   watch: {
-    // scrollPosition() {
-    //   console.log(this.scrollPosition)
-    // }
+    scrollPosition() {
+      console.log(this.scrollPosition)
+    }
   },
   created() {
-    // if(!this.$isServer) {
-    //   window.addEventListener('scroll', this.updateScroll);
-    // }
+    if (!this.$isServer) {
+      window.addEventListener('scroll', this.updateScroll);
+    }
   },
 }
 </script>
@@ -39,10 +36,10 @@ export default {
 <style scoped lang="scss">
 @import "assets/scss/abstracts/mixins";
 svg {
-  position: absolute;
+  position: fixed;
   cursor: pointer;
-  bottom: 0;
-  right: -100px;
+  bottom: 40px;
+  right: 20px;
 
   @include respond(phone) {
     display: none;

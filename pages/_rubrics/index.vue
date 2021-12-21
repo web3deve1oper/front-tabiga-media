@@ -115,7 +115,7 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get(process.env.API + 'articles?filter[rubric.id]=' + this.rubricId + '&sort=-posted_at&include=rubric,author')
+    this.$axios.get(process.env.API + 'articles?filter[rubric.id]=' + this.rubricId + '&filter[posted]=1&sort=-posted_at&include=rubric,author')
         .then(response => {
           this.rubric = response.data.data.data
           console.log(response.data.data.data)

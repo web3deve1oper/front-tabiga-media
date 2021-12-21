@@ -7,6 +7,10 @@
     display: none;
   }
 
+  &--phone-only {
+    display: none;
+  }
+
   &__title {
     @include text-style(1.6rem, 400, $title-color);
     margin-bottom: 10px;
@@ -36,6 +40,16 @@
   @include respond(tab-land) {
     &--tab {
       display: block;
+    }
+  }
+
+  @include respond(phone) {
+    &--phone-only {
+      display: block;
+    }
+
+    &--phone-hidden {
+      display: none;
     }
   }
 }
