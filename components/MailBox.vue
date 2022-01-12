@@ -69,7 +69,6 @@ export default {
               }
             })
                 .then(response => {
-                  console.log(response)
                   if (response.data.result === true) {
                     this.modalType = true
                     this.showModal = true
@@ -119,7 +118,6 @@ export default {
             }
           })
               .then(response => {
-                console.log(response.data)
                 localStorage.bookId = response.data[0].id
               })
               .catch(e => console.log(e))

@@ -20,11 +20,11 @@ export default {
   },
   computed: {
   },
-  watch: {
-    scrollPosition() {
-      console.log(this.scrollPosition)
-    }
-  },
+  // watch: {
+  //   scrollPosition() {
+  //     console.log(this.scrollPosition)
+  //   }
+  // },
   created() {
     if (!this.$isServer) {
       window.addEventListener('scroll', this.updateScroll);

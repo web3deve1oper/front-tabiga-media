@@ -37,8 +37,8 @@
 
           <div class="footer__links">
             <nuxt-link tag="div" to="/about" class="footer__link">О проекте</nuxt-link>
-            <div class="footer__link">Политика конфиденциальности</div>
-            <div class="footer__link">Правовая информация</div>
+            <nuxt-link tag="div" to="/policy" class="footer__link">Политика конфиденциальности</nuxt-link>
+            <nuxt-link tag="div" to="/legal" class="footer__link">Правовая информация</nuxt-link>
             <nuxt-link tag="div" to="/contact" class="footer__link">Обратная связь</nuxt-link>
           </div>
         </div>
@@ -62,8 +62,8 @@
         <div class="footer__link-box footer__link-box--mobile">
           <div class="footer__links">
             <nuxt-link tag="div" to="/about" class="footer__link">О проекте</nuxt-link>
-            <div class="footer__link">Политика конфиденциальности</div>
-            <div class="footer__link">Правовая информация</div>
+            <nuxt-link tag="div" to="/policy" class="footer__link">Политика конфиденциальности</nuxt-link>
+            <nuxt-link tag="div" to="/legal" class="footer__link">Правовая информация</nuxt-link>
             <nuxt-link tag="div" to="/contact" class="footer__link">Обратная связь</nuxt-link>
           </div>
         </div>

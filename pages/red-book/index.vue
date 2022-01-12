@@ -101,7 +101,6 @@ export default {
     this.$axios.get(process.env.API + 'red-book?sort=-posted_at')
         .then(response => {
           this.rubric = response.data.data.data
-          console.log(response.data.data.data)
           this.loader = false
         })
         .catch(e => console.log(e))

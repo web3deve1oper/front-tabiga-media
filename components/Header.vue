@@ -2,7 +2,7 @@
   <header class="header" :class="{'header--active' : searchShow, 'header--fixed' : sidebarShow, 'header--fixed' : scrollPosition > 0}">
     <div class="header__container">
       <nuxt-link to="/">
-        <img src="../assets/img/header-logo.svg" alt="" class="header__logo">
+        <img src="../assets/img/header-logo.png" alt="" class="header__logo">
       </nuxt-link>
 
       <ul class="header__links header__links--w510">
@@ -111,9 +111,6 @@ export default {
     loadedRubrics() {
       return this.$store.getters.loadedRubrics
     }
-  },
-  mounted() {
-    console.log(this.loadedRubrics)
   },
   methods: {
     updateScroll() {

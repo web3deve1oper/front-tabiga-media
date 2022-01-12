@@ -8,11 +8,11 @@
         <div class="welcome-section__main">
 
           <nuxt-link tag="div"
-                     :to="'/' + loadedDailyArticle.rubric.slug + ':' + loadedDailyArticle.rubric.id +
-                     '/' + loadedDailyArticle.slug + ':' + loadedDailyArticle.id"
+                     :to="'/' + loadedDailyArticle[0].rubric.slug + ':' + loadedDailyArticle[0].rubric.id +
+                     '/' + loadedDailyArticle[0].slug + ':' + loadedDailyArticle[0].id"
                      class="welcome-section__box"
-                     v-if="Object.keys(loadedDailyArticle).length > 0">
-            <img :src="loadedDailyArticle.preview_image_big_url" alt="" class="welcome-section__img">
+                     v-if="loadedDailyArticle.length > 0">
+            <img :src="loadedDailyArticle[0].preview_image_big_url" alt="" class="welcome-section__img">
 
             <div class="welcome-section__box-info">
               <div class="welcome-section__heading">
@@ -20,11 +20,11 @@
               </div>
 
               <div class="welcome-section__title">
-                {{ loadedDailyArticle.title }}
+                {{ loadedDailyArticle[0].title }}
               </div>
 
               <div class="welcome-section__subtitle">
-                {{ loadedDailyArticle.description }}
+                {{ loadedDailyArticle[0].description }}
               </div>
             </div>
 
@@ -178,7 +178,7 @@
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ article.views }}
               </div>
 
             </div>
@@ -221,7 +221,7 @@
                   <svg width="20" height="20">
                     <use href="../assets/img/icons.svg#eye"></use>
                   </svg>
-                  147k
+                  {{ article.views }}
                 </div>
 
               </div>
@@ -287,7 +287,7 @@
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ article.views }}
               </span>
               </div>
             </div>
@@ -327,7 +327,7 @@
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ article.views }}
               </span>
                 </div>
               </div>
@@ -376,7 +376,7 @@
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ article.views }}
               </div>
 
             </div>
@@ -425,7 +425,7 @@
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ article.views }}
               </div>
 
             </div>
@@ -468,7 +468,7 @@
                   <svg width="20" height="20">
                     <use href="../assets/img/icons.svg#eye"></use>
                   </svg>
-                  147k
+                  {{ article.views }}
                 </div>
 
               </div>
@@ -573,7 +573,7 @@
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ loadedOrder4[0].views }}
               </div>
 
             </div>
@@ -665,7 +665,7 @@
                 <svg width="20" height="20">
                   <use href="../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ article.views }}
               </div>
 
             </div>
@@ -711,7 +711,7 @@
                   <svg width="20" height="20">
                     <use href="../assets/img/icons.svg#eye"></use>
                   </svg>
-                  147k
+                  {{ article.views }}
                 </div>
 
               </div>
@@ -867,7 +867,13 @@ export default {
       return this.$store.getters.loadedFavourites
     },
     loadedDailyArticle() {
-      return this.$store.getters.loadedDailyArticle
+      if (this.$store.getters.loadedDailyArticle) {
+        let dailyArticle = []
+        dailyArticle.push(this.$store.getters.loadedDailyArticle)
+        return dailyArticle
+      } else {
+        return []
+      }
     }
   },
   methods: {},

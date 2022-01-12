@@ -51,7 +51,7 @@
               <svg width="24" height="24">
                 <use href="../../assets/img/icons.svg#eye"></use>
               </svg>
-              147k
+              {{ a.views }}
             </div>
 
             <div class="rubric-page__img-info rubric-page__img-info--phone-none">
@@ -60,7 +60,7 @@
                 <svg width="24" height="24">
                   <use href="../../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ a.views }}
               </div>
 
               <div class="rubric-page__img-title">
@@ -287,7 +287,8 @@
                 </div>
               </div>
 
-              <div class="rubric-page__collaborators collaborators-box collaborators-box--phone-only" v-if="a.staff !== null">
+              <div class="rubric-page__collaborators collaborators-box collaborators-box--phone-only"
+                   v-if="a.staff !== null">
                 <div class="collaborators-box__title">
                   В создании статьи также участвовали:
                 </div>
@@ -333,7 +334,8 @@
                 </div>
               </div>
 
-              <div class="rubric-page__collaborators collaborators-box collaborators-box--phone-hidden" v-if="a.staff !== null">
+              <div class="rubric-page__collaborators collaborators-box collaborators-box--phone-hidden"
+                   v-if="a.staff !== null">
                 <div class="collaborators-box__title">
                   В создании статьи также участвовали:
                 </div>
@@ -371,7 +373,7 @@
                   <svg width="20" height="20">
                     <use href="../../assets/img/icons.svg#eye"></use>
                   </svg>
-                  147k
+                  {{ article.views }}
                 </div>
 
               </div>
@@ -465,6 +467,9 @@ export default {
               })
               .catch(e => console.log(e))
         })
+        .catch(e => console.log(e))
+
+    this.$axios.post(process.env.API + 'articles/' + this.articleId + '/visited')
         .catch(e => console.log(e))
   },
 }

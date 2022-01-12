@@ -38,7 +38,7 @@
                 <svg width="20" height="20">
                   <use href="../../assets/img/icons.svg#eye"></use>
                 </svg>
-                147k
+                {{ article.views }}
               </div>
 
             </div>
@@ -118,7 +118,6 @@ export default {
     this.$axios.get(process.env.API + 'articles?filter[rubric.id]=' + this.rubricId + '&filter[posted]=1&sort=-posted_at&include=rubric,author')
         .then(response => {
           this.rubric = response.data.data.data
-          console.log(response.data.data.data)
           this.loader = false
         })
         .catch(e => console.log(e))

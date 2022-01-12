@@ -56,7 +56,7 @@
               <svg width="20" height="20">
                 <use href="../../assets/img/icons.svg#eye"></use>
               </svg>
-              147k
+              {{ article.views }}
             </div>
 
           </div>

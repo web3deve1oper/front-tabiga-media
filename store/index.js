@@ -13,7 +13,7 @@ const createStore = () => {
             loadedRedBook: [],
             loadedRubrics: [],
             loadedFavourites: [],
-            loadedDailyArticle: {}
+            loadedDailyArticle: []
         },
         mutations: {
             setOrder1(state, info) {
@@ -82,7 +82,7 @@ const createStore = () => {
                 const favouriteResponse = await context.$axios.get(process.env.API + 'articles?filter[favourite]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=3&include=rubric,author')
                 VuexContext.commit('setFavourites', favouriteResponse.data.data.data)
 
-                const dailyArticleResponse = await context.$axios.get(process.env.API + 'daily-article?include=rubric')
+                const dailyArticleResponse = await context.$axios.get(process.env.API + 'daily-article?filter[posted]=1&itemsPerPage=1&include=rubric')
                 VuexContext.commit('setDailyArticle', dailyArticleResponse.data.data)
             },
 
