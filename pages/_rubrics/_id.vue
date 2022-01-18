@@ -7,7 +7,7 @@
         <div class="rubric-page__breadcrumb breadcrumb">
           <nuxt-link to="/">Главная</nuxt-link>
           /
-          <nuxt-link :to="'/' + a.rubric.slug + ':' + a.rubric.id">Новости</nuxt-link>
+          <nuxt-link :to="'/' + a.rubric.slug + ':' + a.rubric.id">{{ a.rubric.title }}</nuxt-link>
           /
           <span>{{ a.title }}</span>
         </div>
