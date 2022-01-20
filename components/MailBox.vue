@@ -87,6 +87,9 @@ export default {
               headers: {
                 'Authorization': 'Bearer ' + localStorage.access_token
               }
+            }).catch(e => {
+              document.querySelector('.ultra-main').removeEventListener('wheel', this.preventScroll)
+              this.$store.commit('setLoadingState', false)
             })
                 .then(response => {
                   if (response.data.result === true) {
@@ -108,7 +111,6 @@ export default {
                   }
                 })
                 .catch(e => console.log(e))
-
           })
           .catch(e => {
             if (e.response.data.errors.email[0] === "The email has already been taken.") {
