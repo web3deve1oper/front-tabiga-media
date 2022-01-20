@@ -66,6 +66,8 @@
           </nuxt-link>
         </div>
 
+        <mail-box class="rubric-page__mail-box"></mail-box>
+
 <!--        <div class="rubrics__paddings padding">-->
 
 <!--          <div class="padding__arrow padding__arrow&#45;&#45;left">-->
@@ -98,10 +100,12 @@
 
 <script>
 import LoaderBlock from "../../components/LoaderBlock";
+import MailBox from "../../components/MailBox";
 
 export default {
   components: {
-    LoaderBlock
+    LoaderBlock,
+    MailBox
   },
   data() {
     return {

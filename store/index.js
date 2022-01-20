@@ -13,7 +13,8 @@ const createStore = () => {
             loadedRedBook: [],
             loadedRubrics: [],
             loadedFavourites: [],
-            loadedDailyArticle: []
+            loadedDailyArticle: [],
+            loadingState: false
         },
         mutations: {
             setOrder1(state, info) {
@@ -48,6 +49,9 @@ const createStore = () => {
             },
             setDailyArticle(state, info) {
                 state.loadedDailyArticle = info
+            },
+            setLoadingState(state, info) {
+                state.loadingState = info
             }
         },
         actions: {
@@ -153,6 +157,9 @@ const createStore = () => {
             },
             loadedDailyArticle(state) {
                 return state.loadedDailyArticle
+            },
+            loadingState(state) {
+                return state.loadingState
             }
         }
     })

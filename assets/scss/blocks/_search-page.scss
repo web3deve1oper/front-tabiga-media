@@ -28,7 +28,9 @@
     }
   }
 
-  &__list {}
+  &__list {
+    margin-bottom: 80px;
+  }
 
   &__card {
     &:not(:last-child) {

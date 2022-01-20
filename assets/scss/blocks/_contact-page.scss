@@ -20,6 +20,7 @@
     @extend %container;
     position: relative;
     z-index: 2;
+    margin-bottom: 80px;
   }
 
   &__breadcrumb {

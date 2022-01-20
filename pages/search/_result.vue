@@ -66,6 +66,8 @@
         </nuxt-link>
 
       </div>
+
+      <mail-box class="rubric-page__mail-box"></mail-box>
     </div>
 
     <div class="search-page__container" v-else>
@@ -77,11 +79,13 @@
 </template>
 
 <script>
-import LoaderBlock from "../../components/LoaderBlock"
+import LoaderBlock from "../../components/LoaderBlock";
+import MailBox from "../../components/MailBox";
 
 export default {
   components: {
-    LoaderBlock
+    LoaderBlock,
+    MailBox
   },
   data() {
     return {

@@ -107,6 +107,8 @@
       </div>
     </div>
 
+    <mail-box class="rubric-page__mail-box"></mail-box>
+
     <success-modal v-if="showModal"
                    @close="showModal = false"
                    :title="modalTitle"
@@ -118,10 +120,12 @@
 
 <script>
 import SuccessModal from "../components/SuccessModal";
+import MailBox from "../components/MailBox";
 
 export default {
   components: {
-    SuccessModal
+    SuccessModal,
+    MailBox
   },
   data() {
     return {

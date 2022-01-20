@@ -7,7 +7,7 @@
         </div>
 
         <div class="mailing-section__subtitle">
-          Подпишись на рассылку от Tabigat media, чтобы читать самые свежие и интересные статьи первымs
+          Подпишись на рассылку от Tabigat media, чтобы читать самые свежие и интересные статьи первыми
         </div>
       </div>
 
@@ -35,6 +35,10 @@
                      :title="modalTitle"
                      :subtitle="modalSubtitle"
                      :type="modalType"></success-modal>
+
+      <div class="mailing-section__loading-box" v-if="loadingState">
+        <img src="../assets/img/icons/loader-bird.png" alt="" class="mailing-section__loader">
+      </div>
     </div>
   </section>
 </template>
@@ -52,11 +56,27 @@ export default {
       modalType: false,
       showModal: false,
       modalTitle: '',
-      modalSubtitle: ''
+      modalSubtitle: '',
+    }
+  },
+  computed: {
+    loadingState() {
+      return this.$store.getters.loadingState
     }
   },
   methods: {
+    preventScroll(e) {
+      e.preventDefault()
+      e.stopPropagation()
+
+      return false;
+    },
+
     subscribe() {
+      this.$store.commit('setLoadingState', true)
+
+      document.querySelector('.ultra-main').addEventListener('wheel', this.preventScroll)
+
       this.$axios.post(process.env.API + 'mailings/subscribe/', {
         email: this.mail
       })
@@ -70,17 +90,21 @@ export default {
             })
                 .then(response => {
                   if (response.data.result === true) {
+                    this.$store.commit('setLoadingState', false)
                     this.modalType = true
                     this.showModal = true
                     this.modalTitle = 'Спасибо!'
                     this.modalSubtitle = 'Вы успешно подписались на рассылку от Tabigat media'
                     this.mail = ''
+                    document.querySelector('.ultra-main').removeEventListener('wheel', this.preventScroll)
                   } else {
+                    this.$store.commit('setLoadingState', false)
                     this.modalType = false
                     this.showModal = true
                     this.modalTitle = 'Упс!'
                     this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
                     this.mail = ''
+                    document.querySelector('.ultra-main').removeEventListener('wheel', this.preventScroll)
                   }
                 })
                 .catch(e => console.log(e))
@@ -88,17 +112,21 @@ export default {
           })
           .catch(e => {
             if (e.response.data.errors.email[0] === "The email has already been taken.") {
+              this.$store.commit('setLoadingState', false)
               this.modalType = false
               this.showModal = true
               this.modalTitle = 'Упс!'
               this.modalSubtitle = 'Произошла ошибка, данная почта уже подписана на рассылку'
               this.mail = ''
+              document.querySelector('.ultra-main').removeEventListener('wheel', this.preventScroll)
             } else {
+              this.$store.commit('setLoadingState', false)
               this.modalType = false
               this.showModal = true
               this.modalTitle = 'Упс!'
               this.modalSubtitle = 'Произошла ошибка, попробуйте снова'
               this.mail = ''
+              document.querySelector('.ultra-main').removeEventListener('wheel', this.preventScroll)
             }
           })
     }

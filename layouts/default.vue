@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="ultra-main">
     <div id="top-dot" class="top-dot"></div>
     <Header />
     <Nuxt />
