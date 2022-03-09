@@ -2,11 +2,11 @@
   <footer class="footer">
     <div class="footer__container">
       <div class="footer__row">
-        <img src="../assets/img/footer-logo.svg" alt="" class="footer__logo">
+        <img src="../assets/img/footer-logo.png" alt="" class="footer__logo">
 
         <div class="footer__socials">
 
-          <svg width="35" height="35" class="footer__social" @click="shareTwitter">
+          <svg width="35" height="35" class="footer__social" @click="shareInst">
             <use href="../assets/img/icons.svg#twitter"></use>
           </svg>
 
@@ -14,9 +14,9 @@
             <use href="../assets/img/icons.svg#fb"></use>
           </svg>
 
-          <svg width="35" height="35" class="footer__social" @click="shareVk">
-            <use href="../assets/img/icons.svg#vk"></use>
-          </svg>
+<!--          <svg width="35" height="35" class="footer__social" @click="shareVk">-->
+<!--            <use href="../assets/img/icons.svg#vk"></use>-->
+<!--          </svg>-->
 
           <svg width="35" height="35" class="footer__social" @click="shareTg">
             <use href="../assets/img/icons.svg#tg"></use>
@@ -105,17 +105,17 @@ export default {
   mounted() {
   },
   methods: {
-    shareTwitter() {
-      window.open('https://twitter.com/share?url=' + this.curUrl, '_blank');
+    shareInst() {
+      window.open('https://www.instagram.com/tabigat.media/', '_blank');
     },
     shareFacebook() {
-      window.open('https://www.facebook.com/sharer.php?u=' + this.curUrl, '_blank');
+      window.open('https://www.facebook.com/tabigat.media', '_blank');
     },
-    shareVk() {
-      window.open('https://vk.com/share.php?url=' + this.curUrl, '_blank');
-    },
+    // shareVk() {
+    //   window.open('https://vk.com/share.php?url=', '_blank');
+    // },
     shareTg() {
-      window.open('https://t.me/share/url?url=' + this.curUrl, '_blank');
+      window.open('https://t.me/tabigatmedia', '_blank');
     }
   }
 };
