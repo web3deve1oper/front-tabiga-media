@@ -65,6 +65,7 @@
             <nuxt-link tag="div" to="/policy" class="footer__link">Политика конфиденциальности</nuxt-link>
 <!--            <nuxt-link tag="div" to="/legal" class="footer__link">Правовая информация</nuxt-link>-->
             <nuxt-link tag="div" to="/contact" class="footer__link">Обратная связь</nuxt-link>
+
           </div>
         </div>
 
