@@ -7,7 +7,7 @@
         <div class="footer__socials">
 
           <svg width="35" height="35" class="footer__social" @click="shareInst">
-            <use href="../assets/img/icons.svg#twitter"></use>
+            <use href="../assets/img/icons.svg#inst"></use>
           </svg>
 
           <svg width="35" height="35" class="footer__social" @click="shareFacebook">
