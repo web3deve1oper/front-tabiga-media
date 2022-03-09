@@ -878,7 +878,6 @@ export default {
   },
   methods: {},
   mounted() {
-
     this.welcomeCardsSwiper = new Swiper('.welcome-section__swiper-container', {
       slidesPerView: "auto",
       spaceBetween: 8,

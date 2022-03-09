@@ -21,22 +21,22 @@
           <svg width="24" height="24">
             <use href="../assets/img/icons.svg#mail-2"></use>
           </svg>
-          info@tabigatmedia.kz
+          info@tabigat.media
         </div>
 
-        <div class="contact-page__item">
-          <svg width="24" height="24">
-            <use href="../assets/img/icons.svg#phone"></use>
-          </svg>
-          +7 (ххх) ххх хх хх
-        </div>
+<!--        <div class="contact-page__item">-->
+<!--          <svg width="24" height="24">-->
+<!--            <use href="../assets/img/icons.svg#phone"></use>-->
+<!--          </svg>-->
+<!--          +7 (ххх) ххх хх хх-->
+<!--        </div>-->
 
         <div class="contact-page__item contact-page__item--start">
           <svg width="24" height="24">
             <use href="../assets/img/icons.svg#pin"></use>
           </svg>
           Казахстан, г. Алматы <br>
-          ул Байзакова 280
+          Ходжанова 67, офис 205
         </div>
       </div>
 

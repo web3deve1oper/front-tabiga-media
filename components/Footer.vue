@@ -27,7 +27,7 @@
 
       <div class="footer__main">
         <div class="footer__quote">
-          «Tabigat media» -онлайн журнал об охране природы
+          Tabigat media — казахстанское онлайн-издание о природе, её изучении и охране.
         </div>
 
         <div class="footer__link-box footer__link-box--desktop">
