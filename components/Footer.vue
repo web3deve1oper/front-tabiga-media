@@ -56,6 +56,11 @@
                        :key="r.id">
               {{ r.title }}
             </nuxt-link>
+            <nuxt-link tag="div"
+                       class="footer__link"
+                       to="/red-book">
+              Красная книга
+            </nuxt-link>
           </div>
         </div>
 

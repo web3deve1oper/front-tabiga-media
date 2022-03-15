@@ -12,9 +12,9 @@
         Как с нами связаться
       </div>
 
-      <div class="contact-page__subtitle">
-        Мы всегда готовы помочь и ответить на все ваши вопросы.
-      </div>
+<!--      <div class="contact-page__subtitle">-->
+<!--        Мы всегда готовы помочь и ответить на все ваши вопросы.-->
+<!--      </div>-->
 
       <div class="contact-page__row">
         <div class="contact-page__item">

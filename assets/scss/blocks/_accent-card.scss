@@ -34,7 +34,7 @@
   }
 
   &__heading {
-    @include text-style(1.4rem, 400, #E2A190);
+    @include text-style(1.4rem, 400, #A5AE9D);
     padding-left: 7px;
     position: relative;
     margin-bottom: 10px;
@@ -44,7 +44,7 @@
       width: 2px;
       height: 18px;
       border-radius: 1px;
-      background-color: #E2A190;
+      background-color: #A5AE9D;
       position: absolute;
       top: 50%;
       left: 0;

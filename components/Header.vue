@@ -10,7 +10,7 @@
                    class="header__link"
                    v-for="(rubric, i) in loadedRubrics"
                    :key="rubric.id"
-                   v-if="i < 5">{{ rubric.title }}
+                   v-if="i < 5 && rubric.title !== 'Новости'">{{ rubric.title }}
         </nuxt-link>
         <!--        <li class="header__link header__link&#45;&#45;red">Красная книга</li>-->
       </ul>

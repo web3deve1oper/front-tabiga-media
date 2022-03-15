@@ -16,7 +16,7 @@
 
             <div class="welcome-section__box-info">
               <div class="welcome-section__heading">
-                Новость дня
+                Статья дня
               </div>
 
               <div class="welcome-section__title">

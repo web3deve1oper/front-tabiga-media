@@ -36,6 +36,10 @@
                          :key="rubric.id">
                 {{ rubric.title }}
               </nuxt-link>
+              <nuxt-link tag="li"
+                         to="/red-book">
+                Красная книга
+              </nuxt-link>
             </ul>
           </div>
 
