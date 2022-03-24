@@ -59,7 +59,17 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    "vue2-editor/nuxt"
+    "vue2-editor/nuxt",
+    [
+        '@nuxtjs/yandex-metrika',
+      {
+        id: '87772762',
+        webvisor: true,
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+      }
+    ]
   ],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
