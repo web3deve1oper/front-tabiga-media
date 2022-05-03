@@ -431,6 +431,7 @@ export default {
       loader: true,
       interests: [],
       recs: [],
+      head_title: '',
     }
   },
   computed: {
@@ -453,6 +454,7 @@ export default {
     this.$axios.get(process.env.API + 'articles?filter[id]=' + this.articleId + '&include=rubric,author')
         .then(response => {
           this.article = response.data.data.data
+            this.head_title = this.article[0].title
           this.$axios.get(process.env.API + 'articles/' + this.articleId + '/recommended-articles?' +
               'filter[rubric.id]=' + this.rubricId + 'filter[posted]=1&&include=rubric,author&itemsPerPage=3')
               .then(response => {
@@ -472,5 +474,10 @@ export default {
     this.$axios.post(process.env.API + 'articles/' + this.articleId + '/visited')
         .catch(e => console.log(e))
   },
+    head() {
+        return {
+            title: this.head_title,
+        };
+    },
 }
 </script>

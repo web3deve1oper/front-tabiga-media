@@ -33,7 +33,7 @@
           <div class="welcome-section__scroll-box" v-if="loadedOrder1.length > 0">
             <div class="welcome-section__items">
 
-              <nuxt-link tag="div" :to="'/' + article.rubric.slug + ':' + article.rubric.id +
+              <nuxt-link tag="a" :to="'/' + article.rubric.slug + ':' + article.rubric.id +
                          '/' + article.slug + ':' + article.id"
                          class="welcome-section__item"
                          v-for="article in loadedOrder1"
@@ -65,7 +65,7 @@
 
         <div class="welcome-section__cards" v-if="randomArticles.length > 0">
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id +
                      '/' + article.slug + ':' + article.id"
                      class="welcome-section__card card"
@@ -103,7 +103,7 @@
         <div class="swiper-container welcome-section__swiper-container" v-if="randomArticles.length > 0">
           <div class="swiper-wrapper">
 
-            <nuxt-link tag="div" :to="'/' + article.rubric.slug + ':' + article.rubric.id +
+            <nuxt-link tag="a" :to="'/' + article.rubric.slug + ':' + article.rubric.id +
                        '/' + article.slug + ':' + article.id"
                        class="welcome-section__card card swiper-slide"
                        v-for="(article, i) in randomArticles"
@@ -151,7 +151,7 @@
             {{ loadedOrder2[0].rubric.title }}
           </h4>
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + loadedOrder2[0].rubric.slug + ':' + loadedOrder2[0].rubric.id"
                      class="default-view__more">
             <p>Смотреть все</p>
@@ -164,7 +164,7 @@
 
         <div class="default-view__cards">
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                      article.slug + ':' + article.id"
                      class="default-view__card card card--w-desc"
@@ -207,7 +207,7 @@
         <div class="swiper-container default-view__swiper-container default-view__swiper-container--1">
           <div class="swiper-wrapper">
 
-            <nuxt-link tag="div"
+            <nuxt-link tag="a"
                        :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                        article.slug + ':' + article.id"
                        class="default-view__card card card--w-desc swiper-slide"
@@ -258,7 +258,7 @@
       <div class="accent-section__container">
 
         <div class="accent-section__list">
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                      article.slug + ':' + article.id"
                      class="accent-section__card accent-card"
@@ -298,7 +298,7 @@
         <div class="swiper-container accent-section__swiper-container">
           <div class="swiper-wrapper">
 
-            <nuxt-link tag="div"
+            <nuxt-link tag="a"
                        :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                        article.slug + ':' + article.id"
                        class="accent-section__card accent-card swiper-slide"
@@ -351,7 +351,7 @@
             {{ loadedOrder3[0].rubric.title }}
           </h4>
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + loadedOrder3[0].rubric.slug + ':' + loadedOrder3[0].rubric.id"
                      class="fluid-view__more">
             <p>Смотреть все</p>
@@ -362,7 +362,7 @@
         </div>
 
         <div class="fluid-view__top">
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                      article.slug + ':' + article.id"
                      class="fluid-view__card card card--big"
@@ -410,7 +410,7 @@
 
         <div class="fluid-view__bottom">
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                      article.slug + ':' + article.id"
                      class="fluid-view__card card card--minimized"
@@ -454,7 +454,7 @@
         <div class="swiper-container fluid-view__swiper-container">
           <div class="swiper-wrapper">
 
-            <nuxt-link tag="div"
+            <nuxt-link tag="a"
                        :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                        article.slug + ':' + article.id"
                        class="fluid-view__card card card--minimized swiper-slide"
@@ -550,7 +550,7 @@
             {{ loadedOrder4[0].rubric.title }}
           </h4>
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + loadedOrder4[0].rubric.slug + ':' + loadedOrder4[0].rubric.id"
                      class="solo-view__more">
             <p>Смотреть все</p>
@@ -562,7 +562,7 @@
 
         <div class="solo-view__cards">
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + loadedOrder4[0].rubric.slug + ':' + loadedOrder4[0].rubric.id + '/' +
                      loadedOrder4[0].slug + ':' + loadedOrder4[0].id"
                      class="solo-view__card card card--big">
@@ -600,7 +600,7 @@
 
           <div class="solo-view__list">
 
-            <nuxt-link tag="div"
+            <nuxt-link tag="a"
                        :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' +
                        article.slug + ':' + article.id"
                        class="solo-view__card solo-view__card--mb10 card card--nophoto"
@@ -641,7 +641,7 @@
             {{ loadedOrder5[0].rubric.title }}
           </h4>
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + loadedOrder5[0].rubric.slug + ':' + loadedOrder5[0].rubric.id"
                      class="default-view__more">
             <p>Смотреть все</p>
@@ -653,7 +653,7 @@
 
         <div class="default-view__cards">
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
                      class="default-view__card card card--w-desc"
                      v-for="article in loadedOrder5" :key="article.id">
@@ -698,7 +698,7 @@
         <div class="swiper-container default-view__swiper-container default-view__swiper-container--2">
           <div class="swiper-wrapper">
 
-            <nuxt-link tag="div"
+            <nuxt-link tag="a"
                        :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
                        class="default-view__card card card--w-desc swiper-slide"
                        v-for="article in loadedOrder5"
@@ -755,7 +755,7 @@
             {{ loadedOrder6[0].rubric.title }}
           </h4>
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + loadedOrder6[0].rubric.slug + ':' + loadedOrder6[0].rubric.id"
                      class="staggered-view__more">
             <p>Смотреть все</p>
@@ -767,7 +767,7 @@
 
         <div class="staggered-view__cards">
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
                      class="staggered-view__card staggered-card"
                      v-for="(article, k) in loadedOrder6"

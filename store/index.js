@@ -59,7 +59,7 @@ const createStore = () => {
                 const order1Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=1&filter[posted]=1&sort=-posted_at&itemsPerPage=10&include=rubric')
                 VuexContext.commit('setOrder1', order1Response.data.data.data)
 
-                const randomArticlesResponse = await context.$axios.get(process.env.API + 'random-articles?filter[posted]=1&sort=-posted_at&itemsPerPage=8&include=rubric')
+                const randomArticlesResponse = await context.$axios.get(process.env.API + 'random-articles?filter[posted]=1&sort=-posted_at&itemsPerPage=9&include=rubric')
                 VuexContext.commit('setRandomArticles', randomArticlesResponse.data.data)
 
                 const order2Response = await context.$axios.get(process.env.API + 'articles?filter[rubric.order]=2&filter[posted]=1&sort=-posted_at&itemsPerPage=4&include=rubric')
