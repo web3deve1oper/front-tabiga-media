@@ -185,6 +185,11 @@ export default {
             }
           })
     }
-  }
+  },
+    head() {
+        return {
+            title: 'Контакты',
+        };
+    }
 }
 </script>

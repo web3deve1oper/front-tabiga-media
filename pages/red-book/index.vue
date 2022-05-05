@@ -26,7 +26,7 @@
 
         <div class="rubrics__cards rubrics__cards--red-book">
 
-          <nuxt-link tag="div" :to="'/red-book/' + card.slug + ':' + card.id"
+          <nuxt-link tag="a" :to="'/red-book/' + card.slug + ':' + card.id"
                      class="rubrics__card red-card"
                      v-for="card in rubric"
                      :key="card.id">
@@ -108,6 +108,11 @@ export default {
           this.loader = false
         })
         .catch(e => console.log(e))
-  }
+  },
+    head() {
+        return {
+            title: 'Красная книга Казахстана'
+        };
+    }
 }
 </script>

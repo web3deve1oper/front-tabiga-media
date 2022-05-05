@@ -37,6 +37,7 @@
     @include text-style(2.4rem, 400, $text-color);
     transition: all .3s;
     cursor: pointer;
+    display: table;
 
     &:hover {
       color: $main-color;
@@ -44,7 +45,7 @@
     }
 
     &--red {
-      color: #EB5757;
+      color: #EB5757!important;
 
       &:hover {
         color: #EB5757;
@@ -62,14 +63,15 @@
   &__rubrics {
     margin-bottom: 40px;
 
-    div {
+    a {
       margin-bottom: 20px;
     }
 
-    li {
+    a {
       @include text-style(2.4rem, 400, $text-color);
       transition: all .3s;
       cursor: pointer;
+      display: table;
 
       &:hover {
         color: $main-color;

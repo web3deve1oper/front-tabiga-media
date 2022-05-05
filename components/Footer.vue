@@ -36,10 +36,10 @@
           </div>
 
           <div class="footer__links">
-            <nuxt-link tag="div" to="/about" class="footer__link">О проекте</nuxt-link>
-            <nuxt-link tag="div" to="/policy" class="footer__link">Политика конфиденциальности</nuxt-link>
+            <nuxt-link tag="a" to="/about" class="footer__link">О проекте</nuxt-link>
+            <nuxt-link tag="a" to="/policy" class="footer__link">Политика конфиденциальности</nuxt-link>
 <!--            <nuxt-link tag="div" to="/legal" class="footer__link">Правовая информация</nuxt-link>-->
-            <nuxt-link tag="div" to="/contact" class="footer__link">Обратная связь</nuxt-link>
+            <nuxt-link tag="a" to="/contact" class="footer__link">Обратная связь</nuxt-link>
           </div>
         </div>
 
@@ -49,7 +49,7 @@
           </div>
 
           <div class="footer__links">
-            <nuxt-link tag="div"
+            <nuxt-link tag="a"
                        :to="'/' + r.slag + ':' + r.id"
                        class="footer__link"
                        v-for="r in loadedRubrics"

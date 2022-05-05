@@ -78,6 +78,9 @@
     font-family: $futura;
     cursor: pointer;
     white-space: nowrap;
+    a {
+      @include text-style(1.8rem, 400, $text-color);
+    }
 
     &:not(:last-child) {
       margin-right: 25px;
@@ -85,6 +88,9 @@
 
     &--red {
       color: #EB5757;
+      a{
+        color: #EB5757;
+      }
     }
   }
 

@@ -10,13 +10,16 @@
                    class="header__link"
                    v-for="(rubric, i) in loadedRubrics"
                    :key="rubric.id"
-                   v-if="i < 5 && rubric.title !== 'Новости'">{{ rubric.title }}
+                   v-if="i < 5 && rubric.title !== 'Новости'">
+          <a >{{ rubric.title }}</a>
         </nuxt-link>
         <!--        <li class="header__link header__link&#45;&#45;red">Красная книга</li>-->
       </ul>
       <ul class="header__links">
         <!--        <li class="header__link" v-for="rubric in loadedRubrics">{{ rubric.title }}</li>-->
-        <nuxt-link tag="li" to="/red-book" class="header__link header__link--red">Красная книга</nuxt-link>
+        <nuxt-link tag="li" to="/red-book" class="header__link header__link--red">
+          <a href="">Красная книга</a>
+        </nuxt-link>
       </ul>
 
       <button class="header__btn button"
@@ -55,11 +58,11 @@
         </div>
 
         <ul class="sidebar__rubrics">
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      to="/red-book"
                      @click.native="sidebarShow = false"
                      class="sidebar__item sidebar__item--red">Красная книга</nuxt-link>
-          <nuxt-link tag="li"
+          <nuxt-link tag="a"
                      :to="'/nauka:' + rubric.id"
                      @click.native="sidebarShow = false"
                      v-for="rubric in loadedRubrics"
@@ -68,11 +71,11 @@
         </ul>
 
         <div class="sidebar__items">
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      to="/about"
                      @click.native="sidebarShow = false"
                      class="sidebar__item">О проекте</nuxt-link>
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      to="/contact"
                      @click.native="sidebarShow = false"
                      class="sidebar__item">Обратная связь</nuxt-link>

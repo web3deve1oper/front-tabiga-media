@@ -172,7 +172,7 @@
           </div>
 
           <nuxt-link tag="div" to="/red-book" class="rubric-page__title-more">
-            <p>Смотреть все</p>
+            <a>Смотреть все</a>
             <svg width="24" height="24">
               <use href="../../assets/img/icons.svg#arrow-right"></use>
             </svg>
@@ -181,7 +181,7 @@
 
         <div class="rubric-page__interest-list rubric-page__interest-list--grid4">
 
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/red-book/' + card.slug + ':' + card.id"
                      class="rubric-page__card red-card red-card--w170"
                      v-for="card in otherCards"
@@ -231,7 +231,8 @@ export default {
       rubricSwiper2: null,
       card: {},
       loader: true,
-      otherCards: []
+      otherCards: [],
+      head_title: ''
     }
   },
   computed: {
@@ -243,7 +244,7 @@ export default {
     this.$axios.get(process.env.API + 'red-book/' + this.curId)
         .then(response => {
           this.card = response.data.data
-
+            this.head_title = this.card.name
           this.$axios.get(process.env.API + 'red-book')
               .then(response => {
                 response.data.data.data.forEach(elem => {
@@ -256,6 +257,11 @@ export default {
               .catch(e => console.log(e))
         })
         .catch(e => console.log(e))
-  }
+  },
+    head() {
+        return {
+            title: this.head_title,
+        };
+    },
 }
 </script>

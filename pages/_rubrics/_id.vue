@@ -354,7 +354,7 @@
 
         <div class="rubric-page__interest">
 
-          <div class="rubric-page__interest-title">
+          <div class="rubric-page__interest-title" v-if="interests">
             Вас также могут заинтересовать
           </div>
 

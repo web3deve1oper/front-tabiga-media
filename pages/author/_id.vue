@@ -42,7 +42,7 @@
 
       <div class="author-page__list">
 
-        <nuxt-link tag="div"
+        <nuxt-link tag="a"
                    :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
                    class="author-page__card card card--w100 card--w-desc"
                    v-for="article in articles"
@@ -104,7 +104,8 @@ export default {
       author: {},
       articles: [],
       rubrics: [],
-      rubricFilter: ''
+      rubricFilter: '',
+      head_title: '',
     }
   },
   computed: {
@@ -121,7 +122,7 @@ export default {
     this.$axios.get(process.env.API + 'authors/' + this.curId)
         .then(response => {
           this.author = response.data.data
-
+          this.head_title = this.author.full_name
           this.$axios.get(process.env.API + 'articles?filter[author.id]=' + this.curId + '&filter[posted]=1&sort=-posted_at&include=rubric')
               .then(response => {
                 this.articles = response.data.data.data
@@ -135,7 +136,12 @@ export default {
               .catch(e => console.log(e))
         })
         .catch(e => console.log(e))
-  }
+  },
+    head() {
+        return {
+            title: this.head_title
+        };
+    }
 }
 </script>
 

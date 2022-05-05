@@ -78,6 +78,11 @@ export default {
     loadedRubrics() {
       return this.$store.getters.loadedRubrics
     }
-  }
+  },
+    head() {
+        return {
+            title: 'О проекте',
+        };
+    }
 }
 </script>

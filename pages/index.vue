@@ -516,7 +516,7 @@
         </div>
 
         <div class="red-book__cards">
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/red-book/' + article.slug + ':' + article.id" class="red-book__card red-card"
                      v-for="article in loadedRedBook"
                      :key="article.id">

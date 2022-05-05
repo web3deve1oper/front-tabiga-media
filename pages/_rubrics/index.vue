@@ -25,7 +25,7 @@
         </div>
 
         <div class="rubrics__cards">
-          <nuxt-link tag="div"
+          <nuxt-link tag="a"
                      :to="'/' + article.rubric.slug + ':' + article.rubric.id + '/' + article.slug + ':' + article.id"
                      class="rubrics__card card card--w100 card--nopadding"
                      v-for="article in rubric"
@@ -110,7 +110,8 @@ export default {
   data() {
     return {
       rubric: [],
-      loader: true
+      loader: true,
+      head_title: ''
     };
   },
   computed: {
@@ -122,9 +123,15 @@ export default {
     this.$axios.get(process.env.API + 'articles?filter[rubric.id]=' + this.rubricId + '&filter[posted]=1&sort=-posted_at&include=rubric,author')
         .then(response => {
           this.rubric = response.data.data.data
+          this.head_title = this.rubric[0].rubric.title
           this.loader = false
         })
         .catch(e => console.log(e))
-  }
+  },
+    head() {
+        return {
+            title: this.head_title
+        };
+    }
 }
 </script>

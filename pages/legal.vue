@@ -53,5 +53,10 @@ export default {
         })
         .catch(e => console.log(e))
   },
+    head() {
+        return {
+            title: 'Правовая информация',
+        };
+    }
 }
 </script>

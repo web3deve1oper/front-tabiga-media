@@ -326,6 +326,11 @@
       font-family: $futura;
       margin-right: 4px;
     }
+    a{
+      @include text-style(1.8rem, 400, $text-color);
+      font-family: $futura;
+      margin-right: 4px;
+    }
   }
 
   &__phone-top {
