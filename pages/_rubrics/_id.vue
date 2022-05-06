@@ -432,6 +432,9 @@ export default {
       interests: [],
       recs: [],
       head_title: '',
+      head_description: '',
+      og_images: '',
+      og_discription: '',
     }
   },
   computed: {
@@ -455,6 +458,9 @@ export default {
         .then(response => {
           this.article = response.data.data.data
             this.head_title = this.article[0].title
+            this.og_images = this.article[0].preview_image_big_url
+            this.head_description = this.article[0].description
+            this.og_discription = this.article[0].description.replace(/(<([^>]+)>)/gi, "").substr(0, 400)+'...';
           this.$axios.get(process.env.API + 'articles/' + this.articleId + '/recommended-articles?' +
               'filter[rubric.id]=' + this.rubricId + 'filter[posted]=1&&include=rubric,author&itemsPerPage=3')
               .then(response => {
@@ -477,6 +483,24 @@ export default {
     head() {
         return {
             title: this.head_title,
+            description: this.head_description,
+            meta: [
+                {
+                    hid: 'og:image',
+                    name: 'og:image',
+                    content: this.og_images
+                },
+                {
+                    hid: 'og:title',
+                    name: 'og:title',
+                    content: this.head_title
+                },
+                {
+                    hid: 'og:description',
+                    name: 'og:description',
+                    content: this.og_discription
+                }
+            ]
         };
     },
 }

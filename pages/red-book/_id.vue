@@ -232,7 +232,10 @@ export default {
       card: {},
       loader: true,
       otherCards: [],
-      head_title: ''
+      head_title: '',
+      head_discription: '',
+      og_images: '',
+      og_discription: '',
     }
   },
   computed: {
@@ -245,6 +248,9 @@ export default {
         .then(response => {
           this.card = response.data.data
             this.head_title = this.card.name
+            this.head_discription = this.card.content.substring(0, 400)+'...'
+            this.og_images = this.card.preview_image_big_url
+            this.og_discription = this.card.content.replace(/(<([^>]+)>)/gi, "").substr(0, 400)+'...';
           this.$axios.get(process.env.API + 'red-book')
               .then(response => {
                 response.data.data.data.forEach(elem => {
@@ -261,6 +267,24 @@ export default {
     head() {
         return {
             title: this.head_title,
+            description: this.head_discription,
+            meta: [
+                {
+                    hid: 'og:image',
+                    name: 'og:image',
+                    content: this.og_images
+                },
+                {
+                    hid: 'og:title',
+                    name: 'og:title',
+                    content: this.head_title
+                },
+                {
+                    hid: 'og:description',
+                    name: 'og:description',
+                    content: this.og_discription
+                }
+            ]
         };
     },
 }
