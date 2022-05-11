@@ -242,9 +242,6 @@ export default {
     curId() {
       return this.$route.params.id.split(':')[1]
     },
-    curUrl() {
-      return window.location.href
-    }
   },
   mounted() {
     this.$axios.get(process.env.API + 'red-book/' + this.curId)
@@ -266,6 +263,7 @@ export default {
               .catch(e => console.log(e))
         })
         .catch(e => console.log(e))
+      console.log(this.$route);
   },
     head() {
         return {
@@ -281,6 +279,11 @@ export default {
                     hid: 'og:image',
                     name: 'og:image',
                     content: this.og_images
+                },
+                {
+                    hid: "og:url",
+                    property: "og:url",
+                    content: "https://tabigat.media" + this.$route.fullPath,
                 },
                 {
                     property: "og:image:width",
@@ -302,14 +305,9 @@ export default {
                     content: this.og_discription
                 },
                 {
-                    hid: 'og:url',
-                    name: 'og:url',
-                    content: this.curUrl
-                },
-                {
                     hid: "twitter:url",
                     name: "twitter:url",
-                    content: this.curUrl,
+                    content: "https://tabigat.media" + this.$route.fullPath,
                 },
                 {
                     hid: "twitter:title",

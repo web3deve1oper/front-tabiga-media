@@ -443,9 +443,6 @@ export default {
     },
     rubricId() {
       return this.$route.params.rubrics.split(':')[1]
-    },
-    curUrl() {
-      return window.location.href
     }
   },
   methods: {
@@ -490,42 +487,41 @@ export default {
             meta: [
                 {
                     hid: 'og:type',
-                    name: 'og:type',
+                    property: 'og:type',
                     content: "article"
                 },
                 {
                     hid: 'og:image',
-                    name: 'og:image',
+                    property: 'og:image',
                     content: this.og_images
                 },
                 {
                     property: "og:image:width",
                     content: "1200"
                 },
-
+                {
+                    hid: "og:url",
+                    property: "og:url",
+                    content: "https://tabigat.media" + this.$route.fullPath,
+                },
                 {
                     property: "og:image:height",
                     content: "630"
                 },
                 {
                     hid: 'og:title',
-                    name: 'og:title',
+                    property: 'og:title',
                     content: this.head_title
                 },
                 {
                     hid: 'og:description',
-                    name: 'og:description',
+                    property: 'og:description',
                     content: this.og_discription
-                },
-                {
-                    hid: 'og:url',
-                    name: 'og:url',
-                    content: this.curUrl
                 },
                 {
                     hid: "twitter:url",
                     name: "twitter:url",
-                    content: this.curUrl,
+                    content: "https://tabigat.media" + this.$route.fullPath,
                 },
                 {
                     hid: "twitter:title",
