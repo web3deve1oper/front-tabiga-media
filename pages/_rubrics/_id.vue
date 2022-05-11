@@ -490,8 +490,13 @@ export default {
                     content: 'Tabigat media'
                 },
                 {
+                    hid: 'canonical',
+                    rel: 'canonical',
+                    href: "https://tabigat.media" + this.$route.fullPath
+                },
+                {
                     hid: 'description',
-                    property: 'description',
+                    name: 'description',
                     content: this.head_description
                 },
                 {
