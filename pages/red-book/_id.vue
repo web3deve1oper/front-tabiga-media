@@ -250,7 +250,7 @@ export default {
             this.head_title = this.card.name
             this.head_discription = this.card.content.substring(0, 400)+'...'
             this.og_images = this.card.preview_image_big_url
-            this.og_discription = this.card.content.replace(/(<([^>]+)>)/gi, "").substr(0, 400)+'...';
+            this.og_discription = this.card.content.replace(/(<([^>]+)>)/gi, "").replace(/&.*;/g, "").substr(0, 400)+'...';
           this.$axios.get(process.env.API + 'red-book')
               .then(response => {
                 response.data.data.data.forEach(elem => {
@@ -268,16 +268,25 @@ export default {
     head() {
         return {
             title: this.head_title,
-            description: this.head_discription,
             meta: [
                 {
+                    hid: 'og:site_name',
+                    property: 'og:site_name',
+                    content: 'Tabigat media'
+                },
+                {
+                    hid: 'description',
+                    property: 'description',
+                    content: this.og_discription
+                },
+                {
                     hid: 'og:type',
-                    name: 'og:type',
+                    property: 'og:type',
                     content: "article"
                 },
                 {
                     hid: 'og:image',
-                    name: 'og:image',
+                    property: 'og:image',
                     content: this.og_images
                 },
                 {
@@ -296,12 +305,12 @@ export default {
                 },
                 {
                     hid: 'og:title',
-                    name: 'og:title',
+                    property: 'og:title',
                     content: this.head_title
                 },
                 {
                     hid: 'og:description',
-                    name: 'og:description',
+                    property: 'og:description',
                     content: this.og_discription
                 },
                 {

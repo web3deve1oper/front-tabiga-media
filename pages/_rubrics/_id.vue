@@ -483,8 +483,17 @@ export default {
     head() {
         return {
             title: this.head_title,
-            description: this.head_description,
             meta: [
+                {
+                    hid: 'og:site_name',
+                    property: 'og:site_name',
+                    content: 'Tabigat media'
+                },
+                {
+                    hid: 'description',
+                    property: 'description',
+                    content: this.head_description
+                },
                 {
                     hid: 'og:type',
                     property: 'og:type',
@@ -500,13 +509,13 @@ export default {
                     content: "1200"
                 },
                 {
+                    property: "og:image:height",
+                    content: "630"
+                },
+                {
                     hid: "og:url",
                     property: "og:url",
                     content: "https://tabigat.media" + this.$route.fullPath,
-                },
-                {
-                    property: "og:image:height",
-                    content: "630"
                 },
                 {
                     hid: 'og:title',
