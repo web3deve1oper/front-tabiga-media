@@ -443,6 +443,9 @@ export default {
     },
     rubricId() {
       return this.$route.params.rubrics.split(':')[1]
+    },
+    curUrl() {
+      return window.location.href
     }
   },
   methods: {
@@ -486,9 +489,23 @@ export default {
             description: this.head_description,
             meta: [
                 {
+                    hid: 'og:type',
+                    name: 'og:type',
+                    content: "article"
+                },
+                {
                     hid: 'og:image',
                     name: 'og:image',
                     content: this.og_images
+                },
+                {
+                    property: "og:image:width",
+                    content: "1200"
+                },
+
+                {
+                    property: "og:image:height",
+                    content: "630"
                 },
                 {
                     hid: 'og:title',
@@ -499,6 +516,31 @@ export default {
                     hid: 'og:description',
                     name: 'og:description',
                     content: this.og_discription
+                },
+                {
+                    hid: 'og:url',
+                    name: 'og:url',
+                    content: this.curUrl
+                },
+                {
+                    hid: "twitter:url",
+                    name: "twitter:url",
+                    content: this.curUrl,
+                },
+                {
+                    hid: "twitter:title",
+                    name: "twitter:title",
+                    content: this.head_title,
+                },
+                {
+                    hid: "twitter:description",
+                    name: "twitter:description",
+                    content: this.og_discription,
+                },
+                {
+                    hid: "twitter:image",
+                    name: "twitter:image",
+                    content: this.og_images,
                 }
             ]
         };
