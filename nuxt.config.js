@@ -15,6 +15,16 @@ export default {
         name: 'keywords',
         content: 'Tabigat media, tabigat media, TABIGAT MEDIA, Tabigat Media, Tabigat, tabigat, tabigatmedia, tabigat.media, Tabigatmedia, tabigatMedia, TABIGATMEDIA, Табигат медиа, табигат медиа, ТАБИГАТ МЕДИА, Табигат Медиа, Табигат, табигат, табигатмедиа, табигат.медиа, Табигатмеда, табигатМедиа, ТАБИГАТМЕДИА, онлайн-издание о природе, издание, природа, красная книга'
       },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content: 'Tabigat media — казахстанское онлайн-издание о природе, её изучении и охране. О природе из первых уст'
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Tabigat media'
+      },
       { name: 'csrf-token', content: '{{ csrf_token() }}' }
     ],
     link: [

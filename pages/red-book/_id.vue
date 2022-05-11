@@ -265,6 +265,10 @@ export default {
         .catch(e => console.log(e))
       console.log(this.$route);
   },
+    async asyncData({ route, $axios }) {
+        const response = await $axios.get(process.env.API + 'red-book/' + route.params.id.split(':')[1])
+        return {tags:response.data.data};
+    },
     head() {
         return {
             title: this.head_title,
@@ -277,7 +281,8 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: this.og_discription
+                    // content: this.og_discription
+                    content: `${this.tags.content.replace(/(<([^>]+)>)/gi, "").replace(/&.*;/g, "").substr(0, 400)+'...'}`
                 },
                 {
                     hid: 'og:type',
@@ -287,7 +292,8 @@ export default {
                 {
                     hid: 'og:image',
                     property: 'og:image',
-                    content: this.og_images
+                    // content: this.og_images
+                    content: `${this.tags.preview_image_big_url}`
                 },
                 {
                     hid: "og:url",
@@ -306,12 +312,13 @@ export default {
                 {
                     hid: 'og:title',
                     property: 'og:title',
-                    content: this.head_title
+                    // content: this.head_title
+                    content: `${this.tags.name}`
                 },
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: this.og_discription
+                    content: `${this.tags.content.replace(/(<([^>]+)>)/gi, "").replace(/&.*;/g, "").substr(0, 400)+'...'}`
                 },
                 {
                     hid: "twitter:url",
@@ -321,17 +328,17 @@ export default {
                 {
                     hid: "twitter:title",
                     name: "twitter:title",
-                    content: this.head_title,
+                    content: `${this.tags.name}`
                 },
                 {
                     hid: "twitter:description",
                     name: "twitter:description",
-                    content: this.og_discription,
+                    content: `${this.tags.content.replace(/(<([^>]+)>)/gi, "").replace(/&.*;/g, "").substr(0, 400)+'...'}`
                 },
                 {
                     hid: "twitter:image",
                     name: "twitter:image",
-                    content: this.og_images,
+                    content: `${this.tags.preview_image_big_url}`
                 }
             ]
         };

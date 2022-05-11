@@ -451,16 +451,13 @@ export default {
     },
     updateScroll() {
       this.scrollPosition = window.scrollY
-    }
+    },
   },
   mounted() {
     this.$axios.get(process.env.API + 'articles?filter[id]=' + this.articleId + '&include=rubric,author')
         .then(response => {
           this.article = response.data.data.data
             this.head_title = this.article[0].title
-            this.og_images = this.article[0].preview_image_big_url
-            this.head_description = this.article[0].description
-            this.og_discription = this.article[0].description.replace(/(<([^>]+)>)/gi, "").substr(0, 400)+'...';
           this.$axios.get(process.env.API + 'articles/' + this.articleId + '/recommended-articles?' +
               'filter[rubric.id]=' + this.rubricId + 'filter[posted]=1&&include=rubric,author&itemsPerPage=3')
               .then(response => {
@@ -480,6 +477,10 @@ export default {
     this.$axios.post(process.env.API + 'articles/' + this.articleId + '/visited')
         .catch(e => console.log(e))
   },
+    async asyncData({ route, $axios }) {
+        const response = await $axios.get(process.env.API + 'articles?filter[id]=' + route.params.id.split(':')[1] + '&include=rubric,author')
+        return {tags:response.data.data.data[0]};
+    },
     head() {
         return {
             title: this.head_title,
@@ -497,7 +498,7 @@ export default {
                 {
                     hid: 'description',
                     name: 'description',
-                    content: this.head_description
+                    content: `${this.tags.description}`
                 },
                 {
                     hid: 'og:type',
@@ -506,8 +507,9 @@ export default {
                 },
                 {
                     hid: 'og:image',
+                    name: 'og:image',
                     property: 'og:image',
-                    content: this.og_images
+                    content: `${this.tags.preview_image_big_url}`
                 },
                 {
                     property: "og:image:width",
@@ -525,12 +527,12 @@ export default {
                 {
                     hid: 'og:title',
                     property: 'og:title',
-                    content: this.head_title
+                    content: `${this.tags.title}`
                 },
                 {
                     hid: 'og:description',
                     property: 'og:description',
-                    content: this.og_discription
+                    content: `${this.tags.description}`
                 },
                 {
                     hid: "twitter:url",
@@ -540,17 +542,17 @@ export default {
                 {
                     hid: "twitter:title",
                     name: "twitter:title",
-                    content: this.head_title,
+                    content: `${this.tags.title}`,
                 },
                 {
                     hid: "twitter:description",
                     name: "twitter:description",
-                    content: this.og_discription,
+                    content: `${this.tags.description}`,
                 },
                 {
                     hid: "twitter:image",
                     name: "twitter:image",
-                    content: this.og_images,
+                    content: `${this.tags.preview_image_big_url}`,
                 }
             ]
         };
